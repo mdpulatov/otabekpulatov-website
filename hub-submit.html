@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Submission — Otabek Pulatov, MD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --navy: #0f1d2f;
+            --gold: #c8944a;
+            --warm-white: #fafbfc;
+            --text: #1a1a2e;
+            --text-secondary: #555e6e;
+            --border: #e2e6ec;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        /* Language toggle */
+        [data-lang="uz"] { display: none; }
+        body.uz [data-lang="en"] { display: none; }
+        body.uz [data-lang="uz"] { display: block; }
+
+        /* NAV */
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1.5rem,4vw,4rem); height:72px; background:rgba(250,251,252,.95); backdrop-filter:blur(20px); border-bottom:1px solid rgba(226,230,236,.5); }
+    .nav-logo span { color:var(--gold); }
+        .nav-right { display:flex; align-items:center; gap:1rem; }
+.lang-sw button.active { background:var(--navy); color:#fff; }
+        .nav-back { font-size:.88rem; font-weight:500; color:var(--text-secondary); text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:color .2s; }
+        .nav-back:hover { color:var(--navy); }
+
+        body { font-family: var(--font-body); background-color: var(--warm-white); color: var(--text); line-height: 1.6; padding: 100px 20px 60px; }
+        .container { max-width: 650px; margin: 0 auto; background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(15, 29, 47, 0.05); border: 1px solid var(--border); }
+        .header { text-align: center; margin-bottom: 40px; }
+        .section-label { font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+        h1 { font-family: var(--font-display); font-size: 2rem; color: var(--navy); margin-bottom: 10px; line-height:1.2; }
+        p.subtitle { color: var(--text-secondary); font-size: 0.95rem; line-height:1.7; }
+        .form-group { margin-bottom: 24px; }
+        label { display: block; font-weight: 500; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy); }
+        input, select { width: 100%; padding: 14px; border: 1.5px solid var(--border); border-radius: 6px; font-family: var(--font-body); font-size: 1rem; transition: border-color 0.3s ease; background:#fff; color:var(--text); }
+        input:focus, select:focus { outline: none; border-color: var(--gold); }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .submit-btn { width: 100%; background: var(--navy); color: white; padding: 16px; border: none; border-radius: 6px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
+        .submit-btn:hover { background: var(--gold); transform: translateY(-1px); }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        .back-link { display: block; text-align: center; margin-top: 30px; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: var(--navy); }
+        #message { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; text-align: center; font-weight: 500; }
+        .success { background: #e6fffa; color: #234e52; border: 1px solid #b2f5ea; display: block !important; }
+        .error { background: #fff5f5; color: #a02020; border: 1px solid #feb2b2; display: block !important; }
+
+        @media(max-width:560px) { .row { grid-template-columns:1fr; } .container { padding:32px 24px; } }
+    </style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="container">
+    <div class="header">
+        <div class="section-label" data-lang="en">Provider Hub</div>
+        <div class="section-label" data-lang="uz">Shifokorlar Markazi</div>
+        <h1 data-lang="en">Join the Directory</h1>
+        <h1 data-lang="uz">Katalogga Qo'shiling</h1>
+        <p class="subtitle" data-lang="en">Submit your practice information for review and inclusion in the Uzbek Health Professional Network.</p>
+        <p class="subtitle" data-lang="uz">Ko'rib chiqish va O'zbek sog'liqni saqlash mutaxassislari tarmog'iga kiritish uchun amaliyot ma'lumotlaringizni yuboring.</p>
+    </div>
+
+    <form id="submissionForm">
+        <div class="form-group">
+            <label for="name" data-lang="en">Full Name / Clinic Name</label>
+            <label for="name" data-lang="uz">To'liq Ism / Klinika Nomi</label>
+            <input type="text" id="name" required placeholder="e.g. Dr. Otabek Pulatov">
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="specialty" data-lang="en">Specialty</label>
+                <label for="specialty" data-lang="uz">Mutaxassislik</label>
+                <select id="specialty" required>
+                    <option value="" data-lang="en">Select Specialty</option>
+                    <option value="Primary Care" data-lang="en">Primary Care</option>
+                    <option value="Cardiology" data-lang="en">Cardiology</option>
+                    <option value="Neurology" data-lang="en">Neurology</option>
+                    <option value="Psychiatry" data-lang="en">Psychiatry</option>
+                    <option value="Dental">Dental Care</option>
+                    <option value="Other" data-lang="en">Other Specialty</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location" data-lang="en">City &amp; State</label>
+                <label for="location" data-lang="uz">Shahar va Shtat</label>
+                <input type="text" id="location" required placeholder="e.g. Brooklyn, NY">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="langs" data-lang="en">Languages Spoken</label>
+            <label for="langs" data-lang="uz">Gaplashadigan Tillar</label>
+            <input type="text" id="langs" placeholder="e.g. Uzbek, Russian, English">
+        </div>
+
+        <div class="form-group">
+            <label for="email" data-lang="en">Contact Email (for internal use)</label>
+            <label for="email" data-lang="uz">Aloqa elektron pochta (ichki foydalanish uchun)</label>
+            <input type="email" id="email" required placeholder="your@email.com">
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">
+            <span data-lang="en">Submit for Approval</span>
+            <span data-lang="uz">Tasdiqlash uchun Yuborish</span>
+        </button>
+    </form>
+
+    <div id="message"></div>
+
+    <a href="hub-directory.html" class="back-link">
+        <span data-lang="en">← Back to Directory</span>
+        <span data-lang="uz">← Katalogga Qaytish</span>
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+    emailjs.init("_3ehatc37Lx-7MxNo");
+
+    const SUPABASE_URL = 'https://ijhspsctuzpxkluaeztq.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqaHNwc2N0dXpweGtsdWFlenRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MDE5NTMsImV4cCI6MjA4NzM3Nzk1M30.CWsa4fxWxmlRDdi1atPwk7bgSrhn8vFt2b07rRmWRzo';
+    const _client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById('submissionForm');
+    const msg = document.getElementById('message');
+    const btn = document.getElementById('submitBtn');
+    const isUz = () => document.body.classList.contains('uz');
+
+    
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        msg.style.display = 'none';
+
+        const formData = {
+            name: document.getElementById('name').value,
+            specialty: document.getElementById('specialty').value,
+            location: document.getElementById('location').value,
+            langs: document.getElementById('langs').value.split(',').map(s => s.trim()),
+            email: document.getElementById('email').value
+        };
+
+        try {
+            const { error: dbError } = await _client.from('providers').insert([{
+                ...formData,
+                is_approved: false
+            }]);
+            if (dbError) throw dbError;
+
+            await emailjs.send("service_4q5trd9", "template_wo41gxc", {
+                name: formData.name,
+                specialty: formData.specialty,
+                location: formData.location,
+                email: formData.email
+            });
+
+            msg.innerText = isUz()
+                ? "Muvaffaqiyat! Yuborildi va Otabek xabardor qilindi."
+                : "Success! Submitted and Otabek has been notified.";
+            msg.className = "success";
+            form.reset();
+
+        } catch (err) {
+            console.error(err);
+            msg.innerText = (isUz() ? "Xato: " : "Error: ") + (err.message || (isUz() ? "Yuborib bo'lmadi." : "Failed to submit."));
+            msg.className = "error";
+        } finally {
+            btn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>

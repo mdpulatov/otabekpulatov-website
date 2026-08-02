@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autism & Neurodevelopment Hub - Otabek Pulatov, MD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f1d2f;
+      --gold: #c8944a;
+      --sky: #dbeafe;
+      --sky-light: #eff6ff;
+      --warm-white: #fafbfc;
+      --cream: #f8f6f3;
+      --text-secondary: #555e6e;
+      --text-light: #8892a4;
+      --border: #e2e6ec;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--navy);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    body.uz {
+      direction: ltr;
+    }
+
+.nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+.lang-sw {
+      display: flex;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+.lang-sw button.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+.back-arrow:hover {
+      color: var(--gold);
+    }
+
+    .spacer-nav {
+      height: 72px;
+    }
+
+    .hub-header {
+      background: linear-gradient(135deg, var(--sky-light) 0%, var(--warm-white) 100%);
+      padding: 60px 48px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .hub-emoji { margin-bottom: 1rem; opacity: 0.85; color: rgba(255,255,255,0.9); }
+
+    .hub-label {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hub-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+
+    .hub-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .filter-sticky {
+      position: sticky;
+      top: 72px;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      z-index: 900;
+      padding: 0 48px;
+      display: flex;
+      gap: 0;
+    }
+
+    .filter-tab {
+      flex: 0 0 auto;
+      padding: 16px 24px;
+      border: none;
+      background: transparent;
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      text-transform: capitalize;
+    }
+
+    .filter-tab:hover {
+      color: var(--navy);
+    }
+
+    .filter-tab.active {
+      color: var(--navy);
+      border-bottom-color: var(--gold);
+    }
+
+    .hub-content {
+      padding: 60px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+
+    .content-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      animation: fade-in 0.6s ease-out forwards;
+      opacity: 0;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .content-card.fade-in {
+      animation: fade-in 0.6s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-card:hover:not(.coming-soon-card) {
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(200, 148, 74, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .coming-soon-card {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .card-type {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .card-type.article {
+      background: var(--sky);
+      color: #0369a1;
+    }
+
+    .card-type.episode {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .card-type.research {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .card-type.resource {
+      background: #f3e8ff;
+      color: #6b21a8;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    .card-lang {
+      background: var(--sky);
+      color: #0369a1;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .card-status {
+      color: var(--text-light);
+    }
+
+    .content-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .related-hubs {
+      background: var(--navy);
+      color: white;
+      padding: 60px 48px;
+      margin: 80px 0 0 0;
+    }
+
+    .related-hubs-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .related-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 36px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .related-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .related-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .related-emoji {
+      font-size: 32px;
+    }
+
+    .related-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .related-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    footer {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+  .hub-header {
+        padding: 40px 24px;
+      }
+
+      .hub-title {
+        font-size: 36px;
+      }
+
+      .hub-emoji {
+        font-size: 44px;
+      }
+
+      .hub-stats {
+        gap: 20px;
+      }
+
+      .filter-sticky {
+        padding: 0 24px;
+      }
+
+      .filter-tab {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+
+      .hub-content {
+        padding: 40px 24px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .related-hubs {
+        padding: 40px 24px;
+      }
+
+      footer {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+</head>
+<body data-lang="en">
+  <script src="nav.js"></script>
+
+  <header class="hub-header">
+    <div class="hub-emoji"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="22" cy="22" r="4" fill="currentColor" stroke="none"/><circle cx="9" cy="11" r="2.5" fill="currentColor" stroke="none"/><circle cx="35" cy="11" r="2.5" fill="currentColor" stroke="none"/><circle cx="9" cy="33" r="2.5" fill="currentColor" stroke="none"/><circle cx="35" cy="33" r="2.5" fill="currentColor" stroke="none"/><circle cx="22" cy="4" r="2" fill="currentColor" stroke="none"/><circle cx="22" cy="40" r="2" fill="currentColor" stroke="none"/><line x1="22" y1="22" x2="9" y2="11"/><line x1="22" y1="22" x2="35" y2="11"/><line x1="22" y1="22" x2="9" y2="33"/><line x1="22" y1="22" x2="35" y2="33"/><line x1="9" y1="11" x2="35" y2="11"/><line x1="9" y1="33" x2="35" y2="33"/><line x1="22" y1="22" x2="22" y2="4"/><line x1="22" y1="22" x2="22" y2="40"/></svg></div>
+    <div class="hub-label" data-lang="en">Health Hub</div>
+    <div class="hub-label" data-lang="uz">Sog'liq Markazi</div>
+    <h1 class="hub-title" data-lang="en">Autism &amp; Neurodevelopment</h1>
+    <h1 class="hub-title" data-lang="uz">Autizm va Neyrorivoj</h1>
+    <p class="hub-subtitle" data-lang="en">Understanding autism spectrum disorder — from research to real-world guidance for Central Asian families.</p>
+    <p class="hub-subtitle" data-lang="uz">Autizm spektri buzilishini tushunish — tadqiqotdan O'rta Osiyo oilalari uchun amaliy qo'llanmaga.</p>
+    <div class="hub-stats">
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label" data-lang="en">Research Papers</div>
+        <div class="stat-label" data-lang="uz">Tadqiqot Maqolalari</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label" data-lang="en">Articles</div>
+        <div class="stat-label" data-lang="uz">Maqolalar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label" data-lang="en">Episodes (Coming Soon)</div>
+        <div class="stat-label" data-lang="uz">Epizodlar (Tez Kunda)</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="filter-sticky">
+    <button class="filter-tab active" data-filter="all" onclick="filterHub('all')"><span data-lang="en">All</span><span data-lang="uz">Barchasi</span></button>
+    <button class="filter-tab" data-filter="article" onclick="filterHub('article')"><span data-lang="en">Articles</span><span data-lang="uz">Maqolalar</span></button>
+    <button class="filter-tab" data-filter="episode" onclick="filterHub('episode')"><span data-lang="en">Episodes</span><span data-lang="uz">Epizodlar</span></button>
+    <button class="filter-tab" data-filter="research" onclick="filterHub('research')"><span data-lang="en">Research</span><span data-lang="uz">Tadqiqot</span></button>
+  </div>
+
+  <section class="hub-content">
+    <div class="content-grid">
+      <a href="pdfs/pulatov-ash1l.pdf" target="_blank" class="content-card fade-in" data-type="research" style="animation-delay: 0.1s;">
+        <div class="card-type research" data-lang="en">Research</div>
+        <div class="card-type research" data-lang="uz">Tadqiqot</div>
+        <h3 class="card-title" data-lang="en">A Novel De Novo Missense Variant in ASH1L Associated with Mild Autism Spectrum Disorder</h3>
+        <h3 class="card-title" data-lang="uz">Engil ASD bilan Bog'liq ASH1L da Yangi De Novo Missense Variant</h3>
+        <p class="card-desc" data-lang="en">First-author case report: a de novo ASH1L variant in a 6-year-old Uzbek boy with mild ASD and uneven cognitive profile. Expands known ASD phenotypic spectrum.</p>
+        <p class="card-desc" data-lang="uz">Birinchi avtor ishi: 6 yoshli o'zbek bolasida engil ASD va noto'g'ri kognitiv profil bilan de novo ASH1L varianti. ASD fenotipik spektrini kengaytiradi.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN</span>
+          <span class="card-status" data-lang="en">Published · J Med Case Reports 2025</span>
+          <span class="card-status" data-lang="uz">Nashr etilgan · J Med Case Reports 2025</span>
+        </div>
+      </a>
+
+      <a href="topic-autism.html" class="content-card fade-in" data-type="article" style="animation-delay: 0.2s;">
+        <div class="card-type article" data-lang="en">Article</div>
+        <div class="card-type article" data-lang="uz">Maqola</div>
+        <h3 class="card-title" data-lang="en">Understanding Autism</h3>
+        <h3 class="card-title" data-lang="uz">Autizmni Tushunish</h3>
+        <p class="card-desc" data-lang="en">Comprehensive guide to autism spectrum disorder — diagnosis criteria, therapy options, school resources, and practical guidance for families in the US.</p>
+        <p class="card-desc" data-lang="uz">Autizm spektri buzilishiga to'liq qo'llanma — tashxis mezonlari, terapiya variantlari, maktab resursları va AQSh oilalari uchun amaliy qo'llanma.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status" data-lang="en">Article · Published</span>
+          <span class="card-status" data-lang="uz">Maqola · Nashr etilgan</span>
+        </div>
+      </a>
+
+      <div class="content-card coming-soon-card fade-in" data-type="episode" style="animation-delay: 0.3s;">
+        <div class="card-type episode" data-lang="en">Episode</div>
+        <div class="card-type episode" data-lang="uz">Epizod</div>
+        <h3 class="card-title" data-lang="en">Ep. 5 — Understanding Autism: A Guide for Central Asian Families</h3>
+        <h3 class="card-title" data-lang="uz">Ep. 5 — Autizmni Tushunish: O'rta Osiyo Oilalari Uchun Qo'llanma</h3>
+        <p class="card-desc" data-lang="en">How autism is diagnosed in the US, what services are available, and how to advocate for your child in a system built for a different community.</p>
+        <p class="card-desc" data-lang="uz">Autizm AQShda qanday tashxis qilinadi, qanday xizmatlar mavjud va boshqa jamiyat uchun yaratilgan tizimda o'zingizning bolangiz uchun qanday harakatlash kerak.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status" data-lang="en">Coming Soon · UzMedTalks</span>
+          <span class="card-status" data-lang="uz">Tez Kunda · UzMedTalks</span>
+        </div>
+      </div>
+
+      <div class="content-card coming-soon-card fade-in" data-type="article" style="animation-delay: 0.4s;">
+        <div class="card-type article" data-lang="en">Article</div>
+        <div class="card-type article" data-lang="uz">Maqola</div>
+        <h3 class="card-title" data-lang="en">From Uzbekistan to US: What Changes in How Autism is Understood</h3>
+        <h3 class="card-title" data-lang="uz">O'zbekistondan AQShga: Autizmni Tushunishda Nima O'zgaradi</h3>
+        <p class="card-desc" data-lang="en">Cultural context matters — how the diagnosis, stigma, and available support for autism differs dramatically between Uzbekistan and the United States.</p>
+        <p class="card-desc" data-lang="uz">Madaniy kontekst muhimdir — autizm uchun tashxis, stigma va mavjud yordamlarning O'zbekiston va Qo'shma Shtatlarda qanday dram darajada farq qilishi.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status" data-lang="en">Coming Soon</span>
+          <span class="card-status" data-lang="uz">Tez Kunda</span>
+        </div>
+      </div>
+
+      <div class="content-card coming-soon-card fade-in" data-type="article" style="animation-delay: 0.5s;">
+        <div class="card-type article" data-lang="en">Article</div>
+        <div class="card-type article" data-lang="uz">Maqola</div>
+        <h3 class="card-title" data-lang="en">ADHD vs. Autism: Overlapping Symptoms and How to Tell Them Apart</h3>
+        <h3 class="card-title" data-lang="uz">ADHD vs. Autizm: O'xshash Alomatlar va Ularni Farqlash Usuli</h3>
+        <p class="card-desc" data-lang="en">A clinical breakdown of the differences and similarities between ADHD and ASD — including how both can coexist.</p>
+        <p class="card-desc" data-lang="uz">ADHD va ASD o'rtasidagi farq va o'xshashliklarning klinik tahlili — ikkala holatning bir vaqtda mavjud bo'lishini hamda kiruvchi.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status" data-lang="en">Coming Soon</span>
+          <span class="card-status" data-lang="uz">Tez Kunda</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-hubs">
+    <div class="related-hubs-container">
+      <h2 class="related-title" data-lang="en">Related Hubs</h2>
+      <h2 class="related-title" data-lang="uz">Bog'liq Markazlar</h2>
+      <div class="related-grid">
+        <a href="hub-mental-health.html" class="related-card">
+          <div class="related-emoji">🧠</div>
+          <div class="related-name" data-lang="en">Mental Health</div>
+          <div class="related-name" data-lang="uz">Ruhiy Salomatlik</div>
+          <div class="related-desc" data-lang="en">Breaking stigma on depression, anxiety, and PTSD in our community.</div>
+          <div class="related-desc" data-lang="uz">Bizning jamiyatda depressiya, xavotirlanish va PTSD haqidagi stigmani buzish.</div>
+        </a>
+        <a href="hub-cardio.html" class="related-card">
+          <div class="related-emoji">❤️</div>
+          <div class="related-name" data-lang="en">Cardiovascular Health</div>
+          <div class="related-name" data-lang="uz">Yurak-qon Tomir Sog'lig'i</div>
+          <div class="related-desc" data-lang="en">Heart disease, cholesterol, lipids, and cardiovascular science.</div>
+          <div class="related-desc" data-lang="uz">Yurak kasalligi, xolesterin, lipidlar va yurak-qon tomir fanı.</div>
+        </a>
+        <a href="hub-immigrant.html" class="related-card">
+          <div class="related-emoji">🌍</div>
+          <div class="related-name" data-lang="en">Immigrant Worker Health</div>
+          <div class="related-name" data-lang="uz">Muhojir Ishchilar Sog'lig'i</div>
+          <div class="related-desc" data-lang="en">Occupation-specific health risks and healthcare navigation for our community.</div>
+          <div class="related-desc" data-lang="uz">Kasbiy sohaga xos sog'liq xavflari va bizning jamiyat uchun sog'liqni saqlash bo'yicha navigatsiya.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Otabek Pulatov, MD. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+
+    function filterHub(type) {
+      document.querySelectorAll('.content-card').forEach(card => {
+        card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+      });
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.filter === type);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.content-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

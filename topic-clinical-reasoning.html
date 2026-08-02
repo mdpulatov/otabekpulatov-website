@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Clinical Reasoning — Otabek Pulatov</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"><style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0f1d2f;--sky:#dbeafe;--sky-light:#eff6ff;--warm-white:#fafbfc;--cream:#f8f6f3;--gold:#c8944a;--text:#1a1a2e;--text-secondary:#555e6e;--text-light:#8892a4;--border:#e2e6ec;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+.article-header{padding:130px clamp(1.5rem,6vw,4rem) 3rem;text-align:center;background:linear-gradient(165deg,var(--warm-white),var(--sky-light))}
+.article-header .label{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;max-width:700px;margin:0 auto .75rem}
+.article-header p{font-size:.98rem;color:var(--text-secondary);max-width:560px;margin:0 auto}
+.article{max-width:640px;margin:0 auto;padding:3rem clamp(1.5rem,4vw,2rem) 5rem}
+.article p{font-size:1.02rem;line-height:1.9;color:var(--text-secondary);margin-bottom:1.25rem}
+.article h2{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.25}
+.article h3{font-size:1.12rem;font-weight:600;color:var(--navy);margin:1.75rem 0 .5rem}
+.article blockquote{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:1.75rem 0;background:var(--cream);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-secondary)}
+.action-box{background:var(--sky-light);border:1px solid var(--sky);border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.action-box h4{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.action-box p{font-size:.95rem;margin-bottom:.75rem}.action-box p:last-child{margin-bottom:0}
+.compare-table{width:100%;border-collapse:collapse;margin:1.75rem 0;font-size:.92rem}
+.compare-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+.compare-table tr:nth-child(even){background:var(--sky-light)}
+.article-nav{display:flex;justify-content:space-between;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.84rem}
+.article-nav a{color:var(--text-secondary);text-decoration:none;transition:color .25s;padding:8px 16px;border:1.5px solid var(--border);border-radius:8px}.article-nav a:hover{color:var(--gold);border-color:var(--gold)}
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+
+.tab-bar{position:sticky;top:72px;z-index:90;background:rgba(250,251,252,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px clamp(1rem,4vw,2rem);display:flex;justify-content:center}
+.tab-track{position:relative;display:inline-flex;background:var(--cream);border-radius:10px;padding:4px;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab-track::-webkit-scrollbar{display:none}
+.tab-indicator{position:absolute;top:4px;left:4px;height:calc(100% - 8px);background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.22,.68,0,.71);pointer-events:none;z-index:0}
+.tab-pill{position:relative;z-index:1;padding:9px 20px;font-family:var(--font-body);font-size:.88rem;font-weight:500;color:var(--text-light);background:transparent;border:none;cursor:pointer;white-space:nowrap;transition:color .25s;border-radius:8px}
+.tab-pill:hover{color:var(--text-secondary)}
+.tab-pill.active{color:var(--navy);font-weight:600}
+.tab-content{display:none;animation:tabFade .3s ease}.tab-content.active{display:block}
+@keyframes tabFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.tab-track{border-radius:8px}.tab-pill{padding:8px 14px;font-size:.82rem}}
+</style></head><body><script src="nav.js"></script>
+<div class="article-header">
+<div class="label" data-lang="en">Research &amp; Education</div><div class="label" data-lang="uz">Tadqiqot va ta'lim</div>
+<h1 data-lang="en">Clinical Reasoning: Thinking About Thinking</h1><h1 data-lang="uz">Klinik mulohaza: fikrlash haqida fikrlash</h1>
+<p data-lang="en">Cognitive biases, metacognition, and building better diagnostic frameworks.</p><p data-lang="uz">Kognitiv xatolar, metakognitsiya va yaxshiroq diagnostik asoslarni qurish.</p>
+</div><div class="tab-bar">
+<div class="tab-track">
+<div class="tab-indicator"></div>
+<button class="tab-pill active" data-tab="tab-biases" onclick="showTab('tab-biases')"><span data-lang="en">Cognitive Biases</span><span data-lang="uz">Kognitiv xatolar</span></button>
+<button class="tab-pill" data-tab="tab-metacog" onclick="showTab('tab-metacog')"><span data-lang="en">Metacognition</span><span data-lang="uz">Metakognitsiya</span></button>
+<button class="tab-pill" data-tab="tab-frameworks" onclick="showTab('tab-frameworks')"><span data-lang="en">Diagnostic Frameworks</span><span data-lang="uz">Diagnostik asoslar</span></button>
+</div>
+</div><div class="article">
+<div data-lang="en">
+<div id="tab-biases" class="tab-content active">
+<p>Most diagnostic errors aren't caused by lack of knowledge. They're caused by how we think — the shortcuts our brains take under pressure, the patterns we see that aren't there, and the patterns we miss that are. Clinical reasoning is the skill of thinking about how you think while you're doing it.</p>
+
+<h2>The dual process model</h2>
+<p>Kahneman's System 1 and System 2 framework applies directly to medicine. System 1 is fast, intuitive, pattern-based — the experienced physician who looks at a patient and immediately thinks "PE." System 2 is slow, analytical, deliberate — systematically working through a differential. Both are essential. Errors come from using the wrong system at the wrong time.</p>
+
+<h2>The biases that kill</h2>
+<h3>Anchoring</h3>
+<p>Locking onto the first piece of information and failing to adjust. A patient arrives with the label "anxiety" from the ED triage nurse. You anchor on anxiety and miss the PE. Fix: always generate your own differential before reading prior notes.</p>
+
+<h3>Premature closure</h3>
+<p>Accepting a diagnosis before it's fully verified. The most common cognitive error in medicine. "It's obviously X" — and you stop thinking. Fix: ask yourself, "What else could this be?" at least once for every patient.</p>
+
+<h3>Availability heuristic</h3>
+<p>Overweighting diagnoses that come to mind easily — usually because you saw them recently. You diagnose your third "COVID pneumonia" of the week and miss the CHF exacerbation. Fix: be aware of your recent case load and actively consider uncommon diagnoses.</p>
+
+<h3>Confirmation bias</h3>
+<p>Seeking information that confirms your working diagnosis and ignoring information that doesn't. You order the test that will prove you right instead of the test that might prove you wrong. Fix: actively seek disconfirming evidence.</p>
+
+</div>
+
+<div id="tab-metacog" class="tab-content">
+<h2>Building a metacognitive practice</h2>
+<p>Metacognition in medicine means developing a habit of monitoring your own thinking in real time. Practical strategies: pause before entering a room and consciously switch from System 1 to System 2 for complex cases. At the end of each shift, review 1–2 cases and ask: where did I anchor? What did I almost miss? Keep a personal "near-miss" log.</p>
+
+</div>
+
+<div id="tab-frameworks" class="tab-content">
+<h2>Diagnostic frameworks</h2>
+<p>Structured approaches reduce error. Illness scripts (mental templates of how diseases present), semantic qualifiers (using precise descriptive language instead of vague terms), and problem representation (summarizing the case in one sentence) all force you to think more carefully. The simple act of writing a one-line problem representation has been shown to improve diagnostic accuracy.</p>
+
+<div class="action-box">
+<h4>Further reading</h4>
+<p><strong>How Doctors Think</strong> — Jerome Groopman</p>
+<p><strong>Thinking, Fast and Slow</strong> — Daniel Kahneman</p>
+<p><strong>Clinical Problem Solving</strong> series — NEJM</p>
+<p><strong>Diagnosis</strong> podcast — WNYC (Lisa Sanders)</p>
+</div>
+</div>
+</div>
+
+<div data-lang="uz">
+<div id="tab-biases" class="tab-content active">
+<p>Ko'pgina diagnostik xatolar bilim yetishmasligi tufayli emas. Ular bizning qanday fikrlashimiz tufayli — miyamiz bosim ostida qiladigan yorliqlar, bor deb ko'rgan naqshlar va o'tkazib yuborgan naqshlar tufayli sodir bo'ladi.</p>
+
+<h2>Ikki jarayonli model</h2>
+<p>Kaneman'ning 1-tizim va 2-tizim doirasi to'g'ridan-to'g'ri tibbiyotga tegishli. 1-tizim tez, intuitiv, naqshga asoslangan. 2-tizim sekin, analitik, ataylab. Ikkalasi ham muhim. Xatolar noto'g'ri vaqtda noto'g'ri tizimdan foydalanishdan kelib chiqadi.</p>
+
+<h2>O'ldiradigan xatolar</h2>
+<h3>Anchoring (bog'lash)</h3>
+<p>Birinchi ma'lumotga yopishish va moslashtirishga qodir bo'lmaslik. Bemor tez yordam triajdan "tashvish" yorlig'i bilan keladi. Siz tashvishga bog'lanasiz va PE ni o'tkazib yuborasiz. Yechim: oldingi yozuvlarni o'qishdan oldin har doim o'z differentsial tashxisingizni tuzing.</p>
+
+<h3>Muddatidan oldin yopish</h3>
+<p>Tashxis to'liq tasdiqlanishidan oldin qabul qilish. Tibbiyotdagi eng keng tarqalgan kognitiv xato. Yechim: har bir bemor uchun kamida bir marta o'zingizdan so'rang: "Boshqa nima bo'lishi mumkin?"</p>
+
+<h3>Mavjudlik evristikasi</h3>
+<p>Osonlik bilan xayolga keladigan tashxislarni ortiqcha baholash. Yechim: yaqinda ko'rgan holatlaringizdan xabardor bo'ling va kam uchraydigan tashxislarni faol ko'rib chiqing.</p>
+
+<h3>Tasdiqlash xatosi</h3>
+<p>Ishchi tashxisingizni tasdiqlaydigan ma'lumotni qidirish va uni inkor etadigan ma'lumotni e'tiborsiz qoldirish. Yechim: faol ravishda inkor etuvchi dalillarni qidiring.</p>
+
+</div>
+
+<div id="tab-metacog" class="tab-content">
+<h2>Metakognitiv amaliyotni shakllantirish</h2>
+<p>Tibbiyotda metakognitsiya — o'z fikrlashingizni real vaqtda kuzatish odatini rivojlantirish. Amaliy strategiyalar: xonaga kirishdan oldin to'xtang va murakkab holatlar uchun ongli ravishda 1-tizimdan 2-tizimga o'ting. Har bir smenaning oxirida 1-2 holatni ko'rib chiqing va so'rang: qaerda anchoring qildim? Nimani deyarli o'tkazib yubordim?</p>
+
+<div class="action-box">
+<h4>Qo'shimcha o'qish</h4>
+<p><strong>How Doctors Think</strong> — Jerome Groopman</p>
+<p><strong>Thinking, Fast and Slow</strong> — Daniel Kahneman</p>
+<p><strong>Clinical Problem Solving</strong> seriyasi — NEJM</p>
+</div>
+
+<div id="tab-frameworks" class="tab-content">
+<h2>Diagnostik asoslar</h2>
+<p>Tuzilgan yondashuvlar xatolarni kamaytiradi. Kasallik skriptlari (kasalliklar qanday namoyon bo'lishi haqida aqliy shablonlar), semantik kvalifikatorlar (noaniq atamalar o'rniga aniq tavsifiy tildan foydalanish) va muammo taqdimoti (holatni bir jumlada umumlashtirish) hammasi sizni ehtiyotkorroq fikrlashga majbur qiladi.</p>
+<p>Bir qatorli muammo taqdimotini yozishning oddiy harakati diagnostik aniqlikni yaxshilashi isbotlangan.</p>
+</div>
+</div>
+</div>
+
+<div class="article-nav">
+<a href="research.html"><span data-lang="en">&larr; Publications</span><span data-lang="uz">&larr; Nashrlar</span></a>
+<a href="topic-history-medicine.html"><span data-lang="en">Next: History of Medicine &rarr;</span><span data-lang="uz">Keyingi: Tibbiyot tarixi &rarr;</span></a>
+</div></div><footer>&copy; 2026 Otabek Pulatov, MD</footer>
+
+<script>
+function moveIndicator(btn){
+  const track=btn.closest('.tab-track');
+  const indicator=track.querySelector('.tab-indicator');
+  if(!indicator)return;
+  indicator.style.width=btn.offsetWidth+'px';
+  indicator.style.left=btn.offsetLeft+'px';
+}
+function showTab(tabId){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-pill').forEach(el=>el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  const btn=document.querySelector('[data-tab="'+tabId+'"]');
+  btn.classList.add('active');
+  moveIndicator(btn);
+  window.scrollTo({top:document.querySelector('.tab-bar').offsetTop-72,behavior:'smooth'});
+}
+window.addEventListener('load',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+window.addEventListener('resize',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+</script>
+</body></html>

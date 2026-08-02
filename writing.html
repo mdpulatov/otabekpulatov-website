@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Otabek Pulatov, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1d2f;--stone:#ece6d8;--stone-light:#f5f1e6;
+  --warm-white:#faf9f5;--cream:#f6f2e9;--gold:#c8944a;
+  --text:#211e19;--text-secondary:#5c5648;--text-light:#948d7c;--border:#e6e0d0;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71);
+}
+body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+.page-head{padding:calc(72px + 4rem) clamp(1.5rem,6vw,4rem) 3rem;max-width:700px;margin:0 auto;text-align:center}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.section-label::before{content:'';width:18px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em}
+.section-sub{font-size:.95rem;color:var(--text-secondary);margin-top:.9rem;line-height:1.7}
+
+.writing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;max-width:1000px;margin:0 auto 6rem;padding:0 clamp(1.5rem,6vw,4rem)}
+.w-card{display:block;padding:1.5rem 1.6rem;background:#fff;border:1px solid var(--border);border-radius:12px;text-decoration:none;color:inherit;transition:all .3s var(--ease)}
+.w-card.live:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.07);border-color:var(--gold)}
+.w-card.soon{cursor:default;opacity:.6}
+.w-cat{display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.w-card h3{font-family:var(--font-display);font-size:1.12rem;font-weight:600;color:var(--navy);line-height:1.3;margin-bottom:.4rem}
+.w-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.9rem}
+.w-foot{display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:var(--text-light);padding-top:.75rem;border-top:1px solid var(--border)}
+.w-lang{font-weight:600;letter-spacing:.06em}
+.w-status.soon-tag{color:var(--text-light)}
+.w-status.live-tag{color:var(--gold)}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4)}
+footer a{color:rgba(255,255,255,.55);text-decoration:none;margin-left:.5rem;border-bottom:1px solid rgba(255,255,255,.2)}
+footer a:hover{color:var(--gold)}
+
+[data-lang="uz"]{display:none}
+body.uz [data-lang="en"]{display:none}
+body.uz [data-lang="uz"]{display:inline}
+body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h3[data-lang="uz"]{display:block}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="page-head">
+  <div class="section-label">Writing</div>
+  <h1 class="section-title" data-lang="en">Notes from the journey</h1>
+  <h1 class="section-title" data-lang="uz">Yo'ldan eslatmalar</h1>
+  <p class="section-sub" data-lang="en">Long-form articles, patient-facing guides, and reflections on training — in English and Uzbek. For curated research + community collections by condition, see the <a href="hub.html" style="color:var(--gold);font-weight:600;text-decoration:none">Uzbek Health Hub &rarr;</a></p>
+  <p class="section-sub" data-lang="uz">Uzoq maqolalar, bemorlar uchun qo'llanmalar va ta'lim haqidagi mulohazalar — ingliz va o'zbek tillarida.</p>
+</div>
+
+<div class="writing-grid">
+  <a class="w-card live" href="topic-autism.html">
+    <div class="w-cat" data-lang="en">Health Topic</div>
+    <div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+    <h3 data-lang="en">Understanding Autism</h3>
+    <h3 data-lang="uz">Autizmni tushunish</h3>
+    <p data-lang="en">Diagnosis, treatment, and practical guidance for families.</p>
+    <p data-lang="uz">Tashxis, davolash va oilalar uchun amaliy qo'llanma.</p>
+    <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status live-tag" data-lang="en">Read Article &rarr;</span><span class="w-status live-tag" data-lang="uz">O'qish &rarr;</span></div>
+  </a>
+
+  <a class="w-card live" href="topic-mental-health.html">
+    <div class="w-cat" data-lang="en">Health Topic</div>
+    <div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+    <h3 data-lang="en">Depression &amp; Anxiety</h3>
+    <h3 data-lang="uz">Depressiya va tashvish</h3>
+    <p data-lang="en">Breaking the silence on mental health in our communities.</p>
+    <p data-lang="uz">Jamoalarimizda ruhiy salomatlik haqida sukunatni buzish.</p>
+    <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status live-tag" data-lang="en">Read Article &rarr;</span><span class="w-status live-tag" data-lang="uz">O'qish &rarr;</span></div>
+  </a>
+
+  <a class="w-card live" href="topic-substances.html">
+    <div class="w-cat" data-lang="en">Health Topic</div>
+    <div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+    <h3 data-lang="en">Recreational Drugs</h3>
+    <h3 data-lang="uz">Giyohvand moddalar</h3>
+    <p data-lang="en">Marijuana, opioids, stimulants — facts, law, harm reduction.</p>
+    <p data-lang="uz">Marixuana, opioidlar, stimulyatorlar — faktlar, qonun, xavfsizlik.</p>
+    <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status live-tag" data-lang="en">Read Article &rarr;</span><span class="w-status live-tag" data-lang="uz">O'qish &rarr;</span></div>
+  </a>
+
+  <a class="w-card live" href="topic-clinical-reasoning.html">
+    <div class="w-cat" data-lang="en">Clinical Reasoning</div>
+    <div class="w-cat" data-lang="uz">Klinik mulohaza</div>
+    <h3 data-lang="en">Building a Metacognition Framework for Intern Year</h3>
+    <h3 data-lang="uz">Intern yili uchun metakognitsiya asosini yaratish</h3>
+    <p data-lang="en">Anchoring, premature closure, availability heuristic — the invisible forces shaping decisions.</p>
+    <p data-lang="uz">Anchoring, erta yopish, mavjudlik evristikasi — qarorlarni shakllantiradigan ko'rinmas kuchlar.</p>
+    <div class="w-foot"><span class="w-lang">EN</span><span class="w-status live-tag" data-lang="en">Read Article &rarr;</span><span class="w-status live-tag" data-lang="uz">O'qish &rarr;</span></div>
+  </a>
+
+  <a class="w-card live" href="topic-history-medicine.html">
+    <div class="w-cat" data-lang="en">History of Medicine</div>
+    <div class="w-cat" data-lang="uz">Tibbiyot tarixi</div>
+    <h3 data-lang="en">The Surgeon History Forgot</h3>
+    <h3 data-lang="uz">Tarix unutgan jarroh</h3>
+    <p data-lang="en">A Soviet physiologist performed the first heart transplant decades before Barnard.</p>
+    <p data-lang="uz">Sovet fiziologi Barnarddan o'n yillar oldin birinchi yurak ko'chirishni amalga oshirgan.</p>
+    <div class="w-foot"><span class="w-lang">EN</span><span class="w-status live-tag" data-lang="en">Read Article &rarr;</span><span class="w-status live-tag" data-lang="uz">O'qish &rarr;</span></div>
+  </a>
+
+  <div class="w-card soon">
+    <div class="w-cat" data-lang="en">PA to MD</div>
+    <div class="w-cat" data-lang="uz">PA dan MD ga</div>
+    <h3 data-lang="en">What Five Years as a PA Taught Me That Medical School Couldn't</h3>
+    <h3 data-lang="uz">Besh yillik PA tajribasi menga tibbiyot maktabi o'rgata olmagan narsalarni o'rgatdi</h3>
+    <p data-lang="en">Before I set foot in a lecture hall again, I had already managed hundreds of patients.</p>
+    <p data-lang="uz">Ma'ruza zaliga qayta qadam qo'yishimdan oldin, yuzlab bemorlarni boshqargan edim.</p>
+    <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status soon-tag" data-lang="en">Coming Soon</span><span class="w-status soon-tag" data-lang="uz">Tez kunda</span></div>
+  </div>
+
+  <div class="w-card soon">
+    <div class="w-cat" data-lang="en">Medical Education</div>
+    <div class="w-cat" data-lang="uz">Tibbiy ta'lim</div>
+    <h3 data-lang="en">Medical Education</h3>
+    <h3 data-lang="uz">Tibbiy ta'lim</h3>
+    <p data-lang="en">Study strategies, board prep, and clerkship advice.</p>
+    <p data-lang="uz">O'qish strategiyalari, imtihon tayyorligi, klinik maslahatlar.</p>
+    <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status soon-tag" data-lang="en">Coming Soon</span><span class="w-status soon-tag" data-lang="uz">Tez kunda</span></div>
+  </div>
+
+  <div class="w-card soon">
+    <div class="w-cat" data-lang="en">Residency Life</div>
+    <div class="w-cat" data-lang="uz">Rezidentura hayoti</div>
+    <h3 data-lang="en">Residency Life</h3>
+    <h3 data-lang="uz">Rezidentura hayoti</h3>
+    <p data-lang="en">Lessons from training, one rotation at a time.</p>
+    <p data-lang="uz">Ta'limdan saboqlar, har bir rotatsiyada.</p>
+    <div class="w-foot"><span class="w-lang">EN</span><span class="w-status soon-tag" data-lang="en">Coming Soon</span><span class="w-status soon-tag" data-lang="uz">Tez kunda</span></div>
+  </div>
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD <a href="cv.html">CV</a></footer>
+</body>
+</html>

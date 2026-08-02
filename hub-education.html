@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Occupational Health Education — Otabek Pulatov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0f1d2f;--sky:#dbeafe;--sky-light:#eff6ff;--warm-white:#fafbfc;--cream:#f8f6f3;--gold:#c8944a;--text:#1a1a2e;--text-secondary:#555e6e;--text-light:#8892a4;--border:#e2e6ec;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+.nav-logo span{color:var(--gold)}
+
+.nav-back{font-size:.84rem;font-weight:600;color:var(--text-secondary);text-decoration:none;transition:all .25s;padding:7px 14px;border:1.5px solid var(--border);border-radius:8px;text-transform:uppercase;letter-spacing:.06em}.nav-back:hover{color:var(--gold);border-color:var(--gold)}
+
+
+.article-header{padding:130px clamp(1.5rem,6vw,4rem) 3rem;text-align:center;background:linear-gradient(165deg,var(--warm-white),var(--sky-light))}
+.article-header .label{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;max-width:700px;margin:0 auto .75rem}
+.article-header p{font-size:.98rem;color:var(--text-secondary);max-width:560px;margin:0 auto}
+.article{max-width:640px;margin:0 auto;padding:3rem clamp(1.5rem,4vw,2rem) 5rem}
+.article p{font-size:1.02rem;line-height:1.9;color:var(--text-secondary);margin-bottom:1.25rem}
+.article h2{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.25}
+.article h3{font-size:1.12rem;font-weight:600;color:var(--navy);margin:1.75rem 0 .5rem}
+.article blockquote{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:1.75rem 0;background:var(--cream);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-secondary)}
+.action-box{background:var(--sky-light);border:1px solid var(--sky);border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.action-box h4{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.action-box p{font-size:.95rem;margin-bottom:.75rem}.action-box p:last-child{margin-bottom:0}
+.warning-box{background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.warning-box h4{font-size:.85rem;font-weight:600;color:#92400e;margin-bottom:.5rem}
+.warning-box p{font-size:.95rem;color:#78350f;margin-bottom:.5rem}.warning-box p:last-child{margin-bottom:0}
+.occupation-section{border-top:2px solid var(--sky);padding-top:2rem;margin-top:2.5rem}
+.occupation-tag{display:inline-block;padding:4px 10px;background:var(--navy);color:#fff;border-radius:6px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.article-nav{display:flex;justify-content:space-between;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.84rem}
+.article-nav a{color:var(--text-secondary);text-decoration:none;transition:color .25s;padding:8px 16px;border:1.5px solid var(--border);border-radius:8px}.article-nav a:hover{color:var(--gold);border-color:var(--gold)}
+.disclaimer{font-size:.78rem;color:var(--text-light);font-style:italic;padding:1.5rem;background:var(--cream);border-radius:8px;margin-top:2rem;border-left:3px solid var(--gold)}
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+
+.tab-bar{position:sticky;top:72px;z-index:90;background:rgba(250,251,252,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px clamp(1rem,4vw,2rem);display:flex;justify-content:center}
+.tab-track{position:relative;display:inline-flex;background:var(--cream);border-radius:10px;padding:4px;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab-track::-webkit-scrollbar{display:none}
+.tab-indicator{position:absolute;top:4px;left:4px;height:calc(100% - 8px);background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.22,.68,0,.71);pointer-events:none;z-index:0}
+.tab-pill{position:relative;z-index:1;padding:9px 20px;font-family:var(--font-body);font-size:.88rem;font-weight:500;color:var(--text-light);background:transparent;border:none;cursor:pointer;white-space:nowrap;transition:color .25s;border-radius:8px}
+.tab-pill:hover{color:var(--text-secondary)}
+.tab-pill.active{color:var(--navy);font-weight:600}
+.tab-content{display:none;animation:tabFade .3s ease}.tab-content.active{display:block}
+@keyframes tabFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.tab-track{border-radius:8px}.tab-pill{padding:8px 14px;font-size:.82rem}}
+}body.uz a[data-lang="uz"]{display:inline-flex}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="article-header">
+  <div class="label" data-lang="en">Uzbek Health Hub</div><div class="label" data-lang="uz">O'zbek sog'liq markazi</div>
+  <h1 data-lang="en">Occupational Health Education</h1><h1 data-lang="uz">Kasbiy sog'liq ta'limi</h1>
+  <p data-lang="en">What your job does to your body — and what you can do about it.</p>
+  <p data-lang="uz">Ishingiz tanangizga nima qiladi — va siz nima qilishingiz mumkin.</p>
+</div>
+<div class="tab-bar">
+<div class="tab-track">
+<div class="tab-indicator"></div>
+<button class="tab-pill active" data-tab="tab-overview" onclick="showTab('tab-overview')"><span data-lang="en">Overview</span><span data-lang="uz">Umumiy</span></button>
+<button class="tab-pill" data-tab="tab-drivers" onclick="showTab('tab-drivers')"><span data-lang="en">Truck &amp; Taxi Drivers</span><span data-lang="uz">Haydovchilar</span></button>
+<button class="tab-pill" data-tab="tab-hha" onclick="showTab('tab-hha')"><span data-lang="en">Home Health Aides</span><span data-lang="uz">Uy sog'liq yordamchilari</span></button>
+<button class="tab-pill" data-tab="tab-construction" onclick="showTab('tab-construction')"><span data-lang="en">Construction</span><span data-lang="uz">Qurilish</span></button>
+<button class="tab-pill" data-tab="tab-restaurant" onclick="showTab('tab-restaurant')"><span data-lang="en">Restaurant Workers</span><span data-lang="uz">Restoran ishchilari</span></button>
+</div>
+</div>
+<div class="article">
+
+<!-- ======= ENGLISH ======= -->
+<div data-lang="en">
+
+<div id="tab-overview" class="tab-content active">
+<p>Many Uzbek immigrants in the US work in jobs that carry specific, well-documented health risks — risks that go unaddressed because workers don't know about them, don't have time to see a doctor, or are afraid that seeking care will affect their immigration status. This page breaks it down by occupation, with the medical facts and practical steps for each.</p>
+
+<blockquote>Every person in the United States — regardless of immigration status — has the right to emergency medical care. Community health centers provide primary care on a sliding fee scale regardless of insurance or documentation. You do not have to choose between your health and your status.</blockquote>
+
+</div>
+
+<div id="tab-drivers" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Truck Drivers &amp; Taxi/Rideshare Drivers</div>
+<h2>Sitting for a living</h2>
+
+<p>Long-haul truck driving and taxi/rideshare work are among the most common occupations in the Uzbek immigrant community. They're also among the most dangerous — not just for accidents, but for what they do to your body over years.</p>
+
+<h3>Cardiovascular disease</h3>
+<p>Sitting for 10–14 hours a day with limited physical activity is a direct risk factor for coronary artery disease, hypertension, and stroke. Truck drivers have a significantly higher rate of heart disease compared to the general population. Contributing factors: sedentary work, irregular sleep, limited food options (fast food at truck stops), high stress, and irregular access to healthcare.</p>
+
+<h3>Obesity and metabolic syndrome</h3>
+<p>The combination of prolonged sitting, poor dietary options, and disrupted sleep cycles creates a perfect storm for weight gain. Over 70% of commercial truck drivers in the US are obese. Metabolic syndrome — the combination of central obesity, high blood pressure, high blood sugar, and abnormal lipids — dramatically increases the risk of heart attack, stroke, and type 2 diabetes.</p>
+
+<h3>Lower extremity edema and deep vein thrombosis</h3>
+<p>Sitting for long periods causes blood to pool in the legs. This leads to chronic swelling (edema), varicose veins, and increased risk of deep vein thrombosis (DVT) — a blood clot in the leg that can break loose and travel to the lungs (pulmonary embolism), which can be fatal. DVT risk increases with obesity, smoking, and dehydration — all common in long-haul drivers.</p>
+
+<h3>Prostate health</h3>
+<p>Prolonged sitting increases pressure on the prostate and pelvic floor. Truck drivers have higher rates of prostatitis (prostate inflammation) and chronic pelvic pain. While sitting itself does not cause prostate cancer, the sedentary lifestyle and obesity associated with driving are linked to more aggressive prostate cancer outcomes. Men over 50 — or over 40 with a family history — should discuss prostate screening with their doctor.</p>
+
+<h3>Sleep disorders</h3>
+<p>Obstructive sleep apnea (OSA) affects an estimated 28% of commercial truck drivers — roughly 4 times the general population rate. OSA causes interrupted breathing during sleep, leading to daytime fatigue, impaired reaction time, and dramatically increased accident risk. It is also an independent risk factor for hypertension, atrial fibrillation, and sudden cardiac death. If you snore heavily, wake up gasping, or feel exhausted despite sleeping, ask your doctor about a sleep study.</p>
+
+<h3>Mental health</h3>
+<p>Long-distance driving is isolating. Drivers spend days or weeks away from family, eat alone, sleep in truck cabs, and have limited social interaction. Depression and anxiety rates are significantly elevated in this population. Loneliness is not a character flaw — it's a cardiovascular risk factor with documented effects on mortality.</p>
+
+<div class="action-box">
+<h4>What you can do — starting tomorrow</h4>
+<p><strong>Move every 2 hours.</strong> Stop the truck. Walk for 10 minutes. Calf raises at your door. This alone reduces DVT risk significantly.</p>
+<p><strong>Compression socks.</strong> Knee-high, 15–20 mmHg. Cheap. Available at any pharmacy. Dramatically reduces leg swelling and DVT risk.</p>
+<p><strong>Pack your food.</strong> A cooler with prepared meals is cheaper and healthier than truck stop food. Rice, grilled chicken, vegetables, fruit — simple is fine.</p>
+<p><strong>Hydrate.</strong> Water, not energy drinks. Dehydration thickens blood and worsens DVT risk.</p>
+<p><strong>Get screened.</strong> Blood pressure, blood sugar, lipids, and a sleep study. These are covered by most insurance. At a community health center, they're available on a sliding scale.</p>
+<p><strong>Call someone.</strong> Daily phone calls with family or friends protect your mental health. This is not soft advice — it's medical.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-hha" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Home Health Aides &amp; Caregivers</div>
+<h2>Caring for everyone except yourself</h2>
+
+<p>Home health aide work is physically demanding, emotionally draining, and chronically underpaid. Many Uzbek women in the US work as home health aides — often 12-hour shifts, often without adequate training, and often while managing their own families. The health consequences are real and predictable.</p>
+
+<h3>Musculoskeletal injuries</h3>
+<p>Lifting, transferring, and repositioning patients is the number one cause of workplace injury in home health. Back injuries are epidemic — herniated discs, chronic lumbar pain, and shoulder injuries. Unlike hospital settings, home health aides often work alone without mechanical lifting equipment. Learn proper body mechanics: bend at the knees, keep the load close to your body, never twist while lifting, and use a gait belt when transferring patients.</p>
+
+<h3>Infectious disease exposure</h3>
+<p>Home health aides are exposed to bodily fluids, respiratory infections, and skin conditions regularly. Tuberculosis screening, hepatitis B vaccination, annual flu shots, and COVID vaccination are essential. Hand hygiene is the single most important infection prevention measure — wash your hands before and after every patient interaction, even if you wore gloves.</p>
+
+<h3>Burnout and compassion fatigue</h3>
+<p>Taking care of elderly, disabled, or dying patients day after day takes a toll that is rarely acknowledged. Compassion fatigue is a recognized medical phenomenon — emotional exhaustion, depersonalization, and reduced sense of accomplishment. Symptoms overlap significantly with depression. If you feel numb, detached, or like you're just going through the motions, this is not a personal failure — it's an occupational hazard with a name and treatment.</p>
+
+<h3>Sleep deprivation</h3>
+<p>Many home health aides work overnight shifts or rotate between day and night schedules. Shift work disrupts circadian rhythm, increasing risk of obesity, diabetes, cardiovascular disease, and depression. If you rotate shifts, try to keep a consistent sleep schedule even on days off, sleep in a dark room, and avoid caffeine within 6 hours of planned sleep.</p>
+
+<h3>Neglecting your own health</h3>
+<p>The greatest health risk for caregivers is the one no one talks about: putting everyone else's health before your own. Skipping your own doctor appointments because you're caring for someone else. Ignoring chest pain because you can't miss a shift. Not getting screened because you don't have time. Your health matters too — and your patients need you healthy.</p>
+
+<div class="action-box">
+<h4>What you can do</h4>
+<p><strong>Back protection:</strong> Learn the safe patient handling techniques your employer is legally required to train you on. If they haven't trained you, ask. If they refuse, that's an OSHA violation.</p>
+<p><strong>Vaccinations:</strong> Stay current on Hep B, flu, COVID, and Tdap. Most are covered at no cost under preventive care.</p>
+<p><strong>Your own screenings:</strong> Blood pressure, blood sugar, cervical cancer screening, mammogram (40+). Put it on your calendar like a patient appointment — because it is one.</p>
+<p><strong>Mental health:</strong> Talk to someone. Employee Assistance Programs (EAPs), if your employer offers one, provide free confidential counseling. Community health centers offer therapy on sliding scale.</p>
+<p><strong>Workers' comp:</strong> If you're injured on the job, you have the right to file a workers' compensation claim. This is true regardless of immigration status in most states.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-construction" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Construction Workers</div>
+<h2>Building America, breaking your body</h2>
+
+<p>Construction is among the most physically hazardous occupations. Falls, crush injuries, and electrocution are the acute risks. But the chronic risks — the ones that develop over years — are what end careers and shorten lives.</p>
+
+<h3>Chronic pain and joint degeneration</h3>
+<p>Repetitive heavy lifting, overhead work, and working on hard surfaces destroy joints over time. Knee osteoarthritis, rotator cuff tears, and chronic low back pain are near-universal in long-career construction workers. Early treatment — physical therapy, proper body mechanics, and weight management — can delay the need for surgery by years.</p>
+
+<h3>Respiratory disease</h3>
+<p>Silica dust (from cutting concrete, stone, brick), asbestos (in older buildings), and construction dust cause silicosis, asbestosis, and lung cancer. Wear an N95 respirator when cutting or grinding. If you have a chronic cough, shortness of breath, or chest tightness, tell your doctor about your dust exposure — this changes which tests they order.</p>
+
+<h3>Hearing loss</h3>
+<p>Noise exposure from power tools, heavy equipment, and demolition causes irreversible hearing damage. Wear ear protection every time. If you have to shout to be heard at arm's length, the noise is damaging your hearing.</p>
+
+<h3>Skin cancer</h3>
+<p>Outdoor construction workers receive significant UV radiation. Long sleeves, hats, and sunscreen (SPF 30+, reapplied every 2 hours) reduce risk. Any mole that changes color, size, or shape — or any sore that doesn't heal — should be evaluated.</p>
+
+<div class="action-box">
+<h4>What you can do</h4>
+<p><strong>PPE always.</strong> Respirator for dust. Ear protection for noise. Hard hat. Gloves. These aren't suggestions — they're the difference between working at 60 and being disabled at 50.</p>
+<p><strong>Lung screening:</strong> If you've worked around dust for 10+ years, ask for a chest X-ray and pulmonary function test.</p>
+<p><strong>Joint preservation:</strong> Stretch before shifts. Use knee pads. Lift with your legs. See a doctor early for persistent pain — don't wait until you can't work.</p>
+<p><strong>Know your rights:</strong> OSHA requires employers to provide a safe workplace and PPE at no cost to you. Report violations at osha.gov or call 1-800-321-OSHA.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-restaurant" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Restaurant &amp; Food Service Workers</div>
+<h2>On your feet all day</h2>
+
+<p>Restaurant kitchens are hot, fast, and unforgiving. Burns, cuts, and slip-and-fall injuries are daily hazards. But the chronic health effects of food service work are equally important.</p>
+
+<h3>Varicose veins and plantar fasciitis</h3>
+<p>Standing for 8–12 hours on hard floors damages veins and feet over time. Supportive shoes with cushioned insoles make a real difference. Compression socks help with venous return. Elevate your feet after shifts.</p>
+
+<h3>Burns and repetitive strain</h3>
+<p>Kitchen burns — from fryers, grills, ovens, and hot liquids — are common and often undertreated. Even minor burns can scar and cause chronic pain if not properly managed. Cool water (not ice) for 10 minutes, then cover with a clean bandage. Any burn larger than your palm, on the face or hands, or with blistering should be seen by a doctor.</p>
+
+<h3>Mental health and substance use</h3>
+<p>The restaurant industry has among the highest rates of depression, anxiety, and substance use of any occupation. Long hours, high pressure, low pay, and easy access to alcohol create a difficult environment. If you find yourself drinking more to cope with work stress, that pattern is worth paying attention to.</p>
+
+<div class="action-box">
+<h4>What you can do</h4>
+<p><strong>Good shoes.</strong> Non-slip, cushioned, supportive. This is a medical investment. Replace them when they wear down.</p>
+<p><strong>Take breaks.</strong> Even 5 minutes off your feet per hour makes a difference for vein health.</p>
+<p><strong>Burn first aid:</strong> Cool running water for 10 min. No butter, no ice, no toothpaste. Cover loosely. See a doctor for large or blistering burns.</p>
+</div>
+</div>
+</div>
+
+<div class="disclaimer">This article is for educational purposes only and is not a substitute for professional medical advice. If you have occupational health concerns, speak with your doctor and mention your specific work exposures.</div>
+
+</div>
+
+<!-- ======= UZBEK ======= -->
+<div data-lang="uz">
+
+<div id="tab-overview" class="tab-content active">
+<p>AQShdagi ko'plab o'zbek muhojirlari muayyan, yaxshi hujjatlashtirilgan sog'liq xavflariga ega ishlarda ishlaydi — ishchilar ular haqida bilmagani, shifokorga borishga vaqtlari yo'qligi yoki tibbiy yordam olish immigratsiya holatlariga ta'sir qilishidan qo'rqishlari sababli hal qilinmaydigan xavflar.</p>
+
+<blockquote>AQShdagi har bir inson — immigratsiya holatidan qat'i nazar — shoshilinch tibbiy yordamga huquqli. Jamoat sog'liqni saqlash markazlari sug'urta yoki hujjatlardan qat'i nazar birlamchi yordamni taqdim etadi.</blockquote>
+
+</div>
+
+<div id="tab-drivers" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Yuk haydovchilari va taksi/rideshare haydovchilari</div>
+<h2>Tirikchilik uchun o'tirish</h2>
+
+<p>Uzoq masofali yuk tashish va taksi ishi o'zbek muhojirlar jamoasidagi eng keng tarqalgan kasblardan. Ular shuningdek eng xavflilardan — nafaqat halokatlarga, balki tanangizga yillar davomida nima qilishiga ko'ra.</p>
+
+<h3>Yurak-qon tomir kasalliklari</h3>
+<p>Cheklangan jismoniy faollik bilan kuniga 10-14 soat o'tirish koronar arteriya kasalligi, gipertoniya va insult uchun to'g'ridan-to'g'ri xavf omili. Yordam beruvchi omillar: harakatsiz ish, tartibsiz uyqu, cheklangan ovqat tanlovlari, yuqori stress.</p>
+
+<h3>Semirish va metabolik sindrom</h3>
+<p>Uzoq o'tirish, yomon ovqatlanish va buzilgan uyqu tsikllarining birikmasi vazn oshishi uchun mukammal sharoit yaratadi. AQShdagi tijorat yuk haydovchilarining 70% dan ortig'i semirib ketgan.</p>
+
+<h3>Oyoq shishi va chuqur vena trombozi</h3>
+<p>Uzoq o'tirish qonning oyoqlarda to'planishiga sabab bo'ladi. Bu surunkali shish, varikoz venalar va chuqur vena trombozi (DVT) xavfini oshiradi — oyoqdagi qon laxta o'pkaga sayohat qilishi mumkin, bu o'limga olib kelishi mumkin.</p>
+
+<h3>Prostata sog'lig'i</h3>
+<p>Uzoq o'tirish prostata va tos tubiga bosimni oshiradi. 50 yoshdan oshgan erkaklar — yoki oilaviy tarixga ega 40 yoshdan oshganlar — shifokor bilan prostata skriningini muhokama qilishlari kerak.</p>
+
+<h3>Uyqu buzilishlari</h3>
+<p>Obstruktiv uyqu apneyasi tijorat yuk haydovchilarining taxminan 28% ga ta'sir qiladi. Agar kuchli xurrak otasangiz, nafas qisilishi bilan uyg'onsangiz yoki uxlaganingizga qaramay charchoq his qilsangiz — uyqu tadqiqoti haqida so'rang.</p>
+
+<div class="action-box">
+<h4>Ertadan boshlashingiz mumkin bo'lgan narsalar</h4>
+<p><strong>Har 2 soatda harakat qiling.</strong> Yuk mashinasini to'xtating. 10 daqiqa yuring. Bu DVT xavfini sezilarli darajada kamaytiradi.</p>
+<p><strong>Kompressiya paypoqlari.</strong> Tizzagacha, 15-20 mmHg. Arzon. Har qanday dorixonada mavjud.</p>
+<p><strong>Ovqatingizni tayyorlang.</strong> Tayyorlangan ovqatli sovutgich yuk to'xtalishi ovqatidan arzon va sog'lom.</p>
+<p><strong>Suv iching.</strong> Suv, energetik ichimliklar emas. Suvsizlanish qonni quyulashtiradi.</p>
+<p><strong>Tekshiruvdan o'ting.</strong> Qon bosimi, qand, lipidlar va uyqu tadqiqoti.</p>
+<p><strong>Kimgadir qo'ng'iroq qiling.</strong> Oila yoki do'stlar bilan kundalik telefon qo'ng'iroqlari ruhiy sog'lig'ingizni himoya qiladi. Bu yumshoq maslahat emas — bu tibbiy.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-hha" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Uy sog'liq yordamchilari va parvarishchilar</div>
+<h2>O'zingizdan boshqa hammaga g'amxo'rlik qilish</h2>
+
+<p>Uy sog'liq yordamchisi ishi jismonan talab qiladigan, hissiy jihatdan charchatadigan va surunkali kam haqlangan. Ko'p o'zbek ayollar AQShda uy sog'liq yordamchilari sifatida ishlaydi — ko'pincha 12 soatlik smenalar bilan.</p>
+
+<h3>Muskuloskelet jarohatlari</h3>
+<p>Bemorlarni ko'tarish va ko'chirish uy sog'lig'ida ish joyi jarohatining birinchi sababi. Bel jarohatlari epidemik — disk churrasi, surunkali bel og'rig'i. To'g'ri tana mexanikasini o'rganing: tizzalarda egilish, yukni tanangizga yaqin ushlab turish, ko'tarishda hech qachon burilmaslik.</p>
+
+<h3>Yuqumli kasalliklarga ta'sir</h3>
+<p>Tuberkuloz skriningi, gepatit B emlashi, yillik gripp emlashi va COVID emlashi muhim. Qo'l gigienasi eng muhim infektsiyani oldini olish chorasi.</p>
+
+<h3>Kuyish va hamdardlik charchoq</h3>
+<p>Kundan-kunga keksa, nogironligi bo'lgan yoki o'layotgan bemorlarni parvarish qilish kamdan-kam tan olinadigan zarar keltiradi. Agar o'zingizni his qilmasangiz yoki shunchaki harakatlarni bajarayotgandek his qilsangiz — bu shaxsiy muvaffaqiyatsizlik emas, bu kasbiy xavf.</p>
+
+<div class="action-box">
+<h4>Nima qilishingiz mumkin</h4>
+<p><strong>Bel himoyasi:</strong> Ish beruvchi qonunan o'rgatishi kerak bo'lgan xavfsiz bemor bilan ishlash texnikalarini o'rganing.</p>
+<p><strong>Emlashlar:</strong> Hep B, gripp, COVID va Tdap bo'yicha dolzarb bo'ling.</p>
+<p><strong>O'z tekshiruvlaringiz:</strong> Qon bosimi, qand, bachadon bo'yni skriningi, mammogramma (40+). Buni kalendaringizga bemor uchrashuviga o'xshab belgilang.</p>
+<p><strong>Ishchilar kompensatsiyasi:</strong> Ishda jarohat olsangiz, ko'p shtatlarda immigratsiya holatidan qat'i nazar ishchilar kompensatsiyasi da'vosini topshirish huquqiga egasiz.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-construction" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Qurilish ishchilari</div>
+<h2>Amerikani qurish, tanangizni buzish</h2>
+
+<h3>Surunkali og'riq va bo'g'im degeneratsiyasi</h3>
+<p>Takroriy og'ir ko'tarish va qattiq sirtlarda ishlash vaqt o'tishi bilan bo'g'imlarni buzadi. Erta davolash — jismoniy terapiya va to'g'ri tana mexanikasi — jarrohlik zaruriyatini yillab kechiktirishi mumkin.</p>
+
+<h3>Nafas olish kasalliklari</h3>
+<p>Kremniy changi, asbest va qurilish changi silikoz, asbestoz va o'pka saratoniga sabab bo'ladi. Kesish yoki silliqlashda N95 respirator taqing.</p>
+
+<h3>Eshitish qobiliyatini yo'qotish</h3>
+<p>Elektr asboblar va og'ir jihozlardan shovqin ta'siri qaytarilmas eshitish shikastlanishiga sabab bo'ladi. Har safar quloq himoyasini taqing.</p>
+
+<div class="action-box">
+<h4>Nima qilishingiz mumkin</h4>
+<p><strong>Har doim ShHV (shaxsiy himoya vositalari).</strong> Chang uchun respirator. Shovqin uchun quloq himoyasi. Bular tavsiyalar emas — 60 yoshda ishlash va 50 yoshda nogironlik o'rtasidagi farq.</p>
+<p><strong>Huquqlaringizni biling:</strong> OSHA ish beruvchilardan xavfsiz ish joyini ta'minlashni talab qiladi. Buzilishlarni osha.gov da yoki 1-800-321-OSHA ga qo'ng'iroq qilib xabar bering.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-restaurant" class="tab-content">
+<div class="occupation-section">
+<div class="occupation-tag">Restoran va ovqat xizmati ishchilari</div>
+<h2>Kun bo'yi oyoqda</h2>
+
+<h3>Varikoz venalar va plantar fassiit</h3>
+<p>Qattiq polda 8-12 soat turish vaqt o'tishi bilan venalar va oyoqlarni shikastlaydi. Qo'llab-quvvatlovchi poyabzal haqiqiy farq qiladi.</p>
+
+<h3>Kuyishlar</h3>
+<p>Oshxona kuyishlari keng tarqalgan. Sovuq suv (muz emas) 10 daqiqa, keyin toza bandaj bilan yoping. Kaftingizdan kattaroq kuyishni shifokor ko'rishi kerak.</p>
+
+<div class="action-box">
+<h4>Nima qilishingiz mumkin</h4>
+<p><strong>Yaxshi poyabzal.</strong> Sirpanmaydigan, yumshatiladigan. Bu tibbiy sarmoya.</p>
+<p><strong>Tanaffuslar oling.</strong> Soatiga 5 daqiqa oyoqdan tushish vena sog'lig'i uchun farq qiladi.</p>
+</div>
+</div>
+</div>
+
+<div class="disclaimer">Bu maqola faqat ta'lim maqsadida va professional tibbiy maslahat o'rnini bosmaydi. Kasbiy sog'liq xavotirlari bo'lsa, shifokoringizga murojaat qiling va muayyan ish ta'sirlaringizni aytib bering.</div>
+
+</div>
+
+<div class="article-nav">
+<a href="index.html#hub"><span data-lang="en">&larr; Uzbek Health Hub</span><span data-lang="uz">&larr; O'zbek sog'liq markazi</span></a>
+<a href="hub-directory.html"><span data-lang="en">Provider Directory &rarr;</span><span data-lang="uz">Shifokorlar katalogi &rarr;</span></a>
+</div>
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD</footer>
+
+<script>
+function moveIndicator(btn){
+  const track=btn.closest('.tab-track');
+  const indicator=track.querySelector('.tab-indicator');
+  if(!indicator)return;
+  indicator.style.width=btn.offsetWidth+'px';
+  indicator.style.left=btn.offsetLeft+'px';
+}
+function showTab(tabId){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-pill').forEach(el=>el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  const btn=document.querySelector('[data-tab="'+tabId+'"]');
+  btn.classList.add('active');
+  moveIndicator(btn);
+  window.scrollTo({top:document.querySelector('.tab-bar').offsetTop-72,behavior:'smooth'});
+}
+window.addEventListener('load',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+window.addEventListener('resize',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+,50)}
+</script>
+
+</body>
+</html>

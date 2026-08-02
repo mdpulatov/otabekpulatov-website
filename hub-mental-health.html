@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Hub - Otabek Pulatov, MD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f1d2f;
+      --gold: #c8944a;
+      --sky: #dbeafe;
+      --sky-light: #eff6ff;
+      --warm-white: #fafbfc;
+      --cream: #f8f6f3;
+      --text-secondary: #555e6e;
+      --text-light: #8892a4;
+      --border: #e2e6ec;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--navy);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    body.uz {
+      direction: ltr;
+    }
+
+.nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+.lang-sw {
+      display: flex;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+.lang-sw button.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+.back-arrow:hover {
+      color: var(--gold);
+    }
+
+    .spacer-nav {
+      height: 72px;
+    }
+
+    .hub-header {
+      background: linear-gradient(135deg, var(--sky-light) 0%, var(--warm-white) 100%);
+      padding: 60px 48px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .hub-emoji { margin-bottom: 1rem; opacity: 0.85; color: rgba(255,255,255,0.9); }
+
+    .hub-label {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hub-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+
+    .hub-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .filter-sticky {
+      position: sticky;
+      top: 72px;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      z-index: 900;
+      padding: 0 48px;
+      display: flex;
+      gap: 0;
+    }
+
+    .filter-tab {
+      flex: 0 0 auto;
+      padding: 16px 24px;
+      border: none;
+      background: transparent;
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      text-transform: capitalize;
+    }
+
+    .filter-tab:hover {
+      color: var(--navy);
+    }
+
+    .filter-tab.active {
+      color: var(--navy);
+      border-bottom-color: var(--gold);
+    }
+
+    .hub-content {
+      padding: 60px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+
+    .content-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      animation: fade-in 0.6s ease-out forwards;
+      opacity: 0;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .content-card.fade-in {
+      animation: fade-in 0.6s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-card:hover:not(.coming-soon-card) {
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(200, 148, 74, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .coming-soon-card {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .card-type {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .card-type.article {
+      background: var(--sky);
+      color: #0369a1;
+    }
+
+    .card-type.episode {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .card-type.research {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .card-type.resource {
+      background: #f3e8ff;
+      color: #6b21a8;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    .card-lang {
+      background: var(--sky);
+      color: #0369a1;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .card-status {
+      color: var(--text-light);
+    }
+
+    .content-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .related-hubs {
+      background: var(--navy);
+      color: white;
+      padding: 60px 48px;
+      margin: 80px 0 0 0;
+    }
+
+    .related-hubs-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .related-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 36px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .related-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .related-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .related-emoji {
+      font-size: 32px;
+    }
+
+    .related-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .related-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    footer {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+  .hub-header {
+        padding: 40px 24px;
+      }
+
+      .hub-title {
+        font-size: 36px;
+      }
+
+      .hub-emoji {
+        font-size: 44px;
+      }
+
+      .hub-stats {
+        gap: 20px;
+      }
+
+      .filter-sticky {
+        padding: 0 24px;
+      }
+
+      .filter-tab {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+
+      .hub-content {
+        padding: 40px 24px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .related-hubs {
+        padding: 40px 24px;
+      }
+
+      footer {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+</head>
+<body data-lang="en">
+  <script src="nav.js"></script>
+
+  <header class="hub-header">
+    <div class="hub-emoji"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 38v-6a11 11 0 1 1 8 0v6"/><line x1="22" y1="18" x2="22" y2="26"/><line x1="18" y1="22" x2="26" y2="22"/></svg></div>
+    <div class="hub-label" data-lang="en">Health Hub</div>
+    <div class="hub-label" data-lang="uz">Sog'liq Markazi</div>
+    <h1 class="hub-title" data-lang="en">Mental Health</h1>
+    <h1 class="hub-title" data-lang="uz">Ruhiy Salomatlik</h1>
+    <p class="hub-subtitle" data-lang="en">Depression, anxiety, PTSD, and breaking the silence on mental health in Central Asian communities.</p>
+    <p class="hub-subtitle" data-lang="uz">Depressiya, tashvish, PTSD va O'rta Osiyo jamoalarida ruhiy salomatlik haqida sukunatni sindirish.</p>
+    <div class="hub-stats">
+      <div class="stat-item">
+        <div class="stat-number">2</div>
+        <div class="stat-label" data-lang="en">Articles</div>
+        <div class="stat-label" data-lang="uz">Maqolalar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label" data-lang="en">Episode (Coming Soon)</div>
+        <div class="stat-label" data-lang="uz">Epizod (Tez Kunda)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label" data-lang="en">Resources</div>
+        <div class="stat-label" data-lang="uz">Resurslar</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="filter-sticky">
+    <button class="filter-tab active" data-filter="all" onclick="filterHub('all')"><span data-lang="en">All</span><span data-lang="uz">Barchasi</span></button>
+    <button class="filter-tab" data-filter="article" onclick="filterHub('article')"><span data-lang="en">Articles</span><span data-lang="uz">Maqolalar</span></button>
+    <button class="filter-tab" data-filter="episode" onclick="filterHub('episode')"><span data-lang="en">Episodes</span><span data-lang="uz">Epizodlar</span></button>
+    <button class="filter-tab" data-filter="resource" onclick="filterHub('resource')"><span data-lang="en">Resources</span><span data-lang="uz">Resurslar</span></button>
+  </div>
+
+  <section class="hub-content">
+    <div class="content-grid">
+      <a href="topic-mental-health.html" class="content-card fade-in" data-type="article" style="animation-delay: 0.1s;">
+        <div class="card-type article"><span data-lang="en">Article</span><span data-lang="uz">Maqola</span></div>
+        <h3 class="card-title" data-lang="en">Depression & Anxiety</h3>
+        <h3 class="card-title" data-lang="uz">Depressiya va Tashvish</h3>
+        <p class="card-desc" data-lang="en">A patient-friendly guide to recognizing depression and anxiety — symptoms, causes, treatment options, and when to seek help.</p>
+        <p class="card-desc" data-lang="uz">Depressiya va tashvishni aniqlagichning bemorlarga qulay qo'llanmasi — belgilari, sabablari, davolash imkoniyatlari va yordam izlash vaqti.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status"><span data-lang="en">Article · Published</span><span data-lang="uz">Maqola · Nashr etilgan</span></span>
+        </div>
+      </a>
+
+      <a href="topic-substances.html" class="content-card fade-in" data-type="article" style="animation-delay: 0.2s;">
+        <div class="card-type article"><span data-lang="en">Article</span><span data-lang="uz">Maqola</span></div>
+        <h3 class="card-title" data-lang="en">Recreational Drugs & Substance Use</h3>
+        <h3 class="card-title" data-lang="uz">Rekreatsion Narkotiklar va Modda Ishlatiladigan</h3>
+        <p class="card-desc" data-lang="en">The intersection of substances and mental health — marijuana, opioids, stimulants, and harm reduction for our community.</p>
+        <p class="card-desc" data-lang="uz">Moddalar va ruhiy salomatlikning kesishishi — ganja, opioidlar, uyg'untirgichlar va bizning jamoa uchun zarar kamaytirilishi.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status"><span data-lang="en">Article · Published</span><span data-lang="uz">Maqola · Nashr etilgan</span></span>
+        </div>
+      </a>
+
+      <div class="content-card coming-soon-card fade-in" data-type="episode" style="animation-delay: 0.3s;">
+        <div class="card-type episode"><span data-lang="en">Episode</span><span data-lang="uz">Epizod</span></div>
+        <h3 class="card-title" data-lang="en">Ep. 3 — Mental Health in Our Community: Why We Don't Talk About It</h3>
+        <h3 class="card-title" data-lang="uz">Ep. 3 — Bizning Jamoada Ruhiy Salomatlik: Nega Biz Bunga To'g'ri Kelmaymiz</h3>
+        <p class="card-desc" data-lang="en">Depression, anxiety, and PTSD through a Central Asian cultural lens — breaking stigma and finding care.</p>
+        <p class="card-desc" data-lang="uz">Depressiya, tashvish va PTSD O'rta Osiyo madaniy nuqtasidan - qo'ymaqni vayron qilish va ehtiyoj izlash.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status"><span data-lang="en">Coming Soon · UzMedTalks</span><span data-lang="uz">Tez Kunda · UzMedTalks</span></span>
+        </div>
+      </div>
+
+      <div class="content-card coming-soon-card fade-in" data-type="article" style="animation-delay: 0.4s;">
+        <div class="card-type article"><span data-lang="en">Article</span><span data-lang="uz">Maqola</span></div>
+        <h3 class="card-title" data-lang="en">PTSD in Immigrant Populations: What to Know</h3>
+        <h3 class="card-title" data-lang="uz">Muhojir Aholi Orasida PTSD: Nimani Bilish Kerak</h3>
+        <p class="card-desc" data-lang="en">The unique mental health burden carried by first-generation immigrants — recognizing trauma responses and finding culturally competent care.</p>
+        <p class="card-desc" data-lang="uz">Birinchi avlod muhojirlar olib kelgan o'ziga xos ruhiy salomatlik yuki — trauma javoblarini tan olish va madaniy jihatdan shunoq xizmatni topish.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status"><span data-lang="en">Coming Soon</span><span data-lang="uz">Tez Kunda</span></span>
+        </div>
+      </div>
+
+      <div class="content-card coming-soon-card fade-in" data-type="article" style="animation-delay: 0.5s;">
+        <div class="card-type article"><span data-lang="en">Article</span><span data-lang="uz">Maqola</span></div>
+        <h3 class="card-title" data-lang="en">How to Find a Therapist Who Understands Your Culture</h3>
+        <h3 class="card-title" data-lang="uz">O'zingizning Madaniyatini Tushunadigan Terapevtni Qanday Topish Kerak</h3>
+        <p class="card-desc" data-lang="en">Practical guide to finding mental health support as a Uzbek-speaking patient — what to look for and what to ask.</p>
+        <p class="card-desc" data-lang="uz">Uzbek tilida gapiruvchi bemor sifatida ruhiy salomatlik xizmatini topishning amaliy qo'llanmasi — nima qidirish kerak va nima so'rash kerak.</p>
+        <div class="card-foot">
+          <span class="card-lang">EN+UZ</span>
+          <span class="card-status"><span data-lang="en">Coming Soon</span><span data-lang="uz">Tez Kunda</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-hubs">
+    <div class="related-hubs-container">
+      <h2 class="related-title" data-lang="en">Related Hubs</h2>
+      <h2 class="related-title" data-lang="uz">Bog'liq Markazlar</h2>
+      <div class="related-grid">
+        <a href="hub-cardio.html" class="related-card">
+          <div class="related-emoji">❤️</div>
+          <div class="related-name" data-lang="en">Cardiovascular Health</div>
+          <div class="related-name" data-lang="uz">Yurak-qon Tomir Sog'lig'i</div>
+          <div class="related-desc" data-lang="en">Heart disease, cholesterol, lipids, and cardiovascular science.</div>
+          <div class="related-desc" data-lang="uz">Yurak kasalligi, xolesterin, lipidlar va yurak-qon tomir faniga oid.</div>
+        </a>
+        <a href="hub-autism.html" class="related-card">
+          <div class="related-emoji">💡</div>
+          <div class="related-name" data-lang="en">Autism & Neurodevelopment</div>
+          <div class="related-name" data-lang="uz">Autizm va Neyrorivoj</div>
+          <div class="related-desc" data-lang="en">Understanding autism spectrum disorder from research to real-world guidance.</div>
+          <div class="related-desc" data-lang="uz">Autizm spektri buzilishini tadqiqotdan haqiqiy dunyo ko'rsatmasiga qadar tushunish.</div>
+        </a>
+        <a href="hub-immigrant.html" class="related-card">
+          <div class="related-emoji">🌍</div>
+          <div class="related-name" data-lang="en">Immigrant Worker Health</div>
+          <div class="related-name" data-lang="uz">Muhojir Ishchilar Sog'lig'i</div>
+          <div class="related-desc" data-lang="en">Occupation-specific health risks and healthcare navigation for our community.</div>
+          <div class="related-desc" data-lang="uz">Kasb-hunarga xos sog'liq xavflari va bizning jamoa uchun sog'liqni saqlash bo'yicha navigatsiya.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Otabek Pulatov, MD. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+
+    function filterHub(type) {
+      document.querySelectorAll('.content-card').forEach(card => {
+        card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+      });
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.filter === type);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.content-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

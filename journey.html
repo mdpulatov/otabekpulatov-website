@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journey in Medicine — Otabek Pulatov, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1a29;--navy-2:#152640;--ink-line:rgba(255,255,255,.09);
+  --gold:#c8944a;--gold-light:#e8c88a;
+  --cream:#f6f2e9;--warm-white:#faf9f5;--stone:#ece6d8;--stone-light:#f5f1e6;
+  --paper-text:#211e19;--paper-text-2:#5c5648;--paper-border:#e6e0d0;
+  --ink:#f3efe6;--ink-dim:rgba(243,239,230,.55);--ink-faint:rgba(243,239,230,.3);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important;transition-duration:.001ms !important} html{scroll-behavior:auto} .ch-word{opacity:1 !important;filter:none !important;animation:none !important} }
+::selection{background:var(--gold);color:var(--navy)}
+
+/* subtle grain */
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* top scroll-progress bar */
+#progressBar{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:2000;width:0%;transition:width .1s linear}
+
+/* === STORY HERO === */
+.j-hero{position:relative;padding:calc(72px + 5rem) clamp(1.5rem,6vw,5rem) 4.5rem;overflow:hidden}
+.j-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(200,148,74,.09),transparent 55%),radial-gradient(ellipse at 85% 80%,rgba(200,148,74,.05),transparent 50%);pointer-events:none}
+.j-hero-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+.eyebrow::before,.eyebrow::after{content:'';width:22px;height:1px;background:var(--gold)}
+.j-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.15rem}
+.j-hero-sub{font-size:1rem;color:var(--ink-dim);max-width:480px;margin:0 auto;line-height:1.8}
+
+/* === STORY LAYOUT === */
+.story{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 clamp(1.5rem,6vw,4rem);display:grid;grid-template-columns:200px 1fr;gap:clamp(2rem,5vw,4.5rem)}
+
+/* sticky rail */
+.rail{position:sticky;top:38vh;height:fit-content;padding-bottom:2rem}
+.rail-num{font-family:var(--font-display);font-size:3.4rem;font-weight:700;color:var(--gold);line-height:1;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rail-num.show{opacity:1;transform:translateY(0)}
+.rail-total{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);margin:.35rem 0 1.1rem}
+.rail-year{font-family:var(--font-mono);font-size:.78rem;color:var(--ink);margin-bottom:.2rem}
+.rail-loc{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);margin-bottom:1.4rem}
+.rail-dots{display:flex;flex-direction:column;gap:.6rem}
+.rail-dot-btn{display:flex;align-items:center;gap:.55rem;background:none;border:none;cursor:pointer;padding:0;font-family:var(--font-mono);font-size:.66rem;color:var(--ink-faint);transition:color .3s}
+.rail-dot-btn .d{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);transition:all .35s var(--ease);flex-shrink:0}
+.rail-dot-btn.active{color:var(--gold)}
+.rail-dot-btn.active .d{background:var(--gold);width:8px;height:8px;box-shadow:0 0 0 3px rgba(200,148,74,.18)}
+.rail-dot-btn:hover{color:var(--ink)}
+@media(max-width:980px){
+  .story{grid-template-columns:1fr}
+  .rail{display:none}
+}
+
+/* mobile sticky mini bar */
+.mini-bar{display:none;position:sticky;top:0;z-index:60;background:rgba(15,26,41,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--ink-line);padding:.65rem clamp(1.5rem,6vw,4rem);align-items:center;gap:.75rem;font-family:var(--font-mono);font-size:.72rem;color:var(--ink-dim)}
+.mini-bar .mb-num{color:var(--gold);font-weight:600}
+@media(max-width:980px){.mini-bar{display:flex}}
+
+/* === CHAPTERS === */
+.chapters{position:relative}
+.chapter{padding:clamp(3rem,8vw,5.5rem) 0;border-bottom:1px solid var(--ink-line)}
+.chapter:last-child{border-bottom:none}
+.chapter-inner{max-width:600px}
+.ch-eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;display:flex;gap:.7rem;align-items:center}
+.ch-eyebrow .loc{color:var(--ink-faint)}
+
+.ch-headline{font-family:var(--font-display);font-weight:600;line-height:1.3;letter-spacing:-.01em;color:#fff;margin-bottom:1.1rem;font-size:clamp(1.5rem,3.2vw,2.15rem)}
+.ch-word{display:inline-block;opacity:.16;filter:blur(2px);transition:opacity .5s var(--ease),filter .5s var(--ease)}
+.ch-word.revealed{opacity:1;filter:blur(0)}
+@supports (animation-timeline: view()){
+  .ch-word{animation:wordReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+  .ch-word.revealed{opacity:1;filter:blur(0)} /* JS fallback class harmless when CSS drives it */
+}
+@keyframes wordReveal{from{opacity:.16;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
+
+.ch-meta{font-size:.82rem;color:var(--ink-dim);padding-bottom:1.2rem;margin-bottom:1.2rem;border-bottom:1px solid var(--ink-line)}
+.ch-meta strong{color:#fff;font-weight:600}
+.ch-body p{font-size:.95rem;line-height:1.9;color:var(--ink-dim);margin-bottom:1rem}
+.ch-body p:last-of-type{margin-bottom:0}
+.ch-link{display:inline-flex;align-items:center;gap:6px;margin-top:1.5rem;font-size:.85rem;font-weight:600;color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(200,148,74,.3);transition:all .25s}
+.ch-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* === EPILOGUE (light break) === */
+.epilogue{position:relative;z-index:2;background:var(--cream);color:var(--paper-text);padding:5rem clamp(1.5rem,6vw,5rem) 6rem}
+.epilogue-head{text-align:center;max-width:520px;margin:0 auto 2.25rem}
+.epilogue-head .eyebrow{margin-bottom:.75rem}
+.epilogue-head h2{font-family:var(--font-display);font-size:clamp(1.4rem,2.8vw,1.8rem);color:var(--navy);font-weight:600}
+.epi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;max-width:760px;margin:0 auto}
+@media(max-width:700px){.epi-grid{grid-template-columns:1fr}}
+.epi-card{display:block;padding:1.6rem 1.75rem;background:var(--warm-white);border:1px solid var(--paper-border);border-radius:10px;text-decoration:none;color:inherit;transition:all .3s var(--ease)}
+.epi-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 26px rgba(15,29,47,.08)}
+.epi-card .fc-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.epi-card h3{font-family:var(--font-display);font-size:1.05rem;color:var(--navy);font-weight:600;margin-bottom:.35rem}
+.epi-card p{font-size:.82rem;color:var(--paper-text-2)}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);position:relative;z-index:2}
+footer a{color:rgba(255,255,255,.55);text-decoration:none;margin-left:.5rem;border-bottom:1px solid rgba(255,255,255,.2)}
+footer a:hover{color:var(--gold)}
+
+[data-lang="uz"]{display:none}
+body.uz [data-lang="en"]{display:none}
+body.uz [data-lang="uz"]{display:inline}
+body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h2[data-lang="uz"],body.uz h3[data-lang="uz"]{display:block}
+</style>
+<noscript><style>.ch-word{opacity:1 !important;filter:none !important}.rail-num{opacity:1 !important;transform:none !important}</style></noscript>
+</head>
+<body>
+<script src="nav.js"></script>
+<div id="progressBar"></div>
+
+<header class="j-hero">
+  <div class="j-hero-inner">
+    <div class="eyebrow">Journey in Medicine</div>
+    <h1 data-lang="en">Every chapter matters</h1>
+    <h1 data-lang="uz">Har bir bosqich muhim</h1>
+    <p class="j-hero-sub" data-lang="en">Tashkent to a Brooklyn community college to an internal medicine residency at UT Southwestern.</p>
+    <p class="j-hero-sub" data-lang="uz">Toshkentdan Bruklindagi jamiyat kollejigacha, UT Southwestern rezidenturasigacha.</p>
+  </div>
+</header>
+
+<div class="mini-bar">
+  <span class="mb-num" id="mbNum">01</span><span>/ 05</span><span id="mbYear">2012 — 2015</span>
+</div>
+
+<div class="story">
+  <aside class="rail">
+    <div class="rail-num" id="railNum">01</div>
+    <div class="rail-total">/ 05</div>
+    <div class="rail-year" id="railYear">2012 — 2015</div>
+    <div class="rail-loc" id="railLoc">Brooklyn, NY</div>
+    <nav class="rail-dots" aria-label="Jump to chapter">
+      <button class="rail-dot-btn" data-target="ch1" aria-label="Chapter 1"><span class="d"></span>2012</button>
+      <button class="rail-dot-btn" data-target="ch2" aria-label="Chapter 2"><span class="d"></span>2015</button>
+      <button class="rail-dot-btn" data-target="ch3" aria-label="Chapter 3"><span class="d"></span>2018</button>
+      <button class="rail-dot-btn" data-target="ch4" aria-label="Chapter 4"><span class="d"></span>2023</button>
+      <button class="rail-dot-btn" data-target="ch5" aria-label="Chapter 5"><span class="d"></span>2026</button>
+    </nav>
+  </aside>
+
+  <div class="chapters">
+
+    <section class="chapter" id="ch1" data-num="01" data-year="2012 — 2015" data-loc="Brooklyn, NY">
+      <div class="chapter-inner">
+        <div class="ch-eyebrow"><span>2012 — 2015</span><span class="loc">Brooklyn, NY</span></div>
+        <h2 class="ch-headline js-headline" data-lang="en">The language was the real exam.</h2>
+        <h2 class="ch-headline" data-lang="uz">Til esa haqiqiy imtihon edi.</h2>
+        <div class="ch-meta" data-lang="en"><strong>Kingsborough Community College</strong> — A.S. in Biology, summa cum laude</div>
+        <div class="ch-meta" data-lang="uz"><strong>Kingsborough kolleji</strong> — Biologiya bo'yicha A.S., summa cum laude</div>
+        <div class="ch-body">
+          <p data-lang="en">I was 19, my English was limited, and I had no roadmap for how this country worked. I started at community college because it was the only door open. Worked nights. Studied mornings. The biology wasn't the hard part — I already loved it. The language was the real exam. Two years later: summa cum laude.</p>
+          <p data-lang="uz">19 yoshda edim, ingliz tilim cheklangan va bu mamlakatning qanday ishlashini bilmay edim. Jamiyat kollejidan boshladim — chunki bu ochiq yagona eshik edi. Kechalari ishladim. Ertalab o'qidim. Biologiya qiyin qism emas edi — uni allaqachon sevardim. Til esa haqiqiy imtihon edi. Ikki yil o'tgach: summa cum laude.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch2" data-num="02" data-year="2015 — 2018" data-loc="New York, NY">
+      <div class="chapter-inner">
+        <div class="ch-eyebrow"><span>2015 — 2018</span><span class="loc">New York, NY</span></div>
+        <h2 class="ch-headline js-headline" data-lang="en">That gap wasn't a statistic. It was personal.</h2>
+        <h2 class="ch-headline" data-lang="uz">Bu bo'shliq statistika emas edi. Bu shaxsiy edi.</h2>
+        <div class="ch-meta" data-lang="en"><strong>Sophie Davis School of Biomedical Education</strong> — B.S. in Physician Assistant Studies, magna cum laude</div>
+        <div class="ch-meta" data-lang="uz"><strong>Sophie Devis tibbiy-biologik ta'lim maktabi</strong> — Shifokor yordamchisi bo'yicha B.S., magna cum laude</div>
+        <div class="ch-body">
+          <p data-lang="en">The rotations sent me into neighborhoods I recognized — Brooklyn, the Bronx, East Harlem. Patients who looked like people from my world. A system that didn't always speak their language. That gap wasn't a statistic to me. It was personal. It still is. Sophie Davis was where I stopped thinking about medicine as a career and started thinking about it as a responsibility.</p>
+          <p data-lang="uz">Rotatsiyalar meni tanish mahallalarga yubordi — Bruklin, Bronks, Sharqiy Harlem. Mening dunyomdan odamlarga o'xshagan bemorlar. Har doim ham ularning tilini bilmaydigan tizim. Bu bo'shliq men uchun statistika emas edi. Bu shaxsiy edi. Hali ham shunday.</p>
+        </div>
+        <a href="journey-pa-school.html" class="ch-link" data-lang="en">Full story: How I Got Into PA School &rarr;</a>
+        <a href="journey-pa-school.html" class="ch-link" data-lang="uz">To'liq hikoya: PA maktabiga qanday kirdim &rarr;</a>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch3" data-num="03" data-year="2018 — 2023" data-loc="New York & Texas">
+      <div class="chapter-inner">
+        <div class="ch-eyebrow"><span>2018 — 2023</span><span class="loc">New York &amp; Texas</span></div>
+        <h2 class="ch-headline js-headline" data-lang="en">Every setting showed me a different way the system breaks down.</h2>
+        <h2 class="ch-headline" data-lang="uz">Har bir muhit tizimning qanday buzilishini ko'rsatdi.</h2>
+        <div class="ch-meta" data-lang="en"><strong>Physician Assistant Career</strong> — Neurology, primary care, psychiatry, ketamine-assisted telehealth</div>
+        <div class="ch-meta" data-lang="uz"><strong>Shifokor yordamchisi karerasi</strong> — Nevrologiya, birlamchi yordam, psixiatriya, teletibbiyot</div>
+        <div class="ch-body">
+          <p data-lang="en">Brooklyn primary care: fifteen-minute slots for patients with fifteen diagnoses, most of them unmanaged and most of them immigrant. Neurology: learning to trust what your hands and eyes tell you before the MRI. Psychiatry: realizing the most important clinical skill is knowing when to stop talking. Five years. Over a thousand assessments. Every setting showed me a different way the system breaks down for people who look like my family.</p>
+          <p data-lang="uz">Bruklindagi birlamchi yordam: o'n beshta tashxisi bo'lgan bemorlar uchun o'n besh daqiqalik vaqt — aksariyati boshqarilmagan va aksariyati muhojir. Nevrologiya: MRTgacha qo'llar va ko'zlaringiz nima aytayotganiga ishonishni o'rganish. Besh yil. Ming ortiq baholash.</p>
+        </div>
+        <a href="journey-pa-career.html" class="ch-link" data-lang="en">Full story: The PA Years &rarr;</a>
+        <a href="journey-pa-career.html" class="ch-link" data-lang="uz">To'liq hikoya: PA yillari &rarr;</a>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch4" data-num="04" data-year="2023 — 2026" data-loc="Mineola, NY">
+      <div class="chapter-inner">
+        <div class="ch-eyebrow"><span>2023 — 2026</span><span class="loc">Mineola, NY</span></div>
+        <h2 class="ch-headline js-headline" data-lang="en">I needed to prove something — to the system, and to myself.</h2>
+        <h2 class="ch-headline" data-lang="uz">Tizimga va o'zimga biror narsani isbotlashim kerak edi.</h2>
+        <div class="ch-meta" data-lang="en"><strong>NYU Grossman Long Island School of Medicine</strong> — Honors 7/7 clerkships, Step 2 CK: 260</div>
+        <div class="ch-meta" data-lang="uz"><strong>NYU Grossman Long-Aylend tibbiyot maktabi</strong> — 7/7 klinik rotatsiyada honors, Step 2 CK: 260</div>
+        <div class="ch-body">
+          <p data-lang="en">Going back to school as a PA with five years of clinical experience is its own strange thing. You know more than your classmates in some rooms. You feel completely lost in others. You sit through a lecture on breaking bad news — something you've done dozens of times — and realize you've been doing it half right. I don't say Step 2: 260 and honors across all seven clerkships to flex. I say it because I needed to prove something — to the system, and to myself.</p>
+          <p data-lang="uz">Besh yillik klinik tajribasi bo'lgan PA sifatida maktabga qaytish o'ziga xos g'alati narsa. Ba'zi xonalarda o'rtoqlaringizdan ko'proq bilasiz. Boshqalarida butunlay yo'qolasiz. Step 2: 260. Barcha yetti klinik rotatsiyada honors. Tizimga va o'zimga biror narsani isbotlashim kerak edi.</p>
+        </div>
+        <a href="journey-medical-school.html" class="ch-link" data-lang="en">Full story: PA to MD — What It's Really Like &rarr;</a>
+        <a href="journey-medical-school.html" class="ch-link" data-lang="uz">To'liq hikoya: PA dan MD ga — bu qanday bo'ladi &rarr;</a>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch5" data-num="05" data-year="2026 →" data-loc="Dallas, TX">
+      <div class="chapter-inner">
+        <div class="ch-eyebrow"><span>2026 &rarr;</span><span class="loc">Dallas, TX</span></div>
+        <h2 class="ch-headline js-headline" data-lang="en">This is where the next part starts.</h2>
+        <h2 class="ch-headline" data-lang="uz">Keyingi bosqich shu yerdan boshlanadi.</h2>
+        <div class="ch-meta" data-lang="en"><strong>Internal Medicine Residency</strong> — UT Southwestern, Dallas</div>
+        <div class="ch-meta" data-lang="uz"><strong>Ichki kasalliklar rezidenturasi</strong> — UT Southwestern, Dallas</div>
+        <div class="ch-body">
+          <p data-lang="en">Internal medicine residency at UT Southwestern, Dallas. Cardiology is the plan. Cardiovascular disease runs deep in the communities I come from and arrives late — because the system isn't built to catch it early in people who can't easily navigate it. Everything here — the research, the hub, the podcast — runs parallel to the clinical work.</p>
+          <p data-lang="uz">Ichki kasalliklar rezidenturasi. Kardiologiya — bu reja. Yurak-qon tomir kasalligi men kelib chiqqan jamoalarda chuqur va kech keladi. Bu yerdagi hamma narsa — tadqiqot, markazlar, podcast — klinik ish bilan parallel ravishda ketadi.</p>
+        </div>
+        <a href="journey-residency.html" class="ch-link" data-lang="en">Full story: How I Matched — Applying to Residency &rarr;</a>
+        <a href="journey-residency.html" class="ch-link" data-lang="uz">To'liq hikoya: Rezidenturaga qanday kirdim &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="epilogue">
+  <div class="epilogue-head">
+    <div class="eyebrow">Further Reading</div>
+    <h2 data-lang="en">If you're weighing the same decisions</h2>
+    <h2 data-lang="uz">Xuddi shu qarorlarni o'ylayotgan bo'lsangiz</h2>
+  </div>
+  <div class="epi-grid">
+    <a href="journey-choosing-specialty.html" class="epi-card">
+      <div class="fc-label" data-lang="en">Comparative</div><div class="fc-label" data-lang="uz">Qiyosiy</div>
+      <h3 data-lang="en">Choosing a Specialty</h3><h3 data-lang="uz">Mutaxassislik tanlash</h3>
+      <p data-lang="en">How I landed on internal medicine and cardiology.</p><p data-lang="uz">Ichki kasalliklar va kardiologiyani qanday tanladim.</p>
+    </a>
+    <a href="journey-uz-vs-usa.html" class="epi-card">
+      <div class="fc-label" data-lang="en">Comparative</div><div class="fc-label" data-lang="uz">Qiyosiy</div>
+      <h3 data-lang="en">Medicine: Uzbekistan vs USA</h3><h3 data-lang="uz">Tibbiyot: O'zbekiston vs AQSh</h3>
+      <p data-lang="en">Two systems, two very different paths to the same white coat.</p><p data-lang="uz">Ikki tizim, bir xil maqsadga ikki xil yo'l.</p>
+    </a>
+  </div>
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD <a href="cv.html">CV</a></footer>
+
+<script>
+// wrap headline text in per-word spans for kinetic reveal
+document.querySelectorAll('.js-headline').forEach(h => {
+  const words = h.textContent.split(' ');
+  h.innerHTML = words.map(w => `<span class="ch-word">${w}</span>`).join(' ');
+});
+
+const chapters = document.querySelectorAll('.chapter');
+const railNum = document.getElementById('railNum');
+const railYear = document.getElementById('railYear');
+const railLoc = document.getElementById('railLoc');
+const mbNum = document.getElementById('mbNum');
+const mbYear = document.getElementById('mbYear');
+const dotBtns = document.querySelectorAll('.rail-dot-btn');
+
+function setActive(ch) {
+  const num = ch.dataset.num, year = ch.dataset.year, loc = ch.dataset.loc;
+  railNum.classList.remove('show');
+  requestAnimationFrame(() => {
+    railNum.textContent = num; railYear.textContent = year; railLoc.textContent = loc;
+    mbNum.textContent = num; mbYear.textContent = year;
+    requestAnimationFrame(() => railNum.classList.add('show'));
+  });
+  dotBtns.forEach(b => b.classList.toggle('active', b.dataset.target === ch.id));
+}
+setActive(chapters[0]);
+railNum.classList.add('show');
+
+const chObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) setActive(e.target); });
+}, { threshold: 0, rootMargin: '-49% 0px -49% 0px' });
+chapters.forEach(c => chObs.observe(c));
+
+dotBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    setActive(target);
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// word-reveal fallback for browsers without scroll-driven animation support
+const supportsScrollTimeline = CSS.supports('animation-timeline: view()');
+if (!supportsScrollTimeline) {
+  const wordObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+  }, { threshold: .6 });
+  document.querySelectorAll('.ch-word').forEach(w => wordObs.observe(w));
+}
+
+// top scroll progress bar
+const bar = document.getElementById('progressBar');
+function updateProgress() {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  bar.style.width = (scrolled * 100) + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+</script>
+</body>
+</html>

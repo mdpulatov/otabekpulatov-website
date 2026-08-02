@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzbek Health Hub — Otabek Pulatov, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1d2f;--stone:#ece6d8;--stone-light:#f5f1e6;
+  --warm-white:#faf9f5;--cream:#f6f2e9;--gold:#c8944a;--gold-light:#e8c88a;
+  --text:#211e19;--text-secondary:#5c5648;--text-light:#948d7c;--border:#e6e0d0;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71);
+}
+body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+.page-head{padding:calc(72px + 4rem) clamp(1.5rem,6vw,4rem) 3rem;max-width:720px;margin:0 auto;text-align:center}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.section-label::before{content:'';width:18px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em}
+.section-sub{font-size:.95rem;color:var(--text-secondary);margin-top:.9rem;line-height:1.7}
+
+.hub{background:linear-gradient(165deg,var(--cream),var(--stone-light));padding:1rem clamp(1.5rem,6vw,4rem) 6rem}
+.hub-features{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;max-width:860px;margin:2rem auto}
+.hub-feat{padding:1.25rem;background:#fff;border-radius:10px;border:1px solid var(--border);transition:all .25s;display:block}
+.hub-feat:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.hub-feat h4{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:4px}
+.hub-feat p{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-family:var(--font-body);font-size:.875rem;font-weight:600;text-decoration:none;border-radius:8px;background:var(--gold);color:#fff;box-shadow:0 4px 14px rgba(200,148,74,.25);transition:all .35s var(--ease);border:none;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);color:var(--navy);transform:translateY(-2px)}
+.eyebrow{font-size:.72rem;font-family:var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1rem;text-align:center}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4)}
+footer a{color:rgba(255,255,255,.55);text-decoration:none;margin-left:.5rem;border-bottom:1px solid rgba(255,255,255,.2)}
+footer a:hover{color:var(--gold)}
+
+[data-lang="uz"]{display:none}
+body.uz [data-lang="en"]{display:none}
+body.uz [data-lang="uz"]{display:inline}
+body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h3[data-lang="uz"],body.uz h4[data-lang="uz"]{display:block}
+
+@media(max-width:900px){.hub-features{grid-template-columns:1fr !important}}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="page-head">
+  <div class="section-label">Uzbek Health Hub</div>
+  <h1 class="section-title" data-lang="en">Built for the diaspora</h1>
+  <h1 class="section-title" data-lang="uz">Diaspora uchun yaratilgan</h1>
+  <p class="section-sub" data-lang="en">Research, articles, and a growing podcast in one place — alongside a provider directory and network built for Uzbek-speaking patients and clinicians in the US.</p>
+  <p class="section-sub" data-lang="uz">Tadqiqotlar, maqolalar va o'sib borayotgan podcast bir joyda — AQShdagi o'zbek tilida so'zlashuvchi bemorlar va shifokorlar uchun katalog va tarmoq bilan birga.</p>
+</div>
+
+<section class="hub">
+  <!-- UzMedTalks Feature Banner -->
+  <div style="max-width:860px;margin:0 auto 2.5rem">
+    <a href="uzmedtalks.html" style="display:block;text-decoration:none;background:linear-gradient(120deg,var(--navy) 60%,#1a3a5c);border-radius:16px;padding:2rem 2.5rem;color:#fff;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-20px;font-size:8rem;opacity:.07;line-height:1">🎙️</div>
+      <div style="font-size:.72rem;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Podcast</div>
+      <h3 style="font-size:1.5rem;font-family:'Playfair Display',serif;margin:0 0 .5rem;color:#fff" data-lang="en">UzMedTalks — Launching 2026</h3>
+      <h3 style="font-size:1.5rem;font-family:'Playfair Display',serif;margin:0 0 .5rem;color:#fff" data-lang="uz">UzMedTalks — 2026-yilda ishga tushadi</h3>
+      <p style="margin:0 0 1rem;color:rgba(255,255,255,.75);font-size:.92rem;max-width:520px" data-lang="en">Medical conversations in Uzbek and English — making complex health topics accessible to the Central Asian diaspora.</p>
+      <p style="margin:0 0 1rem;color:rgba(255,255,255,.75);font-size:.92rem;max-width:520px" data-lang="uz">O'zbek va ingliz tillarida tibbiy suhbatlar — murakkab sog'liq mavzularini Markaziy Osiyo diasporasi uchun qulay qilish.</p>
+      <span style="display:inline-block;background:var(--gold);color:#fff;border-radius:20px;padding:.35rem 1rem;font-size:.82rem;font-weight:600" data-lang="en">Explore Episodes &rarr;</span>
+      <span style="display:inline-block;background:var(--gold);color:#fff;border-radius:20px;padding:.35rem 1rem;font-size:.82rem;font-weight:600" data-lang="uz">Epizodlarni ko'rish &rarr;</span>
+    </a>
+  </div>
+
+  <!-- Topic Hubs Grid -->
+  <div style="max-width:860px;margin:0 auto 2rem">
+    <div class="eyebrow" data-lang="en">Health Topic Hubs</div>
+    <div class="eyebrow" data-lang="uz">Sog'liq mavzu markazlari</div>
+    <div class="hub-features" style="grid-template-columns:repeat(2,1fr);max-width:860px">
+      <a href="hub-cardio.html" class="hub-feat" style="text-decoration:none;color:inherit;border-top:3px solid #c0392b">
+        <div style="margin-bottom:.75rem;opacity:.7">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,15 7,15 9,8 11,22 13,5 15,25 17,15 23,15 29,15"/></svg>
+        </div>
+        <h4 data-lang="en">Cardiovascular Health</h4><h4 data-lang="uz">Yurak-qon tomir sog'lig'i</h4>
+        <p data-lang="en">Research, articles, and episodes on heart disease, cholesterol, and prevention.</p>
+        <p data-lang="uz">Yurak kasalligi, xolesterin va profilaktika bo'yicha tadqiqotlar va maqolalar.</p>
+      </a>
+      <a href="hub-mental-health.html" class="hub-feat" style="text-decoration:none;color:inherit;border-top:3px solid #6c4ab5">
+        <div style="margin-bottom:.75rem;opacity:.7">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M10 26v-3.5A7 7 0 1 1 20 22.5V26"/><line x1="15" y1="13" x2="15" y2="17"/><line x1="12" y1="15" x2="18" y2="15"/></svg>
+        </div>
+        <h4 data-lang="en">Mental Health</h4><h4 data-lang="uz">Ruhiy salomatlik</h4>
+        <p data-lang="en">Depression, anxiety, substance use — guides for patients and families navigating mental health.</p>
+        <p data-lang="uz">Depressiya, tashvish, giyohvandlik — ruhiy sog'liq bo'yicha bemorlar va oilalar uchun qo'llanmalar.</p>
+      </a>
+      <a href="hub-autism.html" class="hub-feat" style="text-decoration:none;color:inherit;border-top:3px solid #c87a00">
+        <div style="margin-bottom:.75rem;opacity:.7">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="15" cy="15" r="2.5" fill="currentColor" stroke="none"/><circle cx="6" cy="7" r="1.8" fill="currentColor" stroke="none"/><circle cx="24" cy="7" r="1.8" fill="currentColor" stroke="none"/><circle cx="6" cy="23" r="1.8" fill="currentColor" stroke="none"/><circle cx="24" cy="23" r="1.8" fill="currentColor" stroke="none"/><line x1="15" y1="15" x2="6" y2="7"/><line x1="15" y1="15" x2="24" y2="7"/><line x1="15" y1="15" x2="6" y2="23"/><line x1="15" y1="15" x2="24" y2="23"/><line x1="6" y1="7" x2="24" y2="7"/><line x1="6" y1="23" x2="24" y2="23"/></svg>
+        </div>
+        <h4 data-lang="en">Autism &amp; Neurodevelopment</h4><h4 data-lang="uz">Autizm va neyrorivoj</h4>
+        <p data-lang="en">Research, case reports, and family-friendly guides on ASD and neurodevelopmental conditions.</p>
+        <p data-lang="uz">ASD va neyrorivojlanish holatlari bo'yicha tadqiqotlar va oilalar uchun qo'llanmalar.</p>
+      </a>
+      <a href="hub-immigrant.html" class="hub-feat" style="text-decoration:none;color:inherit;border-top:3px solid #1e8a4e">
+        <div style="margin-bottom:.75rem;opacity:.7">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="15" cy="15" r="12"/><ellipse cx="15" cy="15" rx="5" ry="12"/><line x1="3" y1="15" x2="27" y2="15"/><path d="M5 8.5c3 1.5 6 2 10 2s7-.5 10-2"/><path d="M5 21.5c3-1.5 6-2 10-2s7 .5 10 2"/></svg>
+        </div>
+        <h4 data-lang="en">Immigrant Worker Health</h4><h4 data-lang="uz">Muhojir ishchilar sog'lig'i</h4>
+        <p data-lang="en">Occupational health risks, provider directory, and resources for Central Asian immigrant workers.</p>
+        <p data-lang="uz">Kasbiy sog'liq xavflari, shifokorlar katalogi va Markaziy Osiyo muhojir ishchilari uchun resurslar.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Community Resources -->
+  <div style="max-width:860px;margin:0 auto">
+    <div class="eyebrow" data-lang="en">Community Resources</div>
+    <div class="eyebrow" data-lang="uz">Jamiyat resurslari</div>
+    <div class="hub-features" style="grid-template-columns:repeat(3,1fr);max-width:860px">
+      <a href="hub-directory.html" class="hub-feat" style="text-decoration:none;color:inherit"><h4 data-lang="en">Provider Directory</h4><h4 data-lang="uz">Shifokorlar katalogi</h4><p data-lang="en">Searchable database of Uzbek-speaking health professionals.</p><p data-lang="uz">O'zbek tilida so'zlashuvchi tibbiyot mutaxassislarining qidiruv bazasi.</p></a>
+      <a href="hub-network.html" class="hub-feat" style="text-decoration:none;color:inherit"><h4 data-lang="en">Professional Network</h4><h4 data-lang="uz">Kasbiy tarmoq</h4><p data-lang="en">Connect, collaborate, and mentor across specialties.</p><p data-lang="uz">Turli mutaxassisliklar bo'yicha bog'lanish, hamkorlik va murabbiylik.</p></a>
+      <a href="hub-education.html" class="hub-feat" style="text-decoration:none;color:inherit"><h4 data-lang="en">Occupational Health</h4><h4 data-lang="uz">Kasbiy sog'liq</h4><p data-lang="en">Health risks by occupation for immigrant workers.</p><p data-lang="uz">Muhojir ishchilar uchun kasbga ko'ra sog'liq xavflari.</p></a>
+    </div>
+    <p style="font-size:.84rem;color:var(--text-light);font-style:italic;text-align:center;margin-top:1.5rem" data-lang="en">In development. Uzbek-speaking health professionals — reach out below.</p>
+    <p style="font-size:.84rem;color:var(--text-light);font-style:italic;text-align:center;margin-top:1.5rem" data-lang="uz">Ishlab chiqilmoqda. O'zbek tilida so'zlashuvchi tibbiyot mutaxassislari — pastda bog'laning.</p>
+    <div style="text-align:center;margin-top:1.25rem"><a href="index.html#contact" class="btn-gold" data-lang="en">Get Involved &rarr;</a><a href="index.html#contact" class="btn-gold" data-lang="uz">Qo'shiling &rarr;</a></div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Otabek Pulatov, MD <a href="cv.html">CV</a></footer>
+</body>
+</html>

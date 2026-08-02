@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otabek Pulatov, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1d2f;--navy-light:#1a2e4a;
+  --stone:#ece6d8;--stone-light:#f5f1e6;--warm-white:#faf9f5;--cream:#f6f2e9;
+  --gold:#c8944a;--gold-light:#e8c88a;
+  --text:#211e19;--text-secondary:#5c5648;--text-light:#948d7c;--border:#e6e0d0;
+  --shadow-sm:0 1px 3px rgba(15,29,47,.06);--shadow-md:0 4px 16px rgba(15,29,47,.08);
+  --shadow-lg:0 8px 32px rgba(15,29,47,.12);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* === NAV === */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,4rem);height:72px;background:rgba(250,251,252,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(226,230,236,.5);transition:all .4s var(--ease)}
+nav.scrolled{background:rgba(250,251,252,.95);box-shadow:var(--shadow-sm)}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--navy);text-decoration:none}
+.nav-logo span{color:var(--gold);font-weight:400}
+.nav-links{display:flex;gap:.35rem;list-style:none;align-items:center}
+.nav-links>li>a{display:inline-flex;align-items:center;gap:4px;font-size:.82rem;font-weight:600;color:var(--text-secondary);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all .25s var(--ease);border:1.5px solid transparent;text-transform:uppercase;letter-spacing:.08em}
+.nav-links>li>a:hover{color:var(--navy);background:rgba(219,234,254,.35);border-color:rgba(37,99,235,.08)}
+.nav-links>li>a.active-link{color:var(--navy);background:rgba(219,234,254,.5);border-color:rgba(37,99,235,.12);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:.85rem}
+.lang-sw{display:flex;border:1.5px solid var(--border);border-radius:8px;overflow:hidden}
+.lang-sw button{padding:6px 14px;background:#fff;border:none;cursor:pointer;font-family:var(--font-body);font-size:.75rem;font-weight:600;color:var(--text-light);transition:all .2s;letter-spacing:.04em}
+.lang-sw button.active{background:var(--navy);color:#fff}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);margin:5px 0;border-radius:2px}
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:rgba(250,251,252,.98);backdrop-filter:blur(20px);padding:1rem 1.5rem;gap:.25rem;border-bottom:1px solid var(--border)}
+  .nav-links.show{display:flex}
+  .nav-links>li>a{width:100%}
+  .hamburger{display:block}
+}
+
+/* === CENTERED === */
+.centered{max-width:700px;margin:0 auto;text-align:center}
+
+/* === HERO === */
+.hero{min-height:56vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(165deg,var(--warm-white) 0%,var(--stone-light) 40%,var(--stone) 100%);padding:130px clamp(1.5rem,6vw,4rem) 70px;text-align:center}
+.hero-text{max-width:680px;position:relative;z-index:2;margin:0 auto}
+.hero h1{font-family:var(--font-display);font-size:clamp(1.1rem,2.6vw,2rem);font-weight:700;line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .2s forwards;white-space:nowrap}
+@media(max-width:480px){.hero h1{white-space:normal;font-size:1.35rem}}
+.hero-sub{font-size:1.05rem;line-height:1.85;color:var(--text-secondary);max-width:540px;margin:0 auto 2rem;opacity:0;animation:fadeUp .8s .45s forwards}
+.hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s .65s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--font-body);font-size:.85rem;font-weight:600;text-decoration:none;border-radius:8px;background:var(--navy);color:#fff;transition:all .3s var(--ease)}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--font-body);font-size:.85rem;font-weight:600;text-decoration:none;border-radius:8px;background:transparent;color:var(--navy);border:1.5px solid var(--border);transition:all .3s var(--ease)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:3;opacity:0;animation:fadeUp .8s 1s forwards;display:flex;flex-direction:column;align-items:center}
+.hero-scroll span{display:block;width:1px;height:36px;background:linear-gradient(to bottom,var(--border),transparent);margin:0 0 6px 0}
+.hero-scroll small{font-size:.6rem;font-weight:500;color:var(--text-light);letter-spacing:.15em;text-transform:uppercase}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){
+  .hero{padding:120px clamp(1.5rem,5vw,2rem) 60px}
+  .hero-scroll{display:none}
+}
+
+/* === SECTIONS === */
+section{padding:clamp(3.5rem,7vw,6rem) clamp(1.5rem,6vw,4rem)}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.section-label::before{content:'';width:18px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em}
+.section-sub{font-size:.92rem;color:var(--text-secondary);margin-top:.6rem;line-height:1.7}
+.section-foot{text-align:center;margin-top:2.25rem}
+
+/* === ABOUT === */
+.about{background:var(--warm-white)}
+.about-grid{display:grid;grid-template-columns:360px 1fr;gap:clamp(2rem,5vw,3.5rem);max-width:920px;margin:0 auto;align-items:start}
+.about-photo-frame{width:100%;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--stone);box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.about-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.about-text{text-align:left}
+.about-text p{font-size:.96rem;line-height:1.9;color:var(--text-secondary);margin-bottom:1rem}
+.about-text p:last-of-type{margin-bottom:0}
+.about-cv{display:inline-flex;align-items:center;gap:6px;margin-top:1.5rem;font-size:.85rem;font-weight:500;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--border);transition:all .25s}
+.about-cv:hover{color:var(--gold);border-color:var(--gold)}
+.arrow-ic{display:inline-block;width:12px;height:12px;vertical-align:-1px;transition:transform .3s var(--ease);flex-shrink:0}
+a:hover .arrow-ic,button:hover .arrow-ic{transform:translateX(3px)}
+@media(max-width:760px){
+  .about-grid{grid-template-columns:1fr;max-width:480px}
+  .about-photo-frame{max-width:280px;margin:0 auto 1.5rem}
+}
+
+/* === JOURNEY TEASER === */
+.journey-teaser{background:var(--navy);position:relative;overflow:hidden}
+.journey-teaser::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 20%,rgba(200,148,74,.1),transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(200,148,74,.06),transparent 50%);pointer-events:none}
+.journey-teaser .section-title{color:#fff}
+.journey-teaser .section-sub{color:rgba(255,255,255,.5)}
+.journey-teaser .about-cv{color:#fff;border-color:rgba(255,255,255,.25)}
+.journey-teaser .about-cv:hover{color:var(--gold);border-color:var(--gold)}
+.jt-track{position:relative;z-index:2;max-width:1000px;margin:2.5rem auto 0}
+.jt-row{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x proximity;padding:.25rem .25rem 1rem}
+.jt-card{scroll-snap-align:start;flex:0 0 auto;width:172px;padding:1.5rem 1.25rem 1.7rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.03);text-decoration:none;color:inherit;transition:all .3s var(--ease);position:relative}
+.jt-card:hover{background:rgba(255,255,255,.07);border-color:rgba(200,148,74,.4);transform:translateY(-4px)}
+.jt-num{font-family:var(--font-display);font-size:1.7rem;font-weight:700;color:var(--gold);margin-bottom:.6rem;line-height:1}
+.jt-year{font-family:var(--font-mono);font-size:.66rem;color:rgba(255,255,255,.4);margin-bottom:.5rem}
+.jt-title{font-size:.86rem;font-weight:600;color:#fff;line-height:1.35}
+.jt-hint{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s,margin .3s;font-size:.74rem;color:rgba(255,255,255,.55);line-height:1.5;font-style:italic}
+.jt-card:hover .jt-hint,.jt-card:focus-visible .jt-hint{max-height:70px;opacity:1;margin-top:.5rem}
+.jt-bar{position:absolute;left:1.25rem;right:1.25rem;bottom:1.1rem;height:2px;background:rgba(255,255,255,.1);overflow:hidden;border-radius:2px}
+.jt-bar::after{content:'';display:block;height:100%;width:0;background:var(--gold);transition:width 1s var(--ease)}
+.jt-card.visible .jt-bar::after{width:100%}
+@media(max-width:640px){.jt-card{width:150px}}
+
+/* === RESEARCH === */
+.research-sec{background:var(--stone-light)}
+.pc-list{max-width:660px;margin:2rem auto 0}
+.pc-row{display:block;padding:1.15rem .5rem;margin:0 -.5rem;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;border-radius:8px;transition:background .25s}
+.pc-row:first-child{padding-top:0}
+.pc-row:hover{background:rgba(200,148,74,.06)}
+.pc-status{font-family:var(--font-mono);font-size:.62rem;color:var(--text-light);margin-bottom:.35rem}
+.pc-row h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:.3rem}
+.pc-a{font-size:.78rem;color:var(--text-secondary)}
+.pc-a strong{color:var(--navy);font-weight:600}
+.pc-link{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:var(--navy);margin-top:.6rem}
+.pc-row:hover .pc-link{color:var(--gold)}
+
+/* === WRITING === */
+.writing-sec{background:var(--warm-white)}
+.w-carousel{position:relative;max-width:1000px;margin:2rem auto 0}
+.w-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--navy);padding:0;z-index:5;box-shadow:var(--shadow-md)}
+.w-nav:hover{border-color:var(--gold);color:var(--gold)}
+.w-nav:disabled{opacity:.25;cursor:default;border-color:var(--border);color:var(--navy);box-shadow:none}
+.w-nav svg{width:15px;height:15px}
+.w-nav.prev{left:-6px}
+.w-nav.next{right:-6px}
+.w-row{display:flex;gap:.85rem;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;margin:0 auto;padding:.25rem clamp(2.5rem,6vw,3.5rem) .5rem;scrollbar-width:none;-ms-overflow-style:none}
+.w-row::-webkit-scrollbar{display:none}
+.w-card{scroll-snap-align:start;flex:0 0 auto;width:212px;padding:1.1rem 1.25rem;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;transition:all .3s var(--ease)}
+.w-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.w-cat{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.w-card h3{font-family:var(--font-display);font-size:.92rem;font-weight:600;color:var(--navy);line-height:1.3;margin-bottom:.3rem}
+.w-card p{font-size:.76rem;color:var(--text-secondary);line-height:1.5}
+@media(max-width:640px){.w-card{width:190px}.w-nav{width:32px;height:32px}.w-nav.prev{left:-4px}.w-nav.next{right:-4px}}
+
+/* === HUB BANNER === */
+.hub-banner-sec{background:linear-gradient(165deg,var(--cream),var(--stone-light))}
+.hub-banner{display:block;max-width:900px;margin:2rem auto 0;text-decoration:none;background:linear-gradient(120deg,var(--navy) 55%,#1a3a5c);border-radius:18px;padding:clamp(2rem,5vw,3rem);color:#fff;position:relative;overflow:hidden}
+.hub-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 20%,rgba(200,148,74,.12),transparent 55%)}
+.hb-inner{position:relative;z-index:2;max-width:600px}
+.hb-eyebrow{font-size:.72rem;font-family:var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.hub-banner h3{font-family:var(--font-display);font-size:1.6rem;margin-bottom:.6rem}
+.hub-banner p{color:rgba(255,255,255,.72);font-size:.92rem;line-height:1.65;margin-bottom:1.25rem}
+.hb-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border-radius:20px;padding:.55rem 1.25rem;font-size:.85rem;font-weight:600}
+
+/* === CONTACT === */
+.contact{background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden;padding:clamp(3.5rem,7vw,5rem) clamp(1.5rem,6vw,5rem)}
+.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(37,99,235,.08),transparent 55%)}
+.contact-inner{position:relative;z-index:2;max-width:520px;margin:0 auto}
+.contact .section-label::before{background:rgba(200,148,74,.5)}
+.contact .section-title{color:#fff}
+.contact-sub{font-size:.92rem;color:rgba(255,255,255,.45);margin:.6rem auto 2rem;line-height:1.6}
+.social-links{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.social-link{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem;font-weight:500;transition:all .3s}
+.social-link:hover{background:rgba(255,255,255,.1);border-color:var(--gold);color:#fff;transform:translateY(-2px)}
+.social-link svg{width:14px;height:14px;fill:currentColor}
+.contact-email{font-family:var(--font-display);font-size:1.15rem}
+.contact-email a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,148,74,.3);transition:border-color .3s}
+.contact-email a:hover{border-color:var(--gold)}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.35)}
+footer a{color:rgba(255,255,255,.5);text-decoration:none;margin-left:.5rem;border-bottom:1px solid rgba(255,255,255,.2)}
+footer a:hover{color:var(--gold)}
+
+.fade-in{opacity:0;transform:translateY(22px);transition:all .7s var(--ease)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+[data-lang="uz"]{display:none}
+body.uz [data-lang="en"]{display:none}
+body.uz [data-lang="uz"]{display:block}
+body.uz button[data-lang="uz"]{display:inline-block}
+body.uz a[data-lang="uz"]{display:inline-flex}
+body.uz span[data-lang="uz"]{display:inline}
+body.uz small[data-lang="uz"]{display:inline}
+body.uz p[data-lang="uz"]{display:block}
+body.uz h1[data-lang="uz"]{display:block}
+body.uz h2[data-lang="uz"]{display:block}
+body.uz h3[data-lang="uz"]{display:block}
+body.uz h4[data-lang="uz"]{display:block}
+body.uz div[data-lang="uz"]{display:block}
+
+@media(max-width:640px){
+  .social-links{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Otabek Pulatov<span>,</span> MD</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about"><span data-lang="en">About</span><span data-lang="uz">Men haqimda</span></a></li>
+    <li><a href="journey.html"><span data-lang="en">Journey</span><span data-lang="uz">Yo'lim</span></a></li>
+    <li><a href="writing.html"><span data-lang="en">Writing</span><span data-lang="uz">Maqolalar</span></a></li>
+    <li><a href="research.html"><span data-lang="en">Research</span><span data-lang="uz">Tadqiqot</span></a></li>
+    <li><a href="hub.html"><span data-lang="en">Uzbek Health Hub</span><span data-lang="uz">O'zbek sog'liq markazi</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw"><button class="active" onclick="setLang('en')">EN</button><button onclick="setLang('uz')">UZ</button></div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('show')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1 data-lang="en">Physician &middot; Researcher &middot; Aspiring Educator</h1>
+    <h1 data-lang="uz">Shifokor &middot; Tadqiqotchi &middot; Bo'lajak o'qituvchi</h1>
+    <p class="hero-sub" data-lang="en">Welcome — this is where I share my story and what I've learned along the way, with the hope of helping more Uzbek immigrants find their way into medicine.</p>
+    <p class="hero-sub" data-lang="uz">Xush kelibsiz — bu yerda men o'z hikoyam va o'rgangan narsalarimni ulashaman, ko'proq o'zbek muhojirlariga tibbiyotga yo'l topishda yordam berish umidida.</p>
+    <div class="hero-ctas">
+      <a href="research.html" class="btn-primary" data-lang="en">Explore Research <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="research.html" class="btn-primary" data-lang="uz">Tadqiqotlar <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="journey.html" class="btn-secondary" data-lang="en">Read My Story</a>
+      <a href="journey.html" class="btn-secondary" data-lang="uz">Hikoyamni o'qish</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span><small data-lang="en">Scroll</small><small data-lang="uz">Pastga</small></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-photo-frame fade-in">
+      <img src="headshot.jpg" alt="Portrait of Otabek Pulatov, MD">
+    </div>
+    <div>
+      <div class="section-label">About</div>
+      <h2 class="section-title" data-lang="en">Meet Otabek Pulatov</h2>
+      <h2 class="section-title" data-lang="uz">Otabek Pulatov bilan tanishing</h2>
+      <div class="about-text fade-in" data-lang="en" style="margin-top:1.25rem">
+        <p>I grew up in Tashkent, Uzbekistan, and moved to the United States alone at 19. Community college in Brooklyn, then PA school, then five years of clinical practice, then medical school at NYU. Along the way I learned patience from patients who trusted me before I had all the answers, and something closer to empathy from immigrant families who reminded me of my own.</p>
+        <p>I matched into Internal Medicine at UT Southwestern and am moving to Dallas. I'm leaning toward cardiology — cardiovascular disease affects the communities I come from more than most, and it's an area I want to spend my career working on.</p>
+        <a href="cv.html" class="about-cv">View full CV <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a>
+      </div>
+      <div class="about-text fade-in" data-lang="uz" style="margin-top:1.25rem">
+        <p>Men Toshkentda tug'ilganman. 19 yoshimda AQShga yolg'iz ko'chib keldim. Bruklindagi kollejdan shifokor yordamchisi maktabigacha, besh yillik klinik tajribadan NYU tibbiyot maktabigacha. Bu yo'lda meni ishongan bemorlardan sabr, o'z oilamni eslatgan muhojir oilalardan esa hamdardlikka yaqin narsa o'rgandim.</p>
+        <p>UT Southwestern tibbiyot markazida ichki kasalliklar rezidenturasiga qabul oldim va Dallasga ko'chib o'tyapman. Kardiologiyaga moyilman — yurak-qon tomir kasalliklari men kelgan jamoalarga ko'proq ta'sir qiladi, va bu men karyeramni bag'ishlamoqchi bo'lgan sohadir.</p>
+        <a href="cv.html" class="about-cv">To'liq CV <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY TEASER -->
+<section class="journey-teaser" id="journey">
+  <div class="centered fade-in">
+    <div class="section-label">Journey in Medicine</div>
+    <h2 class="section-title" data-lang="en">Every chapter matters</h2>
+    <h2 class="section-title" data-lang="uz">Har bir bosqich muhim</h2>
+    <p class="section-sub" data-lang="en">Tashkent to Brooklyn to Dallas.</p>
+    <p class="section-sub" data-lang="uz">Toshkentdan Bruklinga, Dallasga.</p>
+  </div>
+  <div class="jt-track">
+    <div class="jt-row">
+      <a class="jt-card fade-in" href="journey.html#ch1"><div class="jt-num">01</div><div class="jt-year">2012–15</div><div class="jt-title" data-lang="en">Community College</div><div class="jt-title" data-lang="uz">Kollej</div><div class="jt-hint" data-lang="en">"The language was the real exam."</div><div class="jt-hint" data-lang="uz">"Til esa haqiqiy imtihon edi."</div><div class="jt-bar"></div></a>
+      <a class="jt-card fade-in" href="journey.html#ch2"><div class="jt-num">02</div><div class="jt-year">2015–18</div><div class="jt-title" data-lang="en">PA School</div><div class="jt-title" data-lang="uz">PA maktabi</div><div class="jt-hint" data-lang="en">"That gap wasn't a statistic. It was personal."</div><div class="jt-hint" data-lang="uz">"Bu bo'shliq statistika emas edi."</div><div class="jt-bar"></div></a>
+      <a class="jt-card fade-in" href="journey.html#ch3"><div class="jt-num">03</div><div class="jt-year">2018–23</div><div class="jt-title" data-lang="en">PA Career</div><div class="jt-title" data-lang="uz">PA karerasi</div><div class="jt-hint" data-lang="en">"Every setting broke down differently."</div><div class="jt-hint" data-lang="uz">"Har bir muhit boshqacha buzildi."</div><div class="jt-bar"></div></a>
+      <a class="jt-card fade-in" href="journey.html#ch4"><div class="jt-num">04</div><div class="jt-year">2023–26</div><div class="jt-title" data-lang="en">Medical School</div><div class="jt-title" data-lang="uz">Tibbiyot maktabi</div><div class="jt-hint" data-lang="en">"I needed to prove something to myself."</div><div class="jt-hint" data-lang="uz">"O'zimga isbotlashim kerak edi."</div><div class="jt-bar"></div></a>
+      <a class="jt-card fade-in" href="journey.html#ch5"><div class="jt-num">05</div><div class="jt-year">2026 &rarr;</div><div class="jt-title" data-lang="en">IM Residency, UTSW</div><div class="jt-title" data-lang="uz">Rezidentura, UTSW</div><div class="jt-hint" data-lang="en">"This is where the next part starts."</div><div class="jt-hint" data-lang="uz">"Keyingi bosqich shu yerdan boshlanadi."</div><div class="jt-bar"></div></a>
+    </div>
+  </div>
+  <div class="section-foot fade-in"><a href="journey.html" class="about-cv" data-lang="en">Read the full journey <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a><a href="journey.html" class="about-cv" data-lang="uz">To'liq yo'lni o'qish <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a></div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research-sec" id="research-section">
+  <div class="centered fade-in">
+    <div class="section-label">Research</div>
+    <h2 class="section-title" data-lang="en">Selected publications</h2>
+    <h2 class="section-title" data-lang="uz">Tanlangan nashrlar</h2>
+  </div>
+  <div class="pc-list">
+    <a class="pc-row fade-in" href="https://www.nature.com/articles/s41467-026-72276-0" target="_blank">
+      <div class="pc-status" data-lang="en">Published — Nature Communications</div>
+      <div class="pc-status" data-lang="uz">Nashr etilgan — Nature Communications</div>
+      <h3>Hepatic Delivery of the MicroRNA-30c Analog C2 Decreases Plasma Cholesterol and Atherosclerosis Without Liver Injury</h3>
+      <div class="pc-a">Prakash B, ..., <strong>Pulatov O</strong>, et al.</div>
+      <div class="pc-link"><span data-lang="en">Read on Nature.com</span><span data-lang="uz">Nature.com'da o'qish</span><svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="pc-row fade-in" href="https://link.springer.com/article/10.1186/s12872-026-06184-y" target="_blank">
+      <div class="pc-status" data-lang="en">Published — BMC Cardiovascular Disorders · First author</div>
+      <div class="pc-status" data-lang="uz">Nashr etilgan — BMC Cardiovascular Disorders · Birinchi muallif</div>
+      <h3>In-Hospital SGLT2 Inhibitor Initiation and 30-Day All-Cause Readmission in Heart Failure With Reduced Ejection Fraction</h3>
+      <div class="pc-a"><strong>Pulatov O</strong>, Kim SY, Grossman Z, et al.</div>
+      <div class="pc-link"><span data-lang="en">Read on journal site</span><span data-lang="uz">Jurnal sahifasi</span><svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="pc-row fade-in" href="https://www.acpjournals.org/doi/10.7326/aimcc.2025.1316" target="_blank">
+      <div class="pc-status" data-lang="en">Published — Annals of Internal Medicine: Clinical Cases · First author</div>
+      <div class="pc-status" data-lang="uz">Nashr etilgan — Annals of Internal Medicine: Clinical Cases · Birinchi muallif</div>
+      <h3>Cardiac Tamponade, Mesenteric Ischemia, and Macrophage Activation Syndrome as the Initial Manifestation of Systemic Lupus Erythematosus</h3>
+      <div class="pc-a"><strong>Pulatov O</strong>, Khantses E, Moussa M, et al.</div>
+      <div class="pc-link"><span data-lang="en">Read on journal site</span><span data-lang="uz">Jurnal sahifasi</span><svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></div>
+    </a>
+  </div>
+  <div class="section-foot fade-in"><a href="research.html" class="about-cv" data-lang="en">View all research <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a><a href="research.html" class="about-cv" data-lang="uz">Barcha tadqiqotlarni ko'rish <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a></div>
+</section>
+
+<!-- WRITING -->
+<section class="writing-sec" id="writing">
+  <div class="centered fade-in">
+    <div class="section-label">Writing</div>
+    <h2 class="section-title" data-lang="en">Notes from the journey</h2>
+    <h2 class="section-title" data-lang="uz">Yo'ldan eslatmalar</h2>
+  </div>
+  <div class="w-carousel">
+  <button class="w-nav prev" id="wPrev" aria-label="Previous articles"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></button>
+  <button class="w-nav next" id="wNext" aria-label="Next articles"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></button>
+  <div class="w-row" id="wRow">
+    <a class="w-card fade-in" href="topic-autism.html">
+      <div class="w-cat" data-lang="en">Health Topic</div><div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+      <h3 data-lang="en">Understanding Autism</h3><h3 data-lang="uz">Autizmni tushunish</h3>
+      <p data-lang="en">Diagnosis, treatment, and practical guidance for families.</p><p data-lang="uz">Tashxis, davolash va oilalar uchun amaliy qo'llanma.</p>
+    </a>
+    <a class="w-card fade-in" href="topic-mental-health.html">
+      <div class="w-cat" data-lang="en">Health Topic</div><div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+      <h3 data-lang="en">Depression &amp; Anxiety</h3><h3 data-lang="uz">Depressiya va tashvish</h3>
+      <p data-lang="en">Breaking the silence on mental health in our communities.</p><p data-lang="uz">Jamoalarimizda ruhiy salomatlik haqida sukunatni buzish.</p>
+    </a>
+    <a class="w-card fade-in" href="topic-substances.html">
+      <div class="w-cat" data-lang="en">Health Topic</div><div class="w-cat" data-lang="uz">Sog'liq mavzusi</div>
+      <h3 data-lang="en">Recreational Drugs</h3><h3 data-lang="uz">Giyohvand moddalar</h3>
+      <p data-lang="en">Marijuana, opioids, stimulants — facts, law, harm reduction.</p><p data-lang="uz">Faktlar, qonun, xavfsizlik.</p>
+    </a>
+    <a class="w-card fade-in" href="topic-clinical-reasoning.html">
+      <div class="w-cat" data-lang="en">Clinical Reasoning</div><div class="w-cat" data-lang="uz">Klinik mulohaza</div>
+      <h3 data-lang="en">Metacognition for Intern Year</h3><h3 data-lang="uz">Intern yili metakognitsiyasi</h3>
+      <p data-lang="en">Anchoring, premature closure, and the invisible forces shaping decisions.</p><p data-lang="uz">Qarorlarni shakllantiradigan ko'rinmas kuchlar.</p>
+    </a>
+    <a class="w-card fade-in" href="topic-history-medicine.html">
+      <div class="w-cat" data-lang="en">History of Medicine</div><div class="w-cat" data-lang="uz">Tibbiyot tarixi</div>
+      <h3 data-lang="en">The Surgeon History Forgot</h3><h3 data-lang="uz">Tarix unutgan jarroh</h3>
+      <p data-lang="en">A Soviet physiologist performed the first heart transplant decades before Barnard.</p><p data-lang="uz">Barnarddan o'n yillar oldin birinchi yurak ko'chirish.</p>
+    </a>
+  </div>
+  </div>
+  <div class="section-foot fade-in"><a href="writing.html" class="about-cv" data-lang="en">View all writing <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a><a href="writing.html" class="about-cv" data-lang="uz">Barcha maqolalar <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a></div>
+</section>
+
+<!-- HUB BANNER -->
+<section class="hub-banner-sec" id="hub">
+  <a href="hub.html" class="hub-banner fade-in">
+    <div class="hb-inner">
+      <div class="hb-eyebrow">Uzbek Health Hub</div>
+      <h3 data-lang="en">Built for the diaspora</h3>
+      <h3 data-lang="uz">Diaspora uchun yaratilgan</h3>
+      <p data-lang="en">Research, articles, and the UzMedTalks podcast in one place — alongside a provider directory and network for Uzbek-speaking patients and clinicians.</p>
+      <p data-lang="uz">Tadqiqotlar, maqolalar va UzMedTalks podcasti bir joyda — o'zbek tilida so'zlashuvchi bemorlar va shifokorlar uchun katalog va tarmoq bilan birga.</p>
+      <span class="hb-cta" data-lang="en">Explore the Hub <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></span>
+      <span class="hb-cta" data-lang="uz">Markazni ko'rish <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></span>
+    </div>
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center">Contact</div>
+    <h2 class="section-title" data-lang="en">Let's connect</h2>
+    <h2 class="section-title" data-lang="uz">Bog'lanaylik</h2>
+    <p class="contact-sub" data-lang="en">Whether it's about research, the Uzbek Health Hub, or sharing stories — I'd love to hear from you.</p>
+    <p class="contact-sub" data-lang="uz">Tadqiqot, O'zbek sog'liq markazi yoki hikoyalar haqida bo'lsin — sizdan eshitishni xohlayman.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/pulatbek/" class="social-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=5Hvm6IoAAAAJ&hl=en" class="social-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5zm0 7l-7-4v-5l7 4 7-4v5l-7 4z"/></svg>Google Scholar</a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/?term=otabek+pulatov&page=1" class="social-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm3-4H7v-2h8v2zm0-4H7V7h8v2z"/></svg>PubMed</a>
+      <a href="https://orcid.org/0009-0006-7185-6908" class="social-link" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>ORCID</a>
+    </div>
+    <div class="contact-email"><a href="mailto:contact@otabekpulatov.com">contact@otabekpulatov.com</a></div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Otabek Pulatov, MD <a href="cv.html">CV</a></footer>
+
+<script>
+function setLang(lang){document.body.className=lang==='uz'?'uz':'';document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+document.querySelectorAll('.jt-card').forEach((el,i)=>el.style.transitionDelay=`${i*.08}s`);
+
+// Writing carousel: click-to-step + hover-hold continuous scroll
+(function(){
+  const row = document.getElementById('wRow');
+  const prev = document.getElementById('wPrev');
+  const next = document.getElementById('wNext');
+  if (!row || !prev || !next) return;
+  const step = () => (row.querySelector('.w-card')?.offsetWidth || 212) + 14;
+
+  function updateNav(){
+    prev.disabled = row.scrollLeft <= 4;
+    next.disabled = row.scrollLeft >= row.scrollWidth - row.clientWidth - 4;
+  }
+  row.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  prev.addEventListener('click', () => row.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => row.scrollBy({ left: step(), behavior: 'smooth' }));
+
+  let holdTimer = null;
+  function startHold(dir){
+    stopHold();
+    holdTimer = setInterval(() => row.scrollBy({ left: dir * 1.6, behavior: 'auto' }), 16);
+  }
+  function stopHold(){ if (holdTimer) { clearInterval(holdTimer); holdTimer = null; } }
+  prev.addEventListener('mouseenter', () => startHold(-1));
+  next.addEventListener('mouseenter', () => startHold(1));
+  prev.addEventListener('mouseleave', stopHold);
+  next.addEventListener('mouseleave', stopHold);
+  window.addEventListener('mouseup', stopHold);
+})();
+let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);t=false});t=true}});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const el=document.querySelector(h);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('navLinks').classList.remove('show')}})});
+</script>
+</body>
+</html>

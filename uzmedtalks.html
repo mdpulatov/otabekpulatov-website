@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UzMedTalks — Medicine in Uzbek | Otabek Pulatov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1d2f;--navy-light:#1a2e4a;--blue:#2563eb;
+  --sky:#dbeafe;--sky-light:#eff6ff;--warm-white:#fafbfc;--cream:#f8f6f3;
+  --gold:#c8944a;--gold-light:#e8c88a;
+  --text:#1a1a2e;--text-secondary:#555e6e;--text-light:#8892a4;--border:#e2e6ec;
+  --shadow-sm:0 1px 3px rgba(15,29,47,.06);--shadow-md:0 4px 16px rgba(15,29,47,.08);--shadow-lg:0 8px 32px rgba(15,29,47,.12);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+
+.nav-logo span{color:var(--gold)}
+
+.nav-back{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;transition:all .2s;padding:7px 14px;border:1.5px solid rgba(255,255,255,.15);border-radius:8px}
+.nav-back:hover{color:#fff;border-color:rgba(255,255,255,.35)}
+
+.lang-sw button{padding:6px 14px;background:transparent;border:none;cursor:pointer;font-family:var(--font-body);font-size:.75rem;font-weight:600;color:rgba(255,255,255,.45);transition:all .2s}
+.lang-sw button.active{background:rgba(255,255,255,.14);color:#fff}
+
+/* SHOW HERO */
+.show-hero{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px clamp(1.5rem,6vw,4rem) 5rem;background:var(--navy);position:relative;overflow:hidden}
+.show-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(200,148,74,.09),transparent 55%),radial-gradient(ellipse at 75% 30%,rgba(37,99,235,.07),transparent 55%)}
+.show-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;position:relative;z-index:1}
+.show-eyebrow::before,.show-eyebrow::after{content:'';width:22px;height:1.5px;background:var(--gold)}
+.show-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);font-weight:700;color:#fff;letter-spacing:-.04em;line-height:1;margin-bottom:1.1rem;position:relative;z-index:1}
+.show-title em{color:var(--gold);font-style:italic}
+.show-sub{font-size:1.05rem;color:rgba(255,255,255,.58);max-width:500px;line-height:1.85;margin:0 auto 2.5rem;position:relative;z-index:1}
+.platform-btns{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+.pbtn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;font-size:.8rem;font-weight:600;text-decoration:none;transition:all .22s var(--ease);border:1.5px solid;letter-spacing:.01em}
+.pbtn svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+.pbtn.yt{background:#ff0000;border-color:#ff0000;color:#fff}.pbtn.yt:hover{background:#cc0000;border-color:#cc0000;transform:translateY(-1px)}
+.pbtn.sp{background:#1db954;border-color:#1db954;color:#fff}.pbtn.sp:hover{background:#17a349;transform:translateY(-1px)}
+.pbtn.ap{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);color:#fff}.pbtn.ap:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+.pbtn.notify{background:transparent;border-color:var(--gold);color:var(--gold)}.pbtn.notify:hover{background:var(--gold);color:#fff;transform:translateY(-1px)}
+
+/* STAT STRIP */
+.stat-strip{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:1.5rem clamp(1.5rem,6vw,4rem);display:flex;justify-content:center;gap:clamp(2rem,5vw,5rem);flex-wrap:wrap}
+.stat-strip .s{text-align:center}
+.stat-strip .s .n{font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);display:block}
+.stat-strip .s .l{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4)}
+
+/* EPISODES SECTION */
+.episodes{padding:clamp(4rem,7vw,6rem) clamp(1.5rem,6vw,4rem);background:var(--warm-white)}
+.sec-top{max-width:1080px;margin:0 auto 2.5rem}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.sec-label::before{content:'';width:16px;height:1.5px;background:var(--gold)}
+.sec-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-bottom:.4rem}
+.sec-sub{font-size:.94rem;color:var(--text-secondary);line-height:1.75;max-width:540px}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.4rem;max-width:1080px;margin:0 auto}
+.ep-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:all .22s var(--ease);position:relative}
+.ep-card.live{cursor:pointer}.ep-card.live:hover{border-color:var(--gold);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.ep-card.soon{opacity:.65;cursor:default}
+.ep-num{font-family:var(--font-mono);font-size:.64rem;color:var(--text-light);letter-spacing:.1em;margin-bottom:.7rem}
+.ep-badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem}
+.ep-badge.live{background:var(--sky);color:var(--blue)}
+.ep-badge.soon{background:var(--cream);color:var(--text-light);border:1px solid var(--border)}
+.ep-title{font-family:var(--font-display);font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.32;margin-bottom:.55rem}
+.ep-desc{font-size:.86rem;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem}
+.ep-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.ep-tag{font-size:.66rem;padding:3px 8px;background:var(--sky-light);border-radius:4px;color:var(--text-secondary);border:1px solid var(--border)}
+.ep-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;border-top:1px solid var(--border)}
+.ep-dur{font-family:var(--font-mono);font-size:.66rem;color:var(--text-light)}
+.ep-links{display:flex;gap:.4rem}
+.ep-link{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:600;color:var(--text-secondary);text-decoration:none;padding:4px 9px;border:1px solid var(--border);border-radius:5px;transition:all .18s}
+.ep-link:hover{color:var(--navy);border-color:var(--navy)}
+.ep-link svg{width:11px;height:11px;fill:currentColor}
+
+/* LAUNCH BANNER */
+.launch-banner{max-width:600px;margin:2.5rem auto 0;background:var(--navy);border-radius:14px;padding:2.25rem;text-align:center}
+.launch-banner h3{font-family:var(--font-display);font-size:1.5rem;color:#fff;margin-bottom:.5rem}
+.launch-banner p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:1.5rem}
+.launch-banner a{display:inline-block;padding:10px 26px;background:var(--gold);color:#fff;border-radius:8px;font-size:.84rem;font-weight:600;text-decoration:none;transition:background .2s}
+.launch-banner a:hover{background:#daa65c}
+
+/* ABOUT SHOW */
+.about-show{padding:clamp(4rem,7vw,6rem) clamp(1.5rem,6vw,4rem);background:var(--cream)}
+.about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:4rem;align-items:start}
+.about-inner p{font-size:.97rem;line-height:1.9;color:var(--text-secondary);margin-bottom:1rem}
+.stat-col{display:flex;flex-direction:column;gap:1rem}
+.sbox{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem}
+.sbox .n{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.2rem}
+.sbox .l{font-size:.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.08em}
+
+/* TOPICS PREVIEW */
+.topics-preview{padding:3rem clamp(1.5rem,6vw,4rem);background:#fff;border-top:1px solid var(--border)}
+.topics-inner{max-width:900px;margin:0 auto}
+.topic-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.topic-chip{padding:7px 16px;background:var(--sky-light);border:1px solid var(--sky);border-radius:100px;font-size:.8rem;color:var(--navy);font-weight:500;text-decoration:none;transition:all .2s}
+.topic-chip:hover{background:var(--sky);border-color:var(--blue);color:var(--blue)}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .about-inner{grid-template-columns:1fr}
+  .ep-grid{grid-template-columns:1fr}
+  .stat-strip{gap:1.75rem}
+}
+
+/* LANG */
+}
+body.uz p[data-lang="uz"]{display:block}
+body.uz div[data-lang="uz"]{display:block}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.fade-in.visible{opacity:1;transform:none}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<script src="nav.js"></script>
+
+<!-- HERO -->
+<section class="show-hero">
+  <div class="show-eyebrow" data-lang="en">Podcast &middot; Educational Series &middot; Free</div>
+  <div class="show-eyebrow" data-lang="uz">Podcast &middot; Ta&#8216;lim seriyasi &middot; Bepul</div>
+  <h1 class="show-title">UzMed<em>Talks</em></h1>
+  <p class="show-sub" data-lang="en">Medicine in Uzbek — honest conversations about health, clinical science, and navigating American healthcare as a Central Asian immigrant.</p>
+  <p class="show-sub" data-lang="uz">O&#8216;zbek tilida tibbiyot — sog&#8216;liq, klinik fan va muhojir sifatida Amerika tibbiy tizimida yo&#8216;l olish haqida samimiy suhbatlar.</p>
+  <div class="platform-btns">
+    <a href="https://youtube.com/@otabekpulatov" target="_blank" class="pbtn yt">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <span data-lang="en">Subscribe on YouTube</span>
+      <span data-lang="uz">YouTube&#8217;da obuna bo&#8216;ling</span>
+    </a>
+    <a href="#" class="pbtn sp">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      <span data-lang="en">Spotify (Coming Soon)</span>
+      <span data-lang="uz">Spotify (Tez kunda)</span>
+    </a>
+    <a href="mailto:contact@otabekpulatov.com?subject=UzMedTalks - Notify Me" class="pbtn notify">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span data-lang="en">Notify me when live</span>
+      <span data-lang="uz">Jonli efirda xabardor qiling</span>
+    </a>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip" style="background:rgba(255,255,255,.04);padding:1.5rem clamp(1.5rem,6vw,4rem);display:flex;justify-content:center;gap:clamp(2rem,5vw,5rem);flex-wrap:wrap;background:#0a1520;border-top:1px solid rgba(255,255,255,.06)">
+  <div class="s" style="text-align:center"><span class="n" style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);display:block">500K+</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="en">Uzbek speakers in the US</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="uz">AQShda o&#8216;zbek tilida so&#8216;zlashuvchilar</span></div>
+  <div class="s" style="text-align:center"><span class="n" style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);display:block">EN + UZ</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="en">Every episode bilingual</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="uz">Har bir qism ikki tilli</span></div>
+  <div class="s" style="text-align:center"><span class="n" style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);display:block">Free</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="en">Always — no paywall, ever</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="uz">Doim — hech qachon to&#8216;siq yo&#8216;q</span></div>
+  <div class="s" style="text-align:center"><span class="n" style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);display:block">2026</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="en">Launching intern year</span><span class="l" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)" data-lang="uz">Intern yilida ishga tushadi</span></div>
+</div>
+
+<!-- EPISODES -->
+<section class="episodes">
+  <div class="sec-top fade-in">
+    <div class="sec-label" data-lang="en">Episodes</div>
+    <div class="sec-label" data-lang="uz">Qismlar</div>
+    <h2 class="sec-title" data-lang="en">All Episodes</h2>
+    <h2 class="sec-title" data-lang="uz">Barcha qismlar</h2>
+    <p class="sec-sub" data-lang="en">In-depth conversations in Uzbek — covering health conditions, the medical system, clinical science, and the immigrant experience in American healthcare.</p>
+    <p class="sec-sub" data-lang="uz">O&#8216;zbek tilida chuqur suhbatlar — sog&#8216;liq holatlari, tibbiy tizim, klinik fan va Amerika tibbiyotidagi muhojir tajribasi haqida.</p>
+  </div>
+
+  <div class="ep-grid">
+
+    <!-- EPISODE 1 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 001</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">How to Find an Uzbek-Speaking Doctor in America</div>
+      <div class="ep-title" data-lang="uz">Amerikada o&#8216;zbek tilida gaplashuvchi shifokor qanday topiladi</div>
+      <p class="ep-desc" data-lang="en">Navigating the US healthcare system when English isn&#8217;t your first language — where to find providers, how to advocate for yourself, and what questions to ask at every visit.</p>
+      <p class="ep-desc" data-lang="uz">Ingliz tili ona tilingiz bo&#8216;lmasa, AQSh tibbiy tizimida qanday yo&#8216;l olish — qayerdan shifokor topish, huquqingizni qanday himoya qilish va har bir tashrifda qanday savollar berish kerak.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Healthcare Navigation</span><span class="ep-tag" data-lang="uz">Tibbiy tizimda yo&#8216;nalish</span>
+        <span class="ep-tag" data-lang="en">Immigrant Health</span><span class="ep-tag" data-lang="uz">Muhojir sog&#8216;lig&#8216;i</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~45 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching July 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yil iyulda chiqadi</span>
+      </div>
+    </div>
+
+    <!-- EPISODE 2 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 002</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">Your Heart: Cholesterol, Blood Pressure, and What the Numbers Actually Mean</div>
+      <div class="ep-title" data-lang="uz">Yuragingiz: xolesterol, qon bosimi va raqamlar aslida nima degani</div>
+      <p class="ep-desc" data-lang="en">A plain-language breakdown of cardiovascular risk — who&#8217;s at risk, what LDL and HDL really mean, when to treat, and how lifestyle changes compare to medication.</p>
+      <p class="ep-desc" data-lang="uz">Yurak-qon tomir xavfini oddiy tilda tushuntirish — kim xavf ostida, LDL va HDL nima degani, qachon davolash kerak va hayot tarzi o&#8216;zgarishlari dori-darmon bilan qanday taqqoslanadi.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Cardiovascular Health</span><span class="ep-tag" data-lang="uz">Yurak-qon tomir sog&#8216;lig&#8216;i</span>
+        <span class="ep-tag" data-lang="en">Prevention</span><span class="ep-tag" data-lang="uz">Profilaktika</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~40 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yilda chiqadi</span>
+      </div>
+    </div>
+
+    <!-- EPISODE 3 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 003</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">Mental Health in Our Community: Why We Don&#8217;t Talk About It</div>
+      <div class="ep-title" data-lang="uz">Jamoatimizda ruhiy salomatlik: nima uchun bu haqda gapirmaymiz</div>
+      <p class="ep-desc" data-lang="en">Depression, anxiety, and PTSD through the lens of Central Asian culture — breaking the silence, recognizing symptoms, and how to find the right support without shame.</p>
+      <p class="ep-desc" data-lang="uz">Depressiya, tashvish va PTSD — O&#8216;rta Osiyo madaniyati nuqtai nazaridan. Sukunatni sindirish, alomatlarni tanib olish va uyatsiz to&#8216;g&#8216;ri yordam topish.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Mental Health</span><span class="ep-tag" data-lang="uz">Ruhiy salomatlik</span>
+        <span class="ep-tag" data-lang="en">Stigma &amp; Culture</span><span class="ep-tag" data-lang="uz">Stigma va madaniyat</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~50 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yilda chiqadi</span>
+      </div>
+    </div>
+
+    <!-- EPISODE 4 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 004</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">Diabetes: What Every Uzbek Family Should Know</div>
+      <div class="ep-title" data-lang="uz">Diabet: har bir o&#8216;zbek oilasi bilishi kerak bo&#8216;lgan narsa</div>
+      <p class="ep-desc" data-lang="en">Type 2 diabetes is disproportionately prevalent among Central Asian immigrants. Why it happens, how to catch it early, and what the best current treatments actually do.</p>
+      <p class="ep-desc" data-lang="uz">2-toifa diabet O&#8216;rta Osiyo muhojirlari orasida ko&#8216;proq uchraydi. Nima uchun bu sodir bo&#8216;ladi, uni erta qanday aniqlash va hozirgi eng yaxshi davolash usullari nima qiladi.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Metabolic Health</span><span class="ep-tag" data-lang="uz">Metabolik sog&#8216;liq</span>
+        <span class="ep-tag" data-lang="en">Chronic Disease</span><span class="ep-tag" data-lang="uz">Surunkali kasallik</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~45 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yilda chiqadi</span>
+      </div>
+    </div>
+
+    <!-- EPISODE 5 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 005</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">Understanding Autism: A Guide for Central Asian Families</div>
+      <div class="ep-title" data-lang="uz">Autizmni tushunish: O&#8216;rta Osiyo oilalari uchun qo&#8216;llanma</div>
+      <p class="ep-desc" data-lang="en">How autism is diagnosed in the US, what it means for your child&#8217;s future, what services are available, and how to advocate in a system that wasn&#8217;t built for our community.</p>
+      <p class="ep-desc" data-lang="uz">AQShda autizm qanday tashxis qilinadi, bu farzandingizning kelajagi uchun nima anglatadi, qanday xizmatlar mavjud va jamoatimiz uchun qurilmagan tizimda qanday kurashish kerak.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Autism &amp; Neurodevelopment</span><span class="ep-tag" data-lang="uz">Autizm va neyrorivoj</span>
+        <span class="ep-tag" data-lang="en">Pediatrics</span><span class="ep-tag" data-lang="uz">Pediatriya</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~55 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yilda chiqadi</span>
+      </div>
+    </div>
+
+    <!-- EPISODE 6 -->
+    <div class="ep-card soon fade-in">
+      <div class="ep-num">EPISODE 006</div>
+      <div><span class="ep-badge soon" data-lang="en">Coming Soon</span><span class="ep-badge soon" data-lang="uz">Tez kunda</span></div>
+      <div class="ep-title" data-lang="en">What Truck Drivers and Home Health Aides Need to Know About Their Health</div>
+      <div class="ep-title" data-lang="uz">Yuk haydovchilari va uy sog&#8216;liq yordamchilari sog&#8216;liklari haqida nima bilishlari kerak</div>
+      <p class="ep-desc" data-lang="en">The most common jobs in the Uzbek immigrant community carry specific health risks — back pain, sleep disorders, cardiovascular disease, and more. What to watch for and when to get screened.</p>
+      <p class="ep-desc" data-lang="uz">O&#8216;zbek muhojir jamoasidagi eng keng tarqalgan kasblarda o&#8216;ziga xos sog&#8216;liq xavflari bor — bel og&#8216;rig&#8216;i, uyqu buzilishlari, yurak-qon tomir kasalliklari va boshqalar.</p>
+      <div class="ep-tags">
+        <span class="ep-tag" data-lang="en">Occupational Health</span><span class="ep-tag" data-lang="uz">Kasbiy sog&#8216;liq</span>
+        <span class="ep-tag" data-lang="en">Immigrant Workers</span><span class="ep-tag" data-lang="uz">Muhojir ishchilar</span>
+      </div>
+      <div class="ep-foot">
+        <span class="ep-dur">~40 min</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="en">Launching 2026</span>
+        <span style="font-size:.7rem;color:var(--text-light);font-style:italic" data-lang="uz">2026-yilda chiqadi</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="launch-banner fade-in">
+    <h3 data-lang="en">First episode drops July 2026</h3>
+    <h3 data-lang="uz">Birinchi qism 2026-yil iyulda chiqadi</h3>
+    <p data-lang="en">Recording begins when intern year starts. Subscribe on YouTube to be notified the moment it&#8217;s live — or email me directly.</p>
+    <p data-lang="uz">Yozib olish intern yili boshlanishi bilan boshlanadi. Jonli efirga chiqqanda xabardor bo&#8216;lish uchun YouTube&#8217;da obuna bo&#8216;ling yoki menga to&#8216;g&#8216;ridan-to&#8216;g&#8216;ri elektron xat yuboring.</p>
+    <a href="mailto:contact@otabekpulatov.com?subject=UzMedTalks" data-lang="en">Get notified &rarr;</a>
+    <a href="mailto:contact@otabekpulatov.com?subject=UzMedTalks" data-lang="uz">Xabardor bo&#8216;ling &rarr;</a>
+  </div>
+</section>
+
+<!-- ABOUT THE SHOW -->
+<section class="about-show">
+  <div class="about-inner">
+    <div class="fade-in">
+      <div class="sec-label" data-lang="en">About the Show</div>
+      <div class="sec-label" data-lang="uz">Shou haqida</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-bottom:1.25rem" data-lang="en">Why UzMedTalks exists</h2>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-bottom:1.25rem" data-lang="uz">Nima uchun UzMedTalks yaratildi</h2>
+      <p data-lang="en">There are over 500,000 Uzbek speakers in the United States. The overwhelming majority have limited access to health information in their own language — what little exists is either machine-translated or aimed at patients in Uzbekistan, where the healthcare system works completely differently.</p>
+      <p data-lang="uz">AQShda 500,000 dan ortiq o&#8216;zbek tilida so&#8216;zlashuvchi bor. Ularning ko&#8216;pchiligi o&#8216;z tillarida sog&#8216;liq ma&#8216;lumotlariga cheklangan kirishga ega — mavjud bo&#8216;lgan kam narsa mashinada tarjima qilingan yoki O&#8216;zbekistondagi bemorlarga mo&#8216;ljallangan.</p>
+      <p data-lang="en">UzMedTalks is my attempt to fill that gap — real medicine, real explanations, in the language our community actually speaks. No jargon. No rushing. No paywall.</p>
+      <p data-lang="uz">UzMedTalks bu bo&#8216;shliqni to&#8216;ldirishga urinishim — haqiqiy tibbiyot, haqiqiy tushuntirishlar, jamoatimiz haqiqatan ham gaplashadigan tilda. Hech qanday atama. Hech qanday shoshilinch. Hech qanday to&#8216;siq.</p>
+      <p data-lang="en">I&#8217;m Otabek Pulatov — I grew up in Tashkent, immigrated at 19, worked as a PA for five years across neurology and psychiatry, and now finish medical school at NYU and begin internal medicine residency in 2026. I built UzMedTalks because someone built it for me once, in a different form, and it changed my life.</p>
+      <p data-lang="uz">Men Otabek Pulatov — Toshkentda o&#8216;sdim, 19 yoshda muhojir bo&#8216;ldim, nevrologiya va psixiatriyada besh yil PA sifatida ishladim va hozir NYUda tibbiyot maktabini tugatib, 2026-yilda ichki kasalliklar rezidenturasini boshlayman.</p>
+    </div>
+    <div class="stat-col fade-in">
+      <div class="sbox"><div class="n">500K+</div><div class="l" data-lang="en">Uzbek speakers in the US with limited health info access</div><div class="l" data-lang="uz">Sog&#8216;liq ma&#8216;lumotlariga cheklangan kirishga ega AQShda o&#8216;zbek tilida so&#8216;zlashuvchilar</div></div>
+      <div class="sbox"><div class="n">EN + UZ</div><div class="l" data-lang="en">Every episode — show notes, timestamps, and full discussion in both languages</div><div class="l" data-lang="uz">Har bir qism — ko&#8216;rsatma eslatmalari, vaqt belgilari va to&#8216;liq muhokama ikki tilda</div></div>
+      <div class="sbox"><div class="n">Free</div><div class="l" data-lang="en">Always. No paywall, no subscription, no ads — medicine as a public good</div><div class="l" data-lang="uz">Doim. Hech qanday to&#8216;siq, obuna, reklama yo&#8216;q — tibbiyot jamoat manfaati sifatida</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS PREVIEW -->
+<section class="topics-preview">
+  <div class="topics-inner">
+    <p style="font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem" data-lang="en">Topics We Cover</p>
+    <p style="font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem" data-lang="uz">Qamrab olingan mavzular</p>
+    <div class="topic-chips">
+      <a href="hub-cardio.html" class="topic-chip" data-lang="en">&#x2764;&#xfe0f; Cardiovascular Health</a>
+      <a href="hub-cardio.html" class="topic-chip" data-lang="uz">&#x2764;&#xfe0f; Yurak-qon tomir sog&#8216;lig&#8216;i</a>
+      <a href="hub-mental-health.html" class="topic-chip" data-lang="en">&#x1f9e0; Mental Health</a>
+      <a href="hub-mental-health.html" class="topic-chip" data-lang="uz">&#x1f9e0; Ruhiy salomatlik</a>
+      <a href="hub-autism.html" class="topic-chip" data-lang="en">&#x1f4a1; Autism &amp; Neurodevelopment</a>
+      <a href="hub-autism.html" class="topic-chip" data-lang="uz">&#x1f4a1; Autizm va neyrorivoj</a>
+      <a href="hub-immigrant.html" class="topic-chip" data-lang="en">&#x1f30d; Immigrant Worker Health</a>
+      <a href="hub-immigrant.html" class="topic-chip" data-lang="uz">&#x1f30d; Muhojir ishchilar sog&#8216;lig&#8216;i</a>
+      <span class="topic-chip" style="opacity:.5;cursor:default" data-lang="en">&#x1f48a; Diabetes &amp; Metabolic Health</span>
+      <span class="topic-chip" style="opacity:.5;cursor:default" data-lang="uz">&#x1f48a; Diabet va metabolik sog&#8216;liq</span>
+      <span class="topic-chip" style="opacity:.5;cursor:default" data-lang="en">&#x1f9ec; Cancer Screening</span>
+      <span class="topic-chip" style="opacity:.5;cursor:default" data-lang="uz">&#x1f9ec; Saraton skrinigi</span>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Otabek Pulatov, MD</footer>
+
+<script>
+
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

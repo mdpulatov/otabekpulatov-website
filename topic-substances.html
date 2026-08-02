@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recreational Drugs — Otabek Pulatov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0f1d2f;--navy-light:#1a2e4a;--blue:#2563eb;--sky:#dbeafe;--sky-light:#eff6ff;--warm-white:#fafbfc;--cream:#f8f6f3;--gold:#c8944a;--text:#1a1a2e;--text-secondary:#555e6e;--text-light:#8892a4;--border:#e2e6ec;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+.article-header{padding:130px clamp(1.5rem,6vw,4rem) 3rem;text-align:center;background:linear-gradient(165deg,var(--warm-white),var(--sky-light))}
+.article-header .label{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;max-width:700px;margin:0 auto .75rem}
+.article-header p{font-size:.98rem;color:var(--text-secondary);max-width:560px;margin:0 auto}
+.article{max-width:640px;margin:0 auto;padding:3rem clamp(1.5rem,4vw,2rem) 5rem}
+.article p{font-size:1.02rem;line-height:1.9;color:var(--text-secondary);margin-bottom:1.25rem}
+.article h2{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.25}
+.article h3{font-size:1.12rem;font-weight:600;color:var(--navy);margin:1.75rem 0 .5rem}
+.article blockquote{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:1.75rem 0;background:var(--cream);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-secondary)}
+.action-box{background:var(--sky-light);border:1px solid var(--sky);border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.action-box h4{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.action-box p{font-size:.95rem;margin-bottom:.75rem}.action-box p:last-child{margin-bottom:0}
+.warning-box{background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.warning-box h4{font-size:.85rem;font-weight:600;color:#92400e;margin-bottom:.5rem}
+.warning-box p{font-size:.95rem;color:#78350f;margin-bottom:.5rem}.warning-box p:last-child{margin-bottom:0}
+.danger-box{background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:1.5rem 1.75rem;margin:1.75rem 0}
+.danger-box h4{font-size:.85rem;font-weight:600;color:#991b1b;margin-bottom:.5rem}
+.danger-box p{font-size:.95rem;color:#7f1d1d;margin-bottom:.5rem}.danger-box p:last-child{margin-bottom:0}
+.drug-section{border-top:1px solid var(--border);padding-top:2rem;margin-top:2.5rem}
+.article-nav{display:flex;justify-content:space-between;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.84rem}
+.article-nav a{color:var(--text-secondary);text-decoration:none;transition:color .25s;padding:8px 16px;border:1.5px solid var(--border);border-radius:8px}.article-nav a:hover{color:var(--gold);border-color:var(--gold)}
+.disclaimer{font-size:.78rem;color:var(--text-light);font-style:italic;padding:1.5rem;background:var(--cream);border-radius:8px;margin-top:2rem;border-left:3px solid var(--gold)}
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+
+.tab-bar{position:sticky;top:72px;z-index:90;background:rgba(250,251,252,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px clamp(1rem,4vw,2rem);display:flex;justify-content:center}
+.tab-track{position:relative;display:inline-flex;background:var(--cream);border-radius:10px;padding:4px;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab-track::-webkit-scrollbar{display:none}
+.tab-indicator{position:absolute;top:4px;left:4px;height:calc(100% - 8px);background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.22,.68,0,.71);pointer-events:none;z-index:0}
+.tab-pill{position:relative;z-index:1;padding:9px 20px;font-family:var(--font-body);font-size:.88rem;font-weight:500;color:var(--text-light);background:transparent;border:none;cursor:pointer;white-space:nowrap;transition:color .25s;border-radius:8px}
+.tab-pill:hover{color:var(--text-secondary)}
+.tab-pill.active{color:var(--navy);font-weight:600}
+.tab-content{display:none;animation:tabFade .3s ease}.tab-content.active{display:block}
+@keyframes tabFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.tab-track{border-radius:8px}.tab-pill{padding:8px 14px;font-size:.82rem}}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="article-header">
+  <div class="label" data-lang="en">Health Topics</div>
+  <div class="label" data-lang="uz">Sog'liq mavzulari</div>
+  <h1 data-lang="en">Recreational Drugs: What You Need to Know</h1>
+  <h1 data-lang="uz">Giyohvand moddalar: nimalarni bilishingiz kerak</h1>
+  <p data-lang="en">No lectures. No scare tactics. Just the medicine, the law, and how to stay safe.</p>
+  <p data-lang="uz">Ma'ruza yo'q. Qo'rqitish yo'q. Faqat tibbiyot, qonun va qanday xavfsiz bo'lish.</p>
+</div>
+<div class="tab-bar">
+<div class="tab-track">
+<div class="tab-indicator"></div>
+<button class="tab-pill active" data-tab="tab-overview" onclick="showTab('tab-overview')"><span data-lang="en">Overview</span><span data-lang="uz">Umumiy</span></button>
+<button class="tab-pill" data-tab="tab-marijuana" onclick="showTab('tab-marijuana')"><span data-lang="en">Marijuana</span><span data-lang="uz">Marixuana</span></button>
+<button class="tab-pill" data-tab="tab-cocaine" onclick="showTab('tab-cocaine')"><span data-lang="en">Cocaine</span><span data-lang="uz">Kokain</span></button>
+<button class="tab-pill" data-tab="tab-amphetamines" onclick="showTab('tab-amphetamines')"><span data-lang="en">Amphetamines</span><span data-lang="uz">Amfetaminlar</span></button>
+<button class="tab-pill" data-tab="tab-opioids" onclick="showTab('tab-opioids')"><span data-lang="en">Opioids</span><span data-lang="uz">Opioidlar</span></button>
+<button class="tab-pill" data-tab="tab-hallucinogens" onclick="showTab('tab-hallucinogens')"><span data-lang="en">Hallucinogens</span><span data-lang="uz">Gallyutsinogenlar</span></button>
+<button class="tab-pill" data-tab="tab-families" onclick="showTab('tab-families')"><span data-lang="en">For Parents</span><span data-lang="uz">Ota-onalar uchun</span></button>
+</div>
+</div>
+<div class="article">
+
+<!-- ======= ENGLISH ======= -->
+<div data-lang="en">
+
+<div id="tab-overview" class="tab-content active">
+<p>This is a topic that many immigrant families avoid entirely. In Uzbek communities, drug use is treated as a moral failure — something that happens to "other people's children." This silence doesn't prevent drug use. It prevents honest conversations that could save lives.</p>
+
+<p>Whether you use substances, know someone who does, or are a parent trying to understand what your children might encounter in America — this article gives you the medical facts. What each substance does to your brain and body, the real risks, the current law, and what to do if things go wrong.</p>
+
+<blockquote>The goal of this article is harm reduction — not moral judgment. People make their own choices. The role of medicine is to make sure those choices are informed.</blockquote>
+
+</div><!-- end overview -->
+
+<div id="tab-marijuana" class="tab-content">
+<div class="drug-section">
+<h2>Marijuana (Cannabis)</h2>
+
+<h3>What it is</h3>
+<p>Cannabis contains over 100 cannabinoids, the two most important being THC (tetrahydrocannabinol), which produces the "high," and CBD (cannabidiol), which does not. THC acts on the endocannabinoid system — a network of receptors in the brain that regulate mood, appetite, pain, and memory.</p>
+
+<h3>Forms</h3>
+<p>Smoked flower, vape cartridges, edibles (gummies, brownies, drinks), tinctures, topicals. Potency varies enormously. Today's cannabis is far stronger than what existed 20–30 years ago — average THC content has increased from about 4% in the 1990s to over 15–25% in modern strains. Concentrates can exceed 80% THC.</p>
+
+<h3>Documented medical benefits</h3>
+<p>FDA-approved cannabinoid medications exist for: chemotherapy-induced nausea (dronabinol, nabilone), severe epilepsy in children (epidiolex — CBD-based), and appetite stimulation in AIDS-related wasting. There is reasonable evidence supporting use for chronic pain (particularly neuropathic pain), multiple sclerosis spasticity, and some sleep disorders. Many other claimed benefits — anxiety, PTSD, inflammation — have limited or mixed evidence.</p>
+
+<h3>Real risks</h3>
+<p><strong>Brain development:</strong> Cannabis use before age 25 — while the prefrontal cortex is still developing — is associated with measurable effects on memory, attention, and executive function. The younger the person starts, the higher the risk. This is the single most important fact about cannabis.</p>
+<p><strong>Mental health:</strong> Regular use in predisposed individuals is linked to earlier onset and worsening of psychotic disorders, including schizophrenia. Heavy use is associated with increased anxiety and depression, particularly with high-THC products.</p>
+<p><strong>Cannabis Use Disorder:</strong> Approximately 10% of users develop dependence. For those who start before age 18, the rate rises to about 17%. Withdrawal symptoms (irritability, insomnia, decreased appetite) are real but typically mild.</p>
+<p><strong>Lungs:</strong> Smoking cannabis causes chronic bronchitis and airway inflammation. Vaping has its own risks, including EVALI (e-cigarette/vaping-associated lung injury). Edibles avoid lung damage but carry overdose risk due to delayed onset (30–90 minutes).</p>
+<p><strong>Driving:</strong> Cannabis impairs reaction time and judgment. Driving while high doubles the risk of a motor vehicle accident.</p>
+
+<h3>Current law (United States, 2025–2026)</h3>
+<p>Cannabis remains a Schedule I substance under federal law. However, many states have legalized it for medical use, recreational use, or both. In New York, recreational cannabis is legal for adults 21+. Laws vary by state — what's legal in New York may carry criminal penalties in Texas. For immigrants, any cannabis-related conviction — even in a legal state — can have severe immigration consequences, including denial of naturalization, visa revocation, and deportation.</p>
+
+<div class="warning-box">
+<h4>Immigration warning</h4>
+<p>Federal immigration law does not recognize state cannabis legalization. Admitting to cannabis use during an immigration interview — even if it was legal in your state — can result in a finding of inadmissibility. If you are not a US citizen, consult an immigration attorney before disclosing any cannabis use to federal authorities.</p>
+</div>
+
+<div class="action-box">
+<h4>If you choose to use cannabis</h4>
+<p><strong>Wait until 25.</strong> Your brain is still developing before that.</p>
+<p><strong>Start low, go slow.</strong> Especially with edibles — start with 2.5–5mg THC and wait at least 2 hours before taking more.</p>
+<p><strong>Don't drive.</strong> Wait at least 4–6 hours after use.</p>
+<p><strong>Know your source.</strong> Licensed dispensaries are regulated for contaminants. Street products may contain pesticides, heavy metals, or synthetic cannabinoids.</p>
+<p><strong>Avoid daily use.</strong> Occasional use carries far less risk than daily use.</p>
+<p><strong>Don't mix with alcohol.</strong> The combination amplifies impairment unpredictably.</p>
+</div>
+</div>
+
+</div><!-- end marijuana -->
+
+<div id="tab-cocaine" class="tab-content">
+<div class="drug-section">
+<h2>Cocaine</h2>
+
+<h3>What it does</h3>
+<p>Cocaine blocks the reuptake of dopamine, norepinephrine, and serotonin, flooding the brain with stimulatory neurotransmitters. The result is an intense but short-lived euphoria (15–30 minutes when snorted, 5–10 minutes when smoked as crack), followed by a crash. The brain rapidly develops tolerance, meaning more is needed for the same effect.</p>
+
+<h3>What it does to your body</h3>
+<p>Cocaine constricts blood vessels, raises heart rate and blood pressure, and increases body temperature. It is directly toxic to the heart muscle. Acute risks include heart attack (even in young, healthy people), stroke, seizures, aortic dissection, and sudden cardiac death. Chronic nasal use destroys the nasal septum. Chronic use causes accelerated atherosclerosis, heart failure, and kidney damage.</p>
+
+<h3>Addiction potential</h3>
+<p>Cocaine is highly addictive. The intense but brief high followed by a crash creates a powerful cycle of compulsive redosing. Approximately 20% of people who try cocaine will develop a use disorder. There are currently no FDA-approved medications for cocaine addiction — treatment relies on behavioral therapy (CBT, contingency management).</p>
+
+<div class="danger-box">
+<h4>The fentanyl crisis</h4>
+<p>As of 2024–2025, a significant percentage of street cocaine in the US is contaminated with fentanyl — a synthetic opioid 50–100 times more potent than morphine. People are dying from cocaine that they did not know contained fentanyl. This is not a theoretical risk — it is the leading cause of accidental overdose death in America.</p>
+<p><strong>Fentanyl test strips</strong> are available for free at most harm reduction centers and some pharmacies. If you or someone you know uses cocaine, carrying naloxone (Narcan) could save a life.</p>
+</div>
+</div>
+
+</div><!-- end cocaine -->
+
+<div id="tab-amphetamines" class="tab-content">
+<div class="drug-section">
+<h2>Amphetamines and Methamphetamine</h2>
+
+<h3>What they are</h3>
+<p><strong>Prescription amphetamines</strong> (Adderall, Vyvanse) are FDA-approved for ADHD and narcolepsy. When taken as prescribed and monitored by a physician, they are generally safe and effective. The problem arises with misuse — taking them without a prescription, at higher doses, or for cognitive enhancement ("study drugs").</p>
+<p><strong>Methamphetamine</strong> is a far more potent stimulant that causes massive dopamine release — roughly 10 times more than natural rewards. It is smoked, injected, or snorted.</p>
+
+<h3>Risks of prescription amphetamine misuse</h3>
+<p>Increased heart rate and blood pressure, insomnia, anxiety, paranoia, appetite suppression leading to malnutrition, and risk of psychosis at high doses. Chronic misuse can lead to cardiovascular problems and psychological dependence.</p>
+
+<h3>Risks of methamphetamine</h3>
+<p>Methamphetamine is neurotoxic — it damages dopamine neurons, leading to long-term deficits in memory, motor function, and emotional regulation. Other effects include severe dental decay ("meth mouth"), skin picking and sores, dramatic weight loss, paranoia, hallucinations, and violent behavior. Chronic use causes accelerated aging of the brain and body. Methamphetamine is also contaminated with fentanyl in many markets.</p>
+
+<div class="action-box">
+<h4>Key facts</h4>
+<p>Using someone else's Adderall is a federal crime. Carrying it without your own prescription is illegal.</p>
+<p>Methamphetamine carries one of the highest addiction potentials of any substance. Recovery is possible but typically requires professional treatment.</p>
+</div>
+</div>
+
+</div><!-- end amphetamines -->
+
+<div id="tab-opioids" class="tab-content">
+<div class="drug-section">
+<h2>Heroin and Opioids</h2>
+
+<h3>What they are</h3>
+<p>Opioids include prescription painkillers (oxycodone, hydrocodone, morphine, codeine), heroin, and synthetic opioids (fentanyl, carfentanil). They all work on the same brain receptors — mu-opioid receptors — producing pain relief, euphoria, and respiratory depression.</p>
+
+<h3>How addiction develops</h3>
+<p>Opioids produce rapid physical dependence. With regular use, the brain downregulates its own endorphin system. Stopping causes withdrawal — intense muscle pain, nausea, diarrhea, anxiety, insomnia — that begins within 8–24 hours of the last dose. This withdrawal is not life-threatening but is so uncomfortable that it drives continued use. Over time, the person is using not to get high but to avoid feeling sick.</p>
+
+<p>Many opioid addictions begin with a legitimate prescription. A surgery, an injury, a dental procedure — a short course of opioids that extends longer than it should. This pathway accounts for a significant percentage of opioid use disorders in America.</p>
+
+<h3>The fentanyl reality</h3>
+<p>Fentanyl has fundamentally changed the drug landscape. It is cheap to produce, extraordinarily potent, and is now present in heroin, counterfeit pills (fake Percocet, fake Xanax), cocaine, and methamphetamine. A lethal dose of fentanyl is approximately 2 milligrams — a few grains of salt. There is no way to detect it by sight, smell, or taste.</p>
+
+<div class="danger-box">
+<h4>Recognizing an opioid overdose</h4>
+<p><strong>Signs:</strong> Pinpoint pupils, unconsciousness, slow or absent breathing, blue lips or fingertips, gurgling sounds.</p>
+<p><strong>What to do:</strong> Call 911 immediately. Administer naloxone (Narcan) if available — nasal spray into one nostril. Place the person on their side (recovery position). Start rescue breathing if they are not breathing. Stay with them until help arrives.</p>
+<p><strong>Good Samaritan laws</strong> in most states protect you from drug-related prosecution if you call 911 for an overdose.</p>
+</div>
+
+<h3>Treatment for opioid addiction</h3>
+<p>Opioid Use Disorder is a chronic medical condition with effective, evidence-based treatments:</p>
+<p><strong>Buprenorphine (Suboxone):</strong> A partial opioid agonist that reduces cravings and prevents withdrawal without producing a significant high. Can be prescribed by any physician. This is the standard of care.</p>
+<p><strong>Methadone:</strong> A full opioid agonist dispensed through specialized clinics. Highly effective for severe addiction.</p>
+<p><strong>Naltrexone (Vivitrol):</strong> An opioid blocker given as a monthly injection. The person must be fully detoxed first.</p>
+<p>Medication-assisted treatment reduces overdose death by 50% or more. "Going cold turkey" or detox without medication has a very high relapse rate and is the most dangerous approach. Abstinence-only treatment for opioid addiction is not supported by current evidence.</p>
+
+<div class="action-box">
+<h4>Naloxone (Narcan) — carry it</h4>
+<p>Narcan is available over the counter at most pharmacies without a prescription. It costs $45 or is free at many harm reduction centers. It has zero abuse potential and no side effects if given to someone who hasn't taken opioids. There is no reason not to carry it.</p>
+<p><strong>SAMHSA Helpline:</strong> 1-800-662-4357 (free, confidential, 24/7, available in Spanish and English)</p>
+</div>
+</div>
+
+</div><!-- end opioids -->
+
+<div id="tab-hallucinogens" class="tab-content">
+<div class="drug-section">
+<h2>Hallucinogens</h2>
+
+<h3>Classic psychedelics</h3>
+<p><strong>Psilocybin (mushrooms), LSD, DMT, mescaline</strong> act primarily on serotonin 5-HT2A receptors, causing profound alterations in perception, thought, and emotion. Effects last 4–12 hours depending on the substance. They are not physically addictive and do not cause physical dependence or withdrawal.</p>
+
+<h3>Emerging medical research</h3>
+<p>Psilocybin-assisted therapy has shown promising results in clinical trials for treatment-resistant depression, end-of-life anxiety in terminal illness, and alcohol use disorder. The FDA has designated psilocybin therapy as a "Breakthrough Therapy" for depression. These are medically supervised protocols, not recreational use.</p>
+
+<h3>Risks</h3>
+<p><strong>"Bad trips":</strong> Intense anxiety, paranoia, panic, and confusion can occur, particularly at high doses or in uncontrolled settings. These are psychologically distressing but rarely medically dangerous.</p>
+<p><strong>HPPD:</strong> Hallucinogen Persisting Perception Disorder — rare but real. Persistent visual disturbances (trails, halos, visual snow) that continue long after use.</p>
+<p><strong>Psychosis risk:</strong> Psychedelics can precipitate psychotic episodes in individuals with personal or family history of schizophrenia or bipolar disorder. These individuals should not use psychedelics.</p>
+<p><strong>MDMA (ecstasy/molly):</strong> Technically an empathogen, not a classic psychedelic. Causes massive serotonin release, producing euphoria and emotional openness. Risks include hyperthermia, hyponatremia (dangerous water intoxication), serotonin syndrome, and neurotoxicity with repeated use. Street MDMA is frequently adulterated.</p>
+
+<h3>Legal status</h3>
+<p>Psilocybin, LSD, DMT, and MDMA remain Schedule I under federal law. Some cities and states have decriminalized psilocybin (Oregon, Colorado, some municipalities). The same immigration warnings that apply to cannabis apply here.</p>
+
+<div class="action-box">
+<h4>If someone is having a bad trip</h4>
+<p><strong>Stay calm.</strong> Speak in a soft, reassuring voice. Remind them that what they're experiencing is temporary and caused by a substance.</p>
+<p><strong>Don't leave them alone.</strong> Move them to a quiet, safe environment. Reduce stimulation — dim lights, turn off loud music.</p>
+<p><strong>Don't restrain them.</strong> Unless they are in immediate physical danger.</p>
+<p><strong>Seek medical help</strong> if they become severely agitated, hyperthermic, or unresponsive.</p>
+</div>
+</div>
+
+</div><!-- end hallucinogens -->
+
+<div id="tab-families" class="tab-content">
+<div class="drug-section">
+<h2>For parents and families</h2>
+
+<p>If you are a parent in the Uzbek community reading this — the most important thing you can do is create an environment where your children can talk to you honestly. Shame and silence do not prevent drug use. They prevent your child from telling you when they need help.</p>
+
+<p>Learn the warning signs: sudden changes in friend groups, declining school or work performance, unusual sleep patterns, secretive behavior about their phone or whereabouts, unexplained money issues, and changes in appearance or hygiene. But also — don't panic at the first sign. Have a conversation before you have a crisis.</p>
+
+<p>If someone in your family is struggling with substance use, it is a medical problem — not a moral one. Treatment works. Recovery is possible. Thousands of families go through this, and the ones who do best are the ones who seek help early.</p>
+</div>
+
+</div><!-- end families -->
+
+<div class="disclaimer">This article is for educational purposes only and does not constitute medical advice. It does not encourage or endorse the use of any illegal substances. If you or someone you know is struggling with substance use, contact SAMHSA at 1-800-662-4357.</div>
+
+</div>
+
+<!-- ======= UZBEK ======= -->
+<div data-lang="uz">
+
+<div id="tab-overview" class="tab-content active">
+<p>Bu ko'pgina muhojir oilalar butunlay qochadigan mavzu. O'zbek jamoalarida giyohvand moddalar iste'mol qilish axloqiy buzilish deb qaraladi — "boshqa odamlarning bolalari"ga sodir bo'ladigan narsa. Bu sukunat giyohvand moddalar iste'mol qilishni oldini olmaydi. U hayotlarni saqlab qolishi mumkin bo'lgan halol suhbatlarning oldini oladi.</p>
+
+<p>Siz moddalarni ishlatadimi, ishlatadigan odamni bilasizmi yoki bolalaringiz Amerikada nimaga duch kelishi mumkinligini tushunishga harakat qilayotgan ota-onamisiz — bu maqola sizga tibbiy faktlarni beradi.</p>
+
+<blockquote>Bu maqolaning maqsadi zararni kamaytirish — axloqiy hukm emas. Odamlar o'z tanlovlarini qiladi. Tibbiyotning vazifasi — bu tanlovlar xabardor bo'lishini ta'minlash.</blockquote>
+
+</div>
+
+<div id="tab-marijuana" class="tab-content">
+<div class="drug-section">
+<h2>Marixuana (kannabis)</h2>
+
+<h3>Bu nima</h3>
+<p>Kannabis 100 dan ortiq kannabinoidlarni o'z ichiga oladi, eng muhim ikkitasi THC ("kayfiyat" beradi) va CBD (bermaydi). THC miyaning kayfiyat, ishtaha, og'riq va xotirani boshqaradigan endokannabinoid tizimiga ta'sir qiladi.</p>
+
+<h3>Hujjatlangan tibbiy foydalar</h3>
+<p>FDA tomonidan tasdiqlangan kannabinoid dorilar mavjud: kimyoterapiyadan kelib chiqqan ko'ngil aynish, bolalardagi og'ir epilepsiya va OITSga bog'liq ishtaha yo'qotish uchun. Surunkali og'riq va ba'zi uyqu buzilishlari uchun oqilona dalillar mavjud. Ko'pgina boshqa da'vo qilingan foydalar — tashvish, PTSD, yallig'lanish — cheklangan dalillarga ega.</p>
+
+<h3>Haqiqiy xavflar</h3>
+<p><strong>Miya rivojlanishi:</strong> 25 yoshdan oldin — prefrontal korteks hali rivojlanayotganda — kannabis iste'mol qilish xotira, diqqat va ijroiya funktsiyasiga o'lchanadigan ta'sir bilan bog'liq. Qancha erta boshlasa, xavf shuncha yuqori. Bu kannabis haqidagi eng muhim fakt.</p>
+<p><strong>Ruhiy salomatlik:</strong> Moyil odamlarda muntazam iste'mol psixotik buzilishlarning erta boshlanishi bilan bog'liq.</p>
+<p><strong>Haydash:</strong> Kannabis reaktsiya vaqti va mulohazani buzadi. Kayfda haydash avtohalokatlar xavfini ikki barobarga oshiradi.</p>
+
+<div class="warning-box">
+<h4>Immigratsiya ogohlantirishlari</h4>
+<p>Federal immigratsiya qonuni shtat kannabis legalizatsiyasini tan olmaydi. Immigratsiya suhbatida kannabis iste'mol qilganligini tan olish — shtatda qonuniy bo'lsa ham — kirib bo'lmaslik haqida xulosaga olib kelishi mumkin. AQSh fuqarosi bo'lmasangiz, federal hokimiyatlarga har qanday kannabis iste'molini oshkor qilishdan oldin immigratsiya advokatiga murojaat qiling.</p>
+</div>
+
+<div class="action-box">
+<h4>Agar kannabis iste'mol qilishni tanlasangiz</h4>
+<p><strong>25 yoshgacha kuting.</strong> Miyangiz hali rivojlanmoqda.</p>
+<p><strong>Kam boshlang, sekin boring.</strong> Ayniqsa yeyiladigan mahsulotlar bilan — 2.5-5mg THC bilan boshlang va ko'proq olishdan oldin kamida 2 soat kuting.</p>
+<p><strong>Haydamang.</strong> Iste'moldan keyin kamida 4-6 soat kuting.</p>
+<p><strong>Har kuni ishlatmang.</strong> Ba'zan ishlatish kundalikdan ancha kam xavf tug'diradi.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-cocaine" class="tab-content">
+<div class="drug-section">
+<h2>Kokain</h2>
+
+<h3>Nima qiladi</h3>
+<p>Kokain dopamin, norepinefrin va serotoninning qayta so'rilishini to'sib, miyani stimulyatsiya neyrotransmitterlari bilan to'ldiradi. Natijada qisqa muddatli kuchli eyforiya (buringa tortganda 15-30 daqiqa), keyin tushkunlik.</p>
+
+<h3>Tanangizga nima qiladi</h3>
+<p>Kokain qon tomirlarini toraytiradi, yurak urish tezligini va qon bosimini oshiradi. U yurak mushaklariga bevosita zaharli. O'tkir xavflar: yurak xuruji (hatto yosh, sog'lom odamlarda ham), insult, tutqanoq va to'satdan yurak o'limi.</p>
+
+<div class="danger-box">
+<h4>Fentanil inqirozi</h4>
+<p>2024-2025 yillar holatiga ko'ra, AQShdagi ko'cha kokaini katta qismi fentanil bilan ifloslangan — morfindan 50-100 marta kuchliroq sintetik opioid. Odamlar fentanil borligini bilmagan kokaindan o'lmoqda.</p>
+<p><strong>Fentanil test striplari</strong> ko'pgina zararni kamaytirish markazlarida bepul mavjud. Nalokson (Narcan) hayot saqlab qolishi mumkin.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-amphetamines" class="tab-content">
+<div class="drug-section">
+<h2>Amfetaminlar va metamfetamin</h2>
+
+<h3>Nima ular</h3>
+<p><strong>Retseptli amfetaminlar</strong> (Adderall, Vyvanse) ADHD uchun FDA tomonidan tasdiqlangan. Buyurtma bo'yicha va shifokor nazoratida qabul qilinganda ular odatda xavfsiz va samarali. Muammo noto'g'ri foydalanishda paydo bo'ladi.</p>
+<p><strong>Metamfetamin</strong> ancha kuchliroq stimulyator bo'lib, katta hajmda dopamin chiqishiga sabab bo'ladi. U neyrotoksik — dopamin neyronlarini shikastlaydi.</p>
+
+<div class="action-box">
+<h4>Asosiy faktlar</h4>
+<p>Boshqa birovning Adderall dorisi ishlatish — federal jinoyat. O'z retseptisiz uni olib yurish noqonuniy.</p>
+<p>Metamfetamin har qanday moddaning eng yuqori giyohvandlik potentsiallaridan biriga ega. Tiklanish mumkin, lekin odatda professional davolashni talab qiladi.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-opioids" class="tab-content">
+<div class="drug-section">
+<h2>Geroin va opioidlar</h2>
+
+<h3>Nima ular</h3>
+<p>Opioidlar retseptli og'riq qoldiruvchilar (oksikon, gidrokodon, morfin), geroin va sintetik opioidlarni (fentanil) o'z ichiga oladi. Ularning hammasi bir xil miya retseptorlarida ishlaydi — og'riqni kamaytirish, eyforiya va nafas olishni susaytirish.</p>
+
+<h3>Giyohvandlik qanday rivojlanadi</h3>
+<p>Opioidlar tez jismoniy qaramlikni keltirib chiqaradi. Muntazam iste'molda miya o'z endorfin tizimini pasaytiradi. To'xtatish abstinensiyaga olib keladi — kuchli mushak og'rig'i, ko'ngil aynishi, tashvish — bu oxirgi dozadan 8-24 soat ichida boshlanadi. Vaqt o'tishi bilan odam kayfiyat olish uchun emas, o'zini yomon his qilmaslik uchun ishlatadi.</p>
+
+<div class="danger-box">
+<h4>Opioid dozasining oshishini aniqlash</h4>
+<p><strong>Belgilar:</strong> Nuqtasimon qorachiqlar, hushsizlik, sekin yoki nafas olmaslik, ko'k lablar.</p>
+<p><strong>Nima qilish kerak:</strong> Darhol 911 ga qo'ng'iroq qiling. Mavjud bo'lsa nalokson (Narcan) yuboring. Odamni yon tomoniga yotqizing. Yordam kelguncha yonida qoling.</p>
+</div>
+
+<h3>Opioid giyohvandligini davolash</h3>
+<p><strong>Buprenorfin (Suboxone):</strong> Ishtiyoqni kamaytiradi va sezilarli kayfiyat bermasdan abstinensiyaning oldini oladi. Har qanday shifokor yozishi mumkin. Bu standart davolash.</p>
+<p><strong>Metadon:</strong> Maxsus klinikalarda beriladigan to'liq opioid agonisti. Og'ir giyohvandlik uchun yuqori samarali.</p>
+<p>Dori yordamida davolash dozaning oshib ketishidan o'limni 50% yoki undan ko'proqqa kamaytiradi.</p>
+
+<div class="action-box">
+<h4>Nalokson (Narcan) — olib yuring</h4>
+<p>Narcan ko'pgina dorixonalarda retseptsiz sotiladi. Giyohvandlik potentsiali nolga teng. Olib yurmaslik uchun sabab yo'q.</p>
+<p><strong>SAMHSA yordam liniyasi:</strong> 1-800-662-4357 (bepul, maxfiy, 24/7)</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-hallucinogens" class="tab-content">
+<div class="drug-section">
+<h2>Gallyutsinogenlar</h2>
+
+<h3>Klassik psixodeliklar</h3>
+<p><strong>Psilotsibin (qo'ziqorinlar), LSD, DMT</strong> asosan serotonin 5-HT2A retseptorlariga ta'sir qiladi, idrok, fikr va his-tuyg'ularda chuqur o'zgarishlar keltirib chiqaradi. Ta'sir moddaga qarab 4-12 soat davom etadi. Ular jismonan giyohvandlik keltirmaydi.</p>
+
+<h3>Rivojlanayotgan tibbiy tadqiqotlar</h3>
+<p>Psilotsibin yordamidagi terapiya klinik sinovlarda davolashga chidamli depressiya va terminal kasalliklarda hayot oxiri tashvishi uchun istiqbolli natijalarni ko'rsatdi. FDA psilotsibin terapiyasini depressiya uchun "Breakthrough Therapy" deb belgilagan.</p>
+
+<h3>Xavflar</h3>
+<p><strong>Psixoz xavfi:</strong> Psixodeliklar shizofreniya yoki bipolyar buzilishning shaxsiy yoki oilaviy tarixiga ega odamlarda psixotik epizodlarni keltirib chiqarishi mumkin. Bu odamlar psixodeliklardan foydalanmasligi kerak.</p>
+
+<div class="action-box">
+<h4>Agar kimdir yomon tajriba o'tayotgan bo'lsa</h4>
+<p><strong>Xotirjam bo'ling.</strong> Yumshoq, tinchlantiruvchi ovozda gapiring. Boshdan kechirayotganlari vaqtinchalik ekanligini eslatib turing.</p>
+<p><strong>Yolg'iz qoldirmang.</strong> Ularni tinch, xavfsiz muhitga olib boring.</p>
+<p><strong>Tibbiy yordam so'rang</strong> — agar kuchli bezovta, gipetermik yoki javob bermaydigan bo'lsa.</p>
+</div>
+</div>
+
+</div>
+
+<div id="tab-families" class="tab-content">
+<div class="drug-section">
+<h2>Ota-onalar va oilalar uchun</h2>
+
+<p>Agar siz bu maqolani o'qiyotgan o'zbek jamoasidagi ota-ona bo'lsangiz — siz qilishingiz mumkin bo'lgan eng muhim narsa bolalaringiz sizga halol gapirishishi mumkin bo'lgan muhitni yaratish. Uyat va sukunat giyohvand moddalar iste'mol qilishni oldini olmaydi. Ular bolangizning sizga yordamga muhtoj ekanligini aytishiga to'sqinlik qiladi.</p>
+
+<p>Ogohlantirish belgilarini o'rganing: do'stlar guruhining to'satdan o'zgarishi, maktab yoki ish natijalarining pasayishi, g'ayrioddiy uyqu naqshlari, telefon yoki joylashuvi haqida maxfiy xulq-atvor. Lekin shuningdek — birinchi belgida vahimaga tushmang. Inqirozdan oldin suhbat qiling.</p>
+
+<p>Agar oilangizda kimdir modda iste'moli bilan qiynalayotgan bo'lsa — bu tibbiy muammo, axloqiy emas. Davolash ishlaydi. Tiklanish mumkin.</p>
+</div>
+
+</div>
+
+<div class="disclaimer">Bu maqola faqat ta'lim maqsadida va tibbiy maslahat bermaydi. Hech qanday noqonuniy moddalar iste'mol qilishni rag'batlantirmaydi. Siz yoki tanishingiz modda iste'moli bilan qiynalayotgan bo'lsa, SAMHSA ga murojaat qiling: 1-800-662-4357.</div>
+
+</div>
+
+<div class="article-nav">
+<a href="topic-mental-health.html"><span data-lang="en">&larr; Depression &amp; Anxiety</span><span data-lang="uz">&larr; Depressiya va tashvish</span></a>
+<a href="index.html#topics"><span data-lang="en">All Health Topics &rarr;</span><span data-lang="uz">Barcha sog'liq mavzulari &rarr;</span></a>
+</div>
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD</footer>
+
+<script>
+function moveIndicator(btn){
+  const track=btn.closest('.tab-track');
+  const indicator=track.querySelector('.tab-indicator');
+  if(!indicator)return;
+  indicator.style.width=btn.offsetWidth+'px';
+  indicator.style.left=btn.offsetLeft+'px';
+}
+function showTab(tabId){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-pill').forEach(el=>el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  const btn=document.querySelector('[data-tab="'+tabId+'"]');
+  btn.classList.add('active');
+  moveIndicator(btn);
+  window.scrollTo({top:document.querySelector('.tab-bar').offsetTop-72,behavior:'smooth'});
+}
+window.addEventListener('load',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+window.addEventListener('resize',function(){
+  document.querySelectorAll('.tab-pill.active').forEach(moveIndicator);
+});
+</script>
+
+</body>
+</html>

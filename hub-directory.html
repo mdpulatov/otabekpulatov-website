@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provider Directory — Otabek Pulatov</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0f1d2f;--sky:#dbeafe;--sky-light:#eff6ff;--warm-white:#fafbfc;--cream:#f8f6f3;--gold:#c8944a;--text:#1a1a2e;--text-secondary:#555e6e;--text-light:#8892a4;--border:#e2e6ec;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+.nav-logo span{color:var(--gold)}
+
+.nav-back{font-size:.84rem;font-weight:600;color:var(--text-secondary);text-decoration:none;transition:all .25s;padding:7px 14px;border:1.5px solid var(--border);border-radius:8px;text-transform:uppercase;letter-spacing:.06em}.nav-back:hover{color:var(--gold);border-color:var(--gold)}
+
+
+.page-header{padding:130px clamp(1.5rem,6vw,4rem) 2rem;text-align:center;background:linear-gradient(165deg,var(--warm-white),var(--sky-light))}
+.page-header .label{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.page-header h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--navy);max-width:700px;margin:0 auto .75rem}
+.page-header p{font-size:.98rem;color:var(--text-secondary);max-width:520px;margin:0 auto}
+.content{max-width:900px;margin:0 auto;padding:2rem clamp(1.5rem,4vw,2rem) 5rem}
+.search-bar{display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.search-bar input{flex:1;min-width:200px;padding:10px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}.search-bar input:focus{border-color:var(--gold)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.filters select{padding:8px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:.82rem;color:var(--text-secondary);background:#fff;cursor:pointer;outline:none}.filters select:focus{border-color:var(--gold)}
+.results-count{font-size:.82rem;color:var(--text-light);margin-bottom:1.25rem}
+.provider-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;transition:all .2s;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start}
+.provider-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.provider-name{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--navy)}
+.provider-creds{font-size:.82rem;color:var(--gold);font-weight:500;margin-top:.15rem}
+.provider-specialty{font-size:.9rem;color:var(--text-secondary);margin-top:.5rem}
+.provider-location{font-size:.88rem;color:var(--text-light);margin-top:.35rem}
+.provider-langs{display:flex;gap:.35rem;margin-top:.65rem;flex-wrap:wrap}
+.lang-tag{font-size:.68rem;padding:3px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.lang-uz{background:#fef3c7;color:#92400e}.lang-ru{background:#e0e7ff;color:#3730a3}.lang-en{background:#d1fae5;color:#065f46}.lang-tr{background:#fee2e2;color:#991b1b}
+.provider-contact{text-align:right;font-size:.82rem}
+.provider-contact a{display:inline-block;padding:6px 14px;background:var(--navy);color:#fff;border-radius:6px;text-decoration:none;font-size:.75rem;font-weight:600;transition:all .2s;text-transform:uppercase;letter-spacing:.04em}.provider-contact a:hover{background:var(--gold)}
+.provider-phone{color:var(--text-light);font-size:.8rem;margin-top:.5rem}
+.add-provider{text-align:center;padding:3rem;background:var(--sky-light);border:2px dashed var(--border);border-radius:12px;margin-top:2rem}
+.add-provider h3{font-family:var(--font-display);font-size:1.15rem;color:var(--navy);margin-bottom:.5rem}
+.add-provider p{font-size:.88rem;color:var(--text-secondary);margin-bottom:1rem}
+.add-provider a{display:inline-block;padding:10px 24px;background:var(--gold);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:.85rem;transition:all .2s}.add-provider a:hover{background:var(--navy)}
+.empty-state{text-align:center;padding:3rem;color:var(--text-light)}
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+}body.uz a[data-lang="uz"]{display:inline-flex}
+@media(max-width:640px){.provider-card{grid-template-columns:1fr}.provider-contact{text-align:left;margin-top:.75rem}.search-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="page-header">
+  <div class="label" data-lang="en">Uzbek Health Hub</div><div class="label" data-lang="uz">O'zbek sog'liq markazi</div>
+  <h1 data-lang="en">Provider Directory</h1><h1 data-lang="uz">Shifokorlar katalogi</h1>
+  <p data-lang="en">Find Uzbek-speaking healthcare professionals across the United States.</p>
+  <p data-lang="uz">AQSh bo'ylab o'zbek tilida so'zlashuvchi sog'liqni saqlash mutaxassislarini toping.</p>
+</div>
+
+<div class="content">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search by name, specialty, or city..." oninput="filterProviders()">
+  </div>
+  <div class="filters">
+    <select id="filterSpecialty" onchange="filterProviders()">
+      <option value="" data-lang="en">All Specialties</option>
+      <option value="primary">Primary Care</option>
+      <option value="cardiology">Cardiology</option>
+      <option value="neurology">Neurology</option>
+      <option value="psychiatry">Psychiatry</option>
+      <option value="surgery">Surgery</option>
+      <option value="pediatrics">Pediatrics</option>
+      <option value="obgyn">OB/GYN</option>
+      <option value="dental">Dental</option>
+      <option value="other">Other</option>
+    </select>
+    <select id="filterState" onchange="filterProviders()">
+      <option value="">All States</option>
+      <option value="NY">New York</option>
+      <option value="TX">Texas</option>
+      <option value="OH">Ohio</option>
+      <option value="IL">Illinois</option>
+      <option value="CA">California</option>
+      <option value="PA">Pennsylvania</option>
+      <option value="NJ">New Jersey</option>
+      <option value="other">Other</option>
+    </select>
+    <select id="filterLang" onchange="filterProviders()">
+      <option value="">All Languages</option>
+      <option value="uz">Uzbek</option>
+      <option value="ru">Russian</option>
+      <option value="tr">Turkish</option>
+    </select>
+  </div>
+
+  <div class="results-count" id="resultsCount"></div>
+  <div id="providerList"></div>
+
+<div class="add-provider">
+    <h3 data-lang="en">Are you an Uzbek-speaking healthcare professional?</h3>
+    <h3 data-lang="uz">Siz o'zbek tilida so'zlashuvchi mutaxassisimisiz?</h3>
+    <p data-lang="en">Join the directory so patients can find you. It takes 2 minutes.</p>
+    <p data-lang="uz">Bemorlar sizni topishlari uchun katalogga qo'shiling. 2 daqiqa vaqt oladi.</p>
+    <a href="hub-submit.html" data-lang="en">Add My Practice &rarr;</a>
+    <a href="hub-submit.html" data-lang="uz">Amaliyotimni qo'shish &rarr;</a>
+</div>
+
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD</footer>
+
+<script>
+    // 1. Connection Keys
+    const DB_URL = 'https://ijhspsctuzpxkluaeztq.supabase.co';
+    const DB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqaHNwc2N0dXpweGtsdWFlenRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MDE5NTMsImV4cCI6MjA4NzM3Nzk1M30.CWsa4fxWxmlRDdi1atPwk7bgSrhn8vFt2b07rRmWRzo';
+    const _db = supabase.createClient(DB_URL, DB_KEY);
+
+    let allProviders = []; 
+
+    async function loadLiveProviders() {
+        console.log("Fetching live directory...");
+        const { data, error } = await _db
+            .from('providers')
+            .select('*')
+            .eq('is_approved', true);
+
+        if (error) {
+            console.error("Database Error:", error.message);
+            return;
+        }
+
+        allProviders = data || [];
+        filterProviders(); 
+    }
+
+    function filterProviders() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const specFilter = document.getElementById('filterSpecialty').value.toLowerCase();
+        const stateFilter = document.getElementById('filterState').value;
+        const langFilter = document.getElementById('filterLang').value;
+
+        const filtered = allProviders.filter(p => {
+            const matchesSearch = p.name.toLowerCase().includes(query) || 
+                                  p.specialty.toLowerCase().includes(query) || 
+                                  p.location.toLowerCase().includes(query);
+            
+            const matchesSpec = !specFilter || p.specialty.toLowerCase().includes(specFilter);
+            const matchesState = !stateFilter || p.location.includes(stateFilter);
+            const matchesLang = !langFilter || p.langs.some(l => l.toLowerCase().includes(langFilter));
+
+            return matchesSearch && matchesSpec && matchesState && matchesLang;
+        });
+
+        renderList(filtered);
+    }
+
+    function renderList(list) {
+        const el = document.getElementById('providerList');
+        const count = document.getElementById('resultsCount');
+        
+        count.textContent = `${list.length} provider${list.length !== 1 ? 's' : ''}`;
+
+        if (list.length === 0) {
+            el.innerHTML = '<div class="empty-state"><p>No results found matching those filters.</p></div>';
+            return;
+        }
+
+        el.innerHTML = list.map(p => `
+            <div class="provider-card">
+                <div>
+                    <div class="provider-name">${p.name}</div>
+                    <div class="provider-specialty">${p.specialty}</div>
+                    <div class="provider-location">${p.location}</div>
+                    <div class="provider-langs">
+                        ${p.langs.map(l => `<span class="lang-tag lang-en">${l.toUpperCase()}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="provider-contact">
+                    <a href="mailto:${p.email}">Contact</a>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.onload = loadLiveProviders;
+
+    
+  </script>
+</body>
+</html>

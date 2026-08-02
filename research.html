@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Otabek Pulatov, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1d2f;--navy-light:#1a2e4a;
+  --stone:#ece6d8;--stone-light:#f5f1e6;--warm-white:#faf9f5;--cream:#f6f2e9;
+  --gold:#c8944a;--gold-light:#e8c88a;
+  --text:#211e19;--text-secondary:#5c5648;--text-light:#948d7c;--border:#e6e0d0;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.68,0,.71);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important;transition-duration:.001ms !important} html{scroll-behavior:auto} }
+
+/* === MASTHEAD (dark) === */
+.page-head{position:relative;overflow:hidden;padding:calc(72px + 3.5rem) clamp(1.5rem,6vw,4rem) 3rem;text-align:center;background:var(--navy)}
+.page-head::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 15%,rgba(200,148,74,.12),transparent 55%),radial-gradient(ellipse at 85% 90%,rgba(200,148,74,.07),transparent 50%);pointer-events:none}
+.page-head-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.eyebrow::before,.eyebrow::after{content:'';width:18px;height:1px;background:var(--gold)}
+.page-head h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem}
+.page-head p{font-size:.92rem;color:rgba(255,255,255,.55)}
+.profile-links{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem}
+.profile-link{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:500;transition:all .3s}
+.profile-link:hover{background:rgba(255,255,255,.1);border-color:var(--gold);color:#fff;transform:translateY(-2px)}
+.profile-link svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+
+/* === CONTENT === */
+.content{max-width:740px;margin:0 auto;padding:1rem clamp(1.5rem,4vw,2rem) 5rem}
+.group-head{margin:3.5rem 0 1.5rem;text-align:center}
+.group-head h2{font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light)}
+
+/* === PUB CARD === */
+.pub{border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.75rem;margin-bottom:1.1rem;background:#fff;transition:border-color .35s var(--ease),box-shadow .35s var(--ease);position:relative}
+.pub:hover{border-color:var(--gold);box-shadow:0 14px 32px rgba(15,29,47,.07)}
+.pub-top{display:flex;gap:1rem;align-items:flex-start}
+.pub-mono{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.58rem;font-weight:700;letter-spacing:-.02em;flex-shrink:0;margin-top:.1rem}
+.pub-main{flex:1;min-width:0}
+.pub-status{font-family:var(--font-mono);font-size:.68rem;color:var(--text-light);margin-bottom:.45rem}
+.pub h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:.55rem}
+.pub-why{font-size:.89rem;line-height:1.7;color:var(--text-secondary)}
+
+.pub-abstract{max-height:0;opacity:0;overflow:hidden;transition:max-height .55s var(--ease),opacity .4s,margin .4s;font-size:.87rem;line-height:1.85;color:var(--text-secondary)}
+.pub-abstract-inner{border-top:1px solid var(--border);padding-top:.9rem;margin-top:.9rem}
+.pub-abstract-inner .cite{font-family:var(--font-mono);font-size:.74rem;line-height:1.7;color:var(--text);background:var(--stone-light);padding:.6rem .8rem;border-radius:6px;margin-top:.75rem}
+.pub-abstract-inner .cite strong{font-weight:700}
+.pub:hover .pub-abstract,.pub.expanded .pub-abstract{max-height:600px;opacity:1;margin-top:0}
+
+.pub-toggle{display:inline-flex;align-items:center;gap:5px;margin-top:.85rem;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:.68rem;font-weight:500;color:var(--text-light);text-transform:uppercase;letter-spacing:.06em;transition:color .25s}
+.pub-toggle:hover{color:var(--gold)}
+.pub-toggle svg{width:9px;height:9px;transition:transform .3s var(--ease)}
+.pub.expanded .pub-toggle svg{transform:rotate(180deg)}
+
+.pub-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.pub-btn{display:inline-flex;align-items:center;gap:8px;padding:.55rem .95rem .55rem .55rem;border:1px solid var(--border);border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);text-decoration:none;background:var(--warm-white);transition:all .25s;cursor:pointer}
+.pub-btn:hover{border-color:var(--gold);background:var(--stone-light);color:var(--gold)}
+.pub-btn .mono-sm{width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.5rem;font-weight:700;flex-shrink:0}
+.pub-btn:hover .mono-sm{background:var(--gold)}
+.pub-btn .ext{width:11px;height:11px;flex-shrink:0}
+.pub-btn.pdf-variant{padding:.55rem .95rem}
+
+.pdf-box{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0;border-radius:8px;margin-top:0}
+.pdf-box.open{max-height:900px;opacity:1;margin-top:1rem}
+.pdf-box object{width:100%;height:750px;border:1px solid var(--border);border-radius:8px;background:#f0ede4}
+
+.ongoing-list{margin-top:.5rem}
+.ongoing-item{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem}
+.ongoing-item:last-child{border-bottom:none}
+.ongoing-item .yr{font-family:var(--font-mono);font-size:.72rem;color:var(--text-light);width:70px;flex-shrink:0;padding-top:.15rem}
+.ongoing-item h4{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.ongoing-item p{font-size:.82rem;color:var(--text-secondary)}
+
+.unpublished-zone{background:var(--navy);border-radius:16px;padding:2.25rem clamp(1.25rem,4vw,2.5rem) 2.5rem;margin-top:2.5rem}
+.unpublished-zone .group-head{margin-top:0}
+.unpublished-zone .group-head h2{color:rgba(255,255,255,.4)}
+.unpublished-zone .pub{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+.unpublished-zone .pub:hover{border-color:var(--gold);box-shadow:none}
+.unpublished-zone .pub-mono{background:rgba(255,255,255,.12);color:rgba(255,255,255,.65)}
+.unpublished-zone .pub-status{color:rgba(255,255,255,.4)}
+.unpublished-zone .pub h3{color:#fff}
+.unpublished-zone .pub-why{color:rgba(255,255,255,.55)}
+.unpublished-zone .ongoing-item{border-color:rgba(255,255,255,.1)}
+.unpublished-zone .ongoing-item .yr{color:rgba(255,255,255,.35)}
+.unpublished-zone .ongoing-item h4{color:#fff}
+.unpublished-zone .ongoing-item p{color:rgba(255,255,255,.5)}
+
+footer{padding:1.25rem;background:#0a1520;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4)}
+footer a{color:rgba(255,255,255,.55);text-decoration:none;margin-left:.5rem;border-bottom:1px solid rgba(255,255,255,.2)}
+footer a:hover{color:var(--gold)}
+
+[data-lang="uz"]{display:none}
+body.uz [data-lang="en"]{display:none}
+body.uz [data-lang="uz"]{display:inline}
+body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h2[data-lang="uz"],body.uz h3[data-lang="uz"],body.uz h4[data-lang="uz"]{display:block}
+
+@media(max-width:640px){.pdf-box object{height:420px}.ongoing-item{flex-direction:column;gap:.25rem}.ongoing-item .yr{width:auto}.pub{padding:1.3rem 1.35rem}.pub-mono{width:32px;height:32px}}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<div class="page-head">
+  <div class="page-head-inner">
+    <div class="eyebrow">Research</div>
+    <h1 data-lang="en">Publications</h1>
+    <h1 data-lang="uz">Nashrlar</h1>
+    <p data-lang="en">Cardiovascular research, case reports, and a couple of medical history pieces — most from the last two years.</p>
+    <p data-lang="uz">Yurak-qon tomir tadqiqotlari, holat hisobotlari va tibbiyot tarixiga oid maqolalar — asosan oxirgi ikki yildan.</p>
+    <div class="profile-links">
+      <a href="https://scholar.google.com/citations?user=5Hvm6IoAAAAJ&hl=en" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5zm0 7l-7-4v-5l7 4 7-4v5l-7 4z"/></svg>Google Scholar</a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/?term=otabek+pulatov&page=1" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm3-4H7v-2h8v2zm0-4H7V7h8v2z"/></svg>PubMed</a>
+      <a href="https://orcid.org/0009-0006-7185-6908" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>ORCID</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="pub" id="p1">
+    <div class="pub-top">
+      <div class="pub-mono">NC</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Nature Communications</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Nature Communications</div>
+        <h3>Hepatic Delivery of the MicroRNA-30c Analog C2 Decreases Plasma Cholesterol and Atherosclerosis Without Liver Injury</h3>
+        <p class="pub-why" data-lang="en">A microRNA analog delivered to the liver lowered cholesterol and reduced plaque buildup in mice and monkeys, without harming the liver.</p>
+        <p class="pub-why" data-lang="uz">Jigarga yetkazilgan mikroRNK analogi sichqonlar va maymunlarda xolesterinni pasaytirdi va plaka to'planishini kamaytirdi, jigarga zarar bermadi.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">Testing a microRNA-30c analog (C2) delivered to the liver. In mice, C2 lowered total cholesterol and LDL-C and reduced aortic plaque area, with liver function markers staying within normal range. Non-human primate studies confirmed dose-dependent cholesterol lowering with a clean safety profile. Presented at the AHA Scientific Sessions, selected among the top 3 of over 200 submitted abstracts.</p>
+          <p data-lang="uz">Jigarga yetkazilgan mikroRNK-30c analogi (C2) sinovi. Sichqonlarda C2 umumiy xolesterin va LDL-C ni pasaytirdi, aorta plakasi maydonini kamaytirdi, jigar funktsiyasi ko'rsatkichlari normal darajada qoldi. Primatlarda dozaga bog'liq xolesterin pasayishi tasdiqlandi. AHA ilmiy sessiyalarida taqdim etildi, 200 dan ortiq tezis orasidan top-3 ga tanlandi.</p>
+          <div class="cite">Prakash B, Chang Z, Scarberry S, Gangula B, Hossain MM, Prakashmurthy C, Valmiki S, <strong>Pulatov O</strong>, Yadav PK, Carsons SE, Temel RE, Kavanagh K, Sheng J, Hussain MM. <em>Nature Communications</em>, 2026.</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://www.nature.com/articles/s41467-026-72276-0" target="_blank"><span class="mono-sm">N</span><span data-lang="en">Nature.com</span><span data-lang="uz">Nature.com</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf1')"><span data-lang="en">AHA abstract PDF</span><span data-lang="uz">AHA tezis PDF</span></button>
+        </div>
+        <div class="pdf-box" id="pdf1"><object data="pdfs/pulatov-mirna-30c.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-mirna-30c.pdf">Download</a></p></object></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p2">
+    <div class="pub-top">
+      <div class="pub-mono">BMC</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — BMC Cardiovascular Disorders · First author, PI</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — BMC Cardiovascular Disorders · Birinchi muallif, PI</div>
+        <h3>In-Hospital SGLT2 Inhibitor Initiation, Prescribing Gaps, and 30-Day All-Cause Readmission in Heart Failure With Reduced Ejection Fraction</h3>
+        <p class="pub-why" data-lang="en">A study I led on 450 heart failure patients: starting SGLT2 inhibitors in the hospital was linked to lower 30-day readmission — 12.1% versus 31.8%.</p>
+        <p class="pub-why" data-lang="uz">450 bemor bo'yicha men boshchilik qilgan tadqiqot: kasalxonada SGLT2 ingibitorlarini boshlash past qayta yotqizish bilan bog'liq edi — 12.1% ga qarshi 31.8%.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">Retrospective cohort of 450 adults hospitalized for acute decompensated heart failure across 4 NYU Langone hospitals, January 2023–January 2026. In patients with HFrEF (LVEF ≤40%, N=221), 30-day readmission was 12.1% for those started on an SGLT2 inhibitor in-hospital versus 31.8% for those who weren't (adjusted OR 0.30, 95% CI 0.13–0.68). GDMT co-prescription was the main confounder measured; a pragmatic randomized trial would help resolve what's left.</p>
+          <p data-lang="uz">2023-yil yanvar–2026-yil yanvar oralig'ida 4 ta NYU Langone shifoxonasida o'tkir dekompensatsiyalangan yurak yetishmovchiligi bilan yotqizilgan 450 kattalar bo'yicha retrospektiv kohort. HFrEF bemorlarida (LVEF ≤40%, N=221) 30 kunlik qayta yotqizish SGLT2 ingibitorini kasalxonada boshlaganlarda 12.1%, boshlamaganlarda 31.8% edi (moslashtirilgan OR 0.30).</p>
+          <div class="cite"><strong>Pulatov O</strong>, Kim SY, Grossman Z, Noor F, Salam B, Khan T, Matam A, Wang S, Caraccio T, Marzo KP. <em>BMC Cardiovascular Disorders</em>, 2026.</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://link.springer.com/article/10.1186/s12872-026-06184-y" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p3">
+    <div class="pub-top">
+      <div class="pub-mono">AC</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Annals of Internal Medicine: Clinical Cases · First author</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Annals of Internal Medicine: Clinical Cases · Birinchi muallif</div>
+        <h3>Cardiac Tamponade, Mesenteric Ischemia, and Macrophage Activation Syndrome as the Initial Manifestation of Systemic Lupus Erythematosus</h3>
+        <p class="pub-why" data-lang="en">A man whose lupus first showed up as cardiac tamponade, gut ischemia, and macrophage activation syndrome together — not previously reported at disease onset.</p>
+        <p class="pub-why" data-lang="uz">Tomponada, ichak ishemiyasi va makrofag faollashuvi birgalikda paydo bo'lgan tirandoz bemori — kasallik boshlanishida ilgari qayd etilmagan.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">A 36-year-old man presented with dyspnea requiring emergent pericardiocentesis for cardiac tamponade (700 mL). On hospital day 19 he developed acute mesenteric ischemia; exploratory laparotomy found vasculitic vessel wall thickening rather than a retrievable clot. He then developed macrophage activation syndrome (ferritin over 16,000 ng/mL, transaminitis over 3,000 U/L). Lupus was diagnosed (ACR/EULAR score 21) — to our knowledge the first reported case of tamponade, mesenteric vasculitis, and MAS together at SLE onset. He reached remission on cyclophosphamide and rituximab.</p>
+          <p data-lang="uz">36 yoshli erkakda yurak tomponadasi (700 mL) tufayli shoshilinch perikardiotsentez talab qilingan nafas qisilishi bilan murojaat qildi. 19-kunida o'tkir ichak ishemiyasi rivojlandi; jarrohlik tekshiruvi trombni emas, vaskulitik tomir devori qalinlashuvini aniqladi. Keyin makrofag faollashuv sindromi rivojlandi (ferritin 16,000 dan yuqori). Tirandoz tashxisi qo'yildi (ACR/EULAR ball 21). Bemor siklofosfamid va ritutsimab bilan remissiyaga erishdi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, Khantses E, Moussa M, Xia J, Ghirmay L, Dawson L, Alam A, Nusbaum J. <em>Annals of Internal Medicine: Clinical Cases</em>, 2026;5(6).</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://www.acpjournals.org/doi/10.7326/aimcc.2025.1316" target="_blank"><span class="mono-sm">A</span><span data-lang="en">ACP Journals</span><span data-lang="uz">ACP Journals</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p4">
+    <div class="pub-top">
+      <div class="pub-mono">CR</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Cardiology in Review, 2025</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Cardiology in Review, 2025</div>
+        <h3>The Father of Heart Transplantation History Forgot: Vladimir P. Demikhov, MD (1916–1998)</h3>
+        <p class="pub-why" data-lang="en">On Vladimir Demikhov, who performed the first experimental heart transplant in 1946 and is largely left out of Western medical history.</p>
+        <p class="pub-why" data-lang="uz">1946-yilda birinchi eksperimental yurak transplantatsiyasini amalga oshirgan, ammo g'arb tibbiyot tarixida deyarli tilga olinmaydigan Vladimir Demikhov haqida.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">Demikhov performed the world's first experimental heart transplant in 1946, the first heart-lung transplant, and the first experimental coronary artery bypass. His 1960 monograph became a foundational text of thoracic transplantation and directly influenced Christiaan Barnard, Norman Shumway, and Richard Lower — yet his name rarely appears in Western accounts of that history.</p>
+          <p data-lang="uz">Demikhov 1946-yilda birinchi eksperimental yurak transplantatsiyasini, birinchi yurak-o'pka transplantatsiyasini va birinchi eksperimental koronar arteriya shuntlashni amalga oshirdi. Uning 1960-yilgi monografiyasi ko'krak transplantologiyasining asosiy matniga aylandi va Barnard, Shumway hamda Lowerga bevosita ta'sir ko'rsatdi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, et al. <em>Cardiology in Review</em>, 2025. DOI: 10.1097/crd.0000000000001166</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://www.ovid.com/jnls/cardiologyinreview/abstract/10.1097/crd.0000000000001166~the-father-of-heart-transplantation-history-forgot-vladimir" target="_blank"><span class="mono-sm">O</span><span data-lang="en">Ovid</span><span data-lang="uz">Ovid</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf2')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+        </div>
+        <div class="pdf-box" id="pdf2"><object data="pdfs/pulatov-demikhov.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-demikhov.pdf">Download</a></p></object></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p5">
+    <div class="pub-top">
+      <div class="pub-mono">ECAP</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — European Child &amp; Adolescent Psychiatry</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — European Child &amp; Adolescent Psychiatry</div>
+        <h3>A Name Absent From the Curriculum: Grunya Sukhareva, Triple Erasure, and the Unfinished History of Autism</h3>
+        <p class="pub-why" data-lang="en">On Grunya Sukhareva, the Soviet child psychiatrist who described autism spectrum presentations in the 1920s, well before Kanner and Asperger.</p>
+        <p class="pub-why" data-lang="uz">1920-yillarda autizm spektri ko'rinishlarini tasvirlab bergan sovet bolalar psixiatri Grunya Suxareva haqida, Kanner va Aspergerdan ancha oldin.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">On Grunya Sukhareva, whose 1920s clinical descriptions of autism spectrum presentations predate the accounts more widely credited to Leo Kanner and Hans Asperger by nearly two decades — and whose name has largely been left out of how autism's history is taught.</p>
+          <p data-lang="uz">Grunya Suxareva haqida — uning 1920-yillardagi autizm spektri klinik tavsiflari Kanner va Aspergerga tegishli deb bilingan ma'lumotlardan yigirma yilcha oldin bo'lgan, ammo uning nomi autizm tarixi o'qitilishida deyarli tilga olinmaydi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, Barros R. <em>European Child &amp; Adolescent Psychiatry</em>, 2026.</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://link.springer.com/article/10.1007/s00787-026-03046-y" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p6">
+    <div class="pub-top">
+      <div class="pub-mono">CRN</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Case Reports in Neurology · First author</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Case Reports in Neurology · Birinchi muallif</div>
+        <h3>Tapia's Syndrome Following Non-Invasive Continuous Positive Airway Pressure Therapy</h3>
+        <p class="pub-why" data-lang="en">A patient developed two rare cranial nerve palsies shortly after starting CPAP therapy — an association not previously reported.</p>
+        <p class="pub-why" data-lang="uz">CPAP terapiyasini boshlagandan ko'p o'tmay ikkita kamdan-kam nerv falajini rivojlantirgan bemor — bu bog'liqlik ilgari qayd etilmagan.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">A 66-year-old woman developed acute dysphonia, dysphagia, and right-sided tongue deviation shortly after starting CPAP with a full-face mask. Exam showed right vagus and hypoglossal nerve palsies; laryngoscopy confirmed vocal cord paralysis. MRI and MRA ruled out central causes. Near-complete resolution over 6 weeks with corticosteroids and speech therapy — the first report of Tapia's syndrome as a complication of noninvasive positive-pressure ventilation.</p>
+          <p data-lang="uz">66 yoshli ayolda to'liq yuz niqobi bilan CPAP boshlagandan ko'p o'tmay o'tkir disfoniya, disfagiya va o'ng tomonlama til og'ishi rivojlandi. Tekshiruv o'ng vagus va gipoglossal nerv falajini ko'rsatdi. MRI va MRA markaziy sabablarni istisno qildi. Kortikosteroidlar va nutq terapiyasi bilan 6 haftada deyarli to'liq tuzalish kuzatildi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, Alvarez Vega DR, Syed F, Bokhari M. <em>Case Rep Neurol.</em> 2026;18(1):105–112. DOI: 10.1159/000550579</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://karger.com/crn/article/18/1/105/943219/Tapia-s-Syndrome-following-Noninvasive-Continuous" target="_blank"><span class="mono-sm">K</span><span data-lang="en">Karger</span><span data-lang="uz">Karger</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf3')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+        </div>
+        <div class="pdf-box" id="pdf3"><object data="pdfs/pulatov-tapia.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-tapia.pdf">Download</a></p></object></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p7">
+    <div class="pub-top">
+      <div class="pub-mono">JMCR</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Journal of Medical Case Reports · First author</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Journal of Medical Case Reports · Birinchi muallif</div>
+        <h3>A Novel De Novo Missense Variant in ASH1L Associated with Mild Autism Spectrum Disorder and an Uneven Cognitive Profile</h3>
+        <p class="pub-why" data-lang="en">A new genetic variant found in a 6-year-old with autism, adding to a short list of documented ASH1L variants.</p>
+        <p class="pub-why" data-lang="uz">Autizm bo'lgan 6 yoshli bolada topilgan yangi genetik variant — hujjatlashtirilgan ASH1L variantlari ro'yxatiga qo'shimcha.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">A 6-year-old boy with global developmental delay, speech difficulty, and behavioral challenges. Whole-exome sequencing found a novel de novo missense variant in ASH1L (c.7849G&gt;A, p.Ala2617Thr). Mild ASD with preserved visuospatial skills but significant language and adaptive-behavior delays — adding to a short list of documented ASH1L variants, and a reminder of how little sequencing data exists for underrepresented populations.</p>
+          <p data-lang="uz">Global rivojlanish kechikishi, nutq qiyinchiligi va xulq-atvor muammolari bo'lgan 6 yoshli o'g'il bola. To'liq ekzom sekvensiyalash ASH1L genida yangi de novo missense variantni aniqladi. Vizual-fazoviy ko'nikmalar saqlangan, ammo sezilarli nutq va moslashuvchan xulq-atvor kechikishlari bilan yengil ASD.</p>
+          <div class="cite"><strong>Pulatov O</strong>, Nguyen W, Alvarez Vega D, Barros R. <em>J Med Case Rep.</em> 2025;19:616. DOI: 10.1186/s13256-025-05675-4</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://link.springer.com/article/10.1186/s13256-025-05675-4" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf4')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+        </div>
+        <div class="pdf-box" id="pdf4"><object data="pdfs/pulatov-ash1l.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-ash1l.pdf">Download</a></p></object></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p8">
+    <div class="pub-top">
+      <div class="pub-mono">IJACM</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — International Journal of Anesthesia and Clinical Medicine</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — International Journal of Anesthesia and Clinical Medicine</div>
+        <h3>Erector Spinae Plane Block for Thoracoscopic Surgeries: A Single-Center Retrospective Investigation Into Patient-Controlled Analgesia and Pain</h3>
+        <p class="pub-why" data-lang="en">A nerve block technique used during chest surgery reduced opioid use in the first day after surgery, without affecting pain scores or length of stay.</p>
+        <p class="pub-why" data-lang="uz">Ko'krak jarrohligida nerv blokadasi operatsiyadan keyingi birinchi kunda opioid ishlatilishini kamaytirdi, og'riq darajasiga ta'sir qilmadi.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">A single-center retrospective review of patients undergoing video-assisted thoracoscopic surgery, comparing opioid consumption and pain scores between those who received an erector spinae plane block and those who didn't. Opioid use was lower in the first 24 hours postoperatively, with no meaningful difference in pain scores or length of stay.</p>
+          <p data-lang="uz">Video-yordamida torakoskopik jarrohlik o'tkazgan bemorlar bo'yicha bir markazli retrospektiv tahlil — erector spinae plane blok olganlar va olmaganlar o'rtasida opioid iste'moli va og'riq darajasini solishtirish. Operatsiyadan keyingi birinchi 24 soatda opioid ishlatilishi kamroq bo'ldi.</p>
+          <div class="cite">Nguyen W, Nguyen A, <strong>Pulatov O</strong>, Alvarez Vega D, Wilson R, Gyi R, Reshef H, Spier L, Jiang J, Kundra A, Chai-Gyi C. <em>International Journal of Anesthesia and Clinical Medicine</em>, 2026.</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://www.sciencepublishinggroup.com/article/10.11648/j.ijacm.20261401.22" target="_blank"><span class="mono-sm">SP</span><span data-lang="en">SciencePG</span><span data-lang="uz">SciencePG</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="unpublished-zone">
+  <div class="group-head"><h2 data-lang="en">In progress / not yet published</h2><h2 data-lang="uz">Jarayonda / hali nashr etilmagan</h2></div>
+
+  <div class="pub">
+    <div class="pub-top">
+      <div class="pub-mono">CR</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Ready to submit — Cardiology in Review</div>
+        <div class="pub-status" data-lang="uz">Taqdim etishga tayyor — Cardiology in Review</div>
+        <h3>The Father of Central Asian Cardiac Surgery: Isa K. Akhunbaev, MD (1908–1975)</h3>
+        <p class="pub-why" data-lang="en">A companion piece to the Demikhov editorial, on Isa Akhunbaev, who performed the first cardiac operation in Central Asia in 1959 and built a surgical program that has since carried out over 70,000 heart operations.</p>
+        <p class="pub-why" data-lang="uz">Demikhov haqidagi maqolaga hamroh — 1959-yilda Markaziy Osiyoda birinchi yurak operatsiyasini amalga oshirgan Isa Akhunbaev haqida.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-top">
+      <div class="pub-mono">·</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Drafting</div>
+        <div class="pub-status" data-lang="uz">Jarayonda</div>
+        <h3>Antipsychotic-Induced Hyperprolactinemia: A Comprehensive Literature Review</h3>
+        <p class="pub-why" data-lang="en">A review of how antipsychotic medications raise prolactin levels, which drugs carry the highest risk, and what that means for monitoring — especially in younger patients.</p>
+        <p class="pub-why" data-lang="uz">Antipsikotik dorilar prolaktin darajasini qanday oshirishi haqidagi sharh — ayniqsa yosh bemorlarda.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ongoing-list">
+    <div class="ongoing-item">
+      <div class="yr" data-lang="en">Cohort</div>
+      <div class="yr" data-lang="uz">Kohort</div>
+      <div>
+        <h4 data-lang="en">Amiodarone &amp; Psychotropic Drug Interactions: QTc Prolongation</h4>
+        <h4 data-lang="uz">Amiodaron va psixotrop dorilar o'zaro ta'siri: QTc uzayishi</h4>
+        <p data-lang="en">Retrospective cohort. IRB approved, data collection in progress.</p>
+        <p data-lang="uz">Retrospektiv kohort. IRB tasdiqlangan, ma'lumot yig'ish jarayonida.</p>
+      </div>
+    </div>
+    <div class="ongoing-item">
+      <div class="yr" data-lang="en">Chapter</div>
+      <div class="yr" data-lang="uz">Bob</div>
+      <div>
+        <h4 data-lang="en">Management of Sleep Disturbances in Psychiatric Inpatients</h4>
+        <h4 data-lang="uz">Psixiatrik bemorlarda uyqu buzilishlarini boshqarish</h4>
+        <p data-lang="en">Book chapter on evidence-based sleep management.</p>
+        <p data-lang="uz">Dalillarga asoslangan uyqu boshqaruvi bo'yicha kitob bobi.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<footer>&copy; 2026 Otabek Pulatov, MD <a href="cv.html">CV</a></footer>
+
+<script>
+function togglePdf(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+  event.stopPropagation();
+}
+</script>
+</body>
+</html>
