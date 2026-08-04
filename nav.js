@@ -61,17 +61,24 @@
       background: rgba(200,148,74,.14); border-color: rgba(200,148,74,.2);
     }
 
-    /* Language toggle */
+    /* Language toggle — sliding segmented control */
     #site-nav .lang-sw {
-      display: flex; border: 1.5px solid var(--border, #e6e0d0); border-radius: 8px; overflow: hidden;
+      position: relative; display: inline-flex; align-items: center;
+      background: var(--stone, #ece6d8); border-radius: 100px; padding: 3px; gap: 1px;
     }
+    #site-nav .lang-thumb {
+      position: absolute; top: 3px; left: 3px; width: 30px; height: calc(100% - 6px);
+      background: var(--navy, #0f1d2f); border-radius: 100px; z-index: 0;
+      transition: transform .35s cubic-bezier(.22,.68,0,.71);
+    }
+    #site-nav .lang-sw.uz-active .lang-thumb { transform: translateX(31px); }
     #site-nav .lang-sw button {
-      padding: 6px 14px; background: #fff; border: none; cursor: pointer;
+      position: relative; z-index: 1; width: 30px; padding: 6px 0; background: none; border: none; cursor: pointer;
       font-family: 'DM Sans', -apple-system, sans-serif;
-      font-size: .75rem; font-weight: 600;
-      color: var(--text-light, #948d7c); transition: all .2s; letter-spacing: .04em;
+      font-size: .68rem; font-weight: 700;
+      color: var(--text-light, #948d7c); transition: color .3s; letter-spacing: .03em;
     }
-    #site-nav .lang-sw button.active { background: var(--navy, #0f1d2f); color: #fff; }
+    #site-nav .lang-sw button.active { color: #fff; }
 
     /* Hamburger */
     #site-nav .nav-hamburger {
@@ -137,7 +144,8 @@
       </li>
     </ul>
     <div class="nav-right">
-      <div class="lang-sw">
+      <div class="lang-sw" id="siteLangSw">
+        <span class="lang-thumb"></span>
         <button class="active" onclick="setLang('en')">EN</button>
         <button onclick="setLang('uz')">UZ</button>
       </div>
@@ -176,10 +184,10 @@
   // ── Global setLang — works for all pages ─────────────────────────────────────
   window.setLang = function (lang) {
     document.body.classList.toggle('uz', lang === 'uz');
-    document.querySelectorAll('#site-nav .lang-sw button, .lang-sw button').forEach(b => {
-      b.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    document.querySelectorAll('.lang-sw button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-sw').forEach(sw => sw.classList.toggle('uz-active', lang === 'uz'));
+    if (event && event.target) event.target.classList.add('active');
+    else document.querySelectorAll(`.lang-sw button:${lang === 'uz' ? 'last' : 'first'}-child`).forEach(b=>b.classList.add('active'));
   };
 
 })();

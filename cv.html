@@ -21,26 +21,35 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
 @media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important;transition-duration:.001ms !important} html{scroll-behavior:auto} }
+::selection{background:var(--gold);color:#fff}
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+@media print{ body::before{display:none} }
 
 /* === MASTHEAD === */
-.page-head{padding:calc(72px + 3.5rem) clamp(1.5rem,6vw,4rem) 2.5rem;max-width:720px;margin:0 auto;text-align:center}
+.page-head{position:relative;overflow:hidden;padding:calc(72px + 3.5rem) clamp(1.5rem,6vw,4rem) 2.5rem;text-align:center;background:var(--navy)}
+.page-head::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 15%,rgba(200,148,74,.12),transparent 55%),radial-gradient(ellipse at 85% 90%,rgba(200,148,74,.07),transparent 50%);pointer-events:none}
+.page-head-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
 .eyebrow::before,.eyebrow::after{content:'';width:20px;height:1px;background:var(--gold)}
-.page-head h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-bottom:.6rem}
-.page-head p{font-size:.94rem;color:var(--text-secondary)}
-.header-badges{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:1.25rem;font-size:.8rem;color:var(--text-light)}
-.header-badges strong{color:var(--navy);font-weight:600}.header-badges .dot{color:var(--gold)}
-.head-actions{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;font-family:var(--font-body);font-size:.83rem;font-weight:600;text-decoration:none;border-radius:8px;background:var(--navy);color:#fff;border:none;cursor:pointer;transition:all .3s var(--ease)}
-.btn-primary:hover{background:var(--gold)}
-.profile-link{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;background:#fff;border:1px solid var(--border);color:var(--navy);text-decoration:none;font-size:.8rem;font-weight:500;transition:all .3s}
-.profile-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
-.profile-link svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+.page-head h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:.6rem}
+.page-head p{font-size:.94rem;color:rgba(255,255,255,.55)}
+.header-badges{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:1.25rem;font-size:.8rem;color:rgba(255,255,255,.45)}
+.header-badges strong{color:#fff;font-weight:600}.header-badges .dot{color:var(--gold)}
+.head-actions{display:flex;justify-content:flex-start;gap:.5rem;flex-wrap:nowrap;margin-top:1.75rem;overflow-x:auto;overflow-y:visible;padding:6px .25rem 8px;scrollbar-width:thin}
+@media(min-width:640px){.head-actions{justify-content:center}}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;font-family:var(--font-body);font-size:.76rem;font-weight:600;text-decoration:none;border-radius:7px;background:var(--gold);color:var(--navy);border:none;cursor:pointer;transition:all .3s var(--ease);white-space:nowrap}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.profile-link{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);text-decoration:none;font-size:.74rem;font-weight:500;transition:all .3s;white-space:nowrap}
+.profile-link:hover{background:rgba(255,255,255,.12);border-color:var(--gold);color:#fff;transform:translateY(-2px)}
+.profile-link svg{width:12px;height:12px;fill:currentColor;flex-shrink:0}
 .arrow-ic{display:inline-block;width:12px;height:12px;vertical-align:-1px;transition:transform .3s var(--ease)}
 a:hover .arrow-ic,button:hover .arrow-ic{transform:translateX(3px)}
 
 /* === LAYOUT === */
-.layout{max-width:960px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2rem) 5rem;display:grid;grid-template-columns:160px 1fr;gap:clamp(2rem,5vw,3.5rem)}
+.layout{max-width:960px;margin:0 auto;padding:clamp(2.5rem,6vw,4rem) clamp(1.5rem,4vw,2rem) 5rem;display:grid;grid-template-columns:160px 1fr;gap:clamp(2rem,5vw,3.5rem)}
 @media(max-width:840px){.layout{grid-template-columns:1fr}}
 
 /* sticky rail */
@@ -57,11 +66,12 @@ a:hover .arrow-ic,button:hover .arrow-ic{transform:translateX(3px)}
 .content{min-width:0}
 .cv-group{margin-bottom:2.75rem;scroll-margin-top:5.5rem}
 .cv-group-title{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:8px}
-.cv-entry{margin-bottom:1.5rem;padding-left:1.1rem;border-left:2px solid var(--border);transition:border-color .3s}
+.cv-entry{margin-bottom:1.5rem;padding-left:1.1rem;padding-right:.5rem;border-left:2px solid var(--border);transition:border-color .3s;cursor:default}
 .cv-entry:hover{border-color:var(--gold)}.cv-entry:last-child{margin-bottom:0}
 .cv-entry h3{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.3}
 .cv-entry .role{font-size:.86rem;color:var(--text);font-weight:500;margin-top:2px}
-.cv-entry .details{font-size:.84rem;color:var(--text-secondary);line-height:1.65;margin-top:4px}
+.cv-entry .details{font-size:.84rem;color:var(--text-secondary);line-height:1.65;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s var(--ease),opacity .3s,margin .3s;margin-top:0}
+.cv-entry:hover .details,.cv-entry:focus-within .details{max-height:200px;opacity:1;margin-top:6px}
 .cv-entry .date{font-family:var(--font-mono);font-size:.7rem;color:var(--text-light);margin-top:4px}
 .cv-entry .loc{font-size:.72rem;color:var(--text-light)}
 .cv-pub{display:block;margin-bottom:1.15rem;padding-left:1.1rem;border-left:2px solid var(--border);transition:border-color .3s;text-decoration:none;color:inherit}
@@ -91,9 +101,13 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
 
 @media print{
   #site-nav,footer,.rail,.head-actions,.profile-link{display:none !important}
-  .page-head{padding-top:1rem}
+  .page-head{padding-top:1rem;background:none !important}
+  .page-head::before{display:none !important}
+  .page-head h1,.header-badges strong{color:var(--navy) !important}
+  .page-head p,.header-badges{color:var(--text-secondary) !important}
   .layout{grid-template-columns:1fr;padding:0}
   .fade-in{opacity:1 !important;transform:none !important}
+  .cv-entry .details{max-height:none !important;opacity:1 !important;margin-top:6px !important}
   body{font-size:10.5pt;line-height:1.45}
   .cv-entry,.cv-pub,.cv-pres{break-inside:avoid}
 }
@@ -103,6 +117,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
 <body>
 <script src="nav.js"></script>
 <div class="page-head">
+  <div class="page-head-inner">
   <div class="eyebrow">Curriculum Vitae</div>
   <h1 data-lang="en">Otabek Pulatov, MD</h1>
   <h1 data-lang="uz">Otabek Pulatov, MD</h1>
@@ -111,9 +126,11 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
   <div class="header-badges"><span><strong>MD</strong> — NYU Grossman Long Island SOM</span><span class="dot">&middot;</span><span><strong>PA-C</strong> — Sophie Davis, CUNY</span></div>
   <div class="head-actions">
     <button class="btn-primary" onclick="window.print()"><span data-lang="en">Print / Save PDF</span><span data-lang="uz">Chop etish / PDF</span> <svg class="arrow-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></button>
+    <a href="https://www.linkedin.com/in/pulatbek/" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>LinkedIn</a>
     <a href="https://scholar.google.com/citations?user=5Hvm6IoAAAAJ&hl=en" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5zm0 7l-7-4v-5l7 4 7-4v5l-7 4z"/></svg>Google Scholar</a>
     <a href="https://pubmed.ncbi.nlm.nih.gov/?term=otabek+pulatov&page=1" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm3-4H7v-2h8v2zm0-4H7V7h8v2z"/></svg>PubMed</a>
     <a href="https://orcid.org/0009-0006-7185-6908" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>ORCID</a>
+  </div>
   </div>
 </div>
 
@@ -125,8 +142,6 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
       <button class="rail-item" data-target="publications"><span class="d"></span><span data-lang="en">Publications</span><span data-lang="uz">Nashrlar</span></button>
       <button class="rail-item" data-target="presentations"><span class="d"></span><span data-lang="en">Presentations</span><span data-lang="uz">Taqdimotlar</span></button>
       <button class="rail-item" data-target="teaching"><span class="d"></span><span data-lang="en">Teaching</span><span data-lang="uz">O'qitish</span></button>
-      <button class="rail-item" data-target="service"><span class="d"></span><span data-lang="en">Service</span><span data-lang="uz">Xizmat</span></button>
-      <button class="rail-item" data-target="honors"><span class="d"></span><span data-lang="en">Honors</span><span data-lang="uz">Mukofotlar</span></button>
       <button class="rail-item" data-target="certifications"><span class="d"></span><span data-lang="en">Certs</span><span data-lang="uz">Sertifikat</span></button>
       <button class="rail-item" data-target="memberships"><span class="d"></span><span data-lang="en">Memberships</span><span data-lang="uz">A'zolik</span></button>
       <button class="rail-item" data-target="languages"><span class="d"></span><span data-lang="en">Languages</span><span data-lang="uz">Tillar</span></button>
@@ -136,7 +151,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
   <div class="content">
 
   <div class="cv-group" id="education"><div class="cv-group-title" data-lang="en">Education</div><div class="cv-group-title" data-lang="uz">Ta'lim</div>
-    <div class="cv-entry fade-in"><h3>NYU Grossman Long Island School of Medicine</h3><div class="role">Doctor of Medicine (MD) · Expected June 2026</div><div class="details">Step 1: Pass · Step 2 CK: 260 · Honors in all seven core clerkships</div><div class="date">July 2023 — Present <span class="loc">· Mineola, NY</span></div></div>
+    <div class="cv-entry fade-in"><h3>NYU Grossman Long Island School of Medicine</h3><div class="role">Doctor of Medicine (MD) · Graduated May 2026</div><div class="details">Step 1: Pass · Step 2 CK: 260 · Honors in all seven core clerkships</div><div class="date">July 2023 — May 2026 <span class="loc">· Mineola, NY</span></div></div>
     <div class="cv-entry fade-in"><h3>Sophie Davis School of Biomedical Education, CUNY</h3><div class="role">B.S. in Physician Assistant Studies · Magna Cum Laude</div><div class="details">Dean's List 2015–2017</div><div class="date">July 2015 — January 2018 <span class="loc">· New York, NY</span></div></div>
     <div class="cv-entry fade-in"><h3>Kingsborough Community College</h3><div class="role">A.S. in Biology · Summa Cum Laude</div><div class="details">Dean's List 2012–2014</div><div class="date">September 2012 — May 2015 <span class="loc">· Brooklyn, NY</span></div></div>
   </div>
@@ -176,15 +191,6 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
     <div class="cv-entry fade-in"><h3>Peer Tutor &amp; Student Mentor</h3><div class="role">NYU Grossman Long Island School of Medicine</div><div class="details">Weekly small-group and 1-on-1 sessions for M1/M2 students on clinical reasoning, differentials, and clerkship prep.</div><div class="date">July 2024 — July 2025</div></div>
     <div class="cv-entry fade-in"><h3>PA/NP Student Clinical Preceptor</h3><div class="role">Sophie Davis School of Biomedical Education</div><div class="details">Supervised 50+ PA and NP students in physical diagnosis, clinical reasoning, and management planning.</div><div class="date">February 2019 — March 2022</div></div>
   </div>
-
-  <div class="cv-group" id="service"><div class="cv-group-title" data-lang="en">Service &amp; Volunteering</div><div class="cv-group-title" data-lang="uz">Xizmat va ko'ngillilik</div>
-    <div class="cv-entry fade-in"><h3>WiSH Clinic</h3><div class="role">Student Clinician · NYU GLISOM</div><div class="details">Longitudinal primary care for uninsured patients.</div><div class="date">July 2023 — Present <span class="loc">· Mineola, NY</span></div></div>
-    <div class="cv-entry fade-in"><h3>Brighton Medical Care (Volunteer)</h3><div class="role">Primary &amp; Preventive Care</div><div class="details">Care for undocumented patients, asylum seekers, and refugees from Central Asian communities.</div><div class="date">September 2023 — Present <span class="loc">· Brooklyn, NY</span></div></div>
-    <div class="cv-entry fade-in"><h3>Islamic Center of Frisco Free Clinic</h3><div class="role">Monthly Volunteer Clinician</div><div class="date">March 2022 — March 2023 <span class="loc">· Frisco, TX</span></div></div>
-    <div class="cv-entry fade-in"><h3>MMA Coaching — Children with Autism</h3><div class="role">Volunteer Martial Arts Instructor</div><div class="details">Coached martial arts for children on the autism spectrum, focusing on sensory integration, coordination, and confidence-building.</div><div class="date">2013 — 2022</div></div>
-  </div>
-
-  <div class="cv-group" id="honors"><div class="cv-group-title" data-lang="en">Honors</div><div class="cv-group-title" data-lang="uz">Mukofotlar</div><div class="pills fade-in"><span class="pill">Honors — All 7 Core Clerkships</span><span class="pill">AHA Top-3 Abstract</span><span class="pill">Dean's List — KCC &amp; Sophie Davis</span><span class="pill">Summa Cum Laude — KCC</span><span class="pill">Magna Cum Laude — Sophie Davis</span></div></div>
 
   <div class="cv-group" id="certifications"><div class="cv-group-title" data-lang="en">Certifications &amp; Licensure</div><div class="cv-group-title" data-lang="uz">Sertifikatlar va litsenziyalar</div><div class="pills fade-in"><span class="pill">PA-C — New York</span><span class="pill">PA-C — Texas</span><span class="pill">PA-C — Washington</span><span class="pill">ACLS</span><span class="pill">BLS</span></div></div>
 
