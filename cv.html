@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Curriculum Vitae — Otabek Pulatov, MD</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Curriculum vitae for Otabek Pulatov, MD: education, clinical experience, publications, presentations, and certifications.">
+<link rel="canonical" href="https://otabekpulatov.com/cv.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Curriculum Vitae — Otabek Pulatov, MD">
+<meta property="og:description" content="Curriculum vitae for Otabek Pulatov, MD: education, clinical experience, publications, presentations, and certifications.">
+<meta property="og:url" content="https://otabekpulatov.com/cv.html">
+<meta property="og:image" content="https://otabekpulatov.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Curriculum Vitae — Otabek Pulatov, MD">
+<meta name="twitter:description" content="Curriculum vitae for Otabek Pulatov, MD: education, clinical experience, publications, presentations, and certifications.">
+<meta name="twitter:image" content="https://otabekpulatov.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -66,12 +80,15 @@ a:hover .arrow-ic,button:hover .arrow-ic{transform:translateX(3px)}
 .content{min-width:0}
 .cv-group{margin-bottom:2.75rem;scroll-margin-top:5.5rem}
 .cv-group-title{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:8px}
-.cv-entry{margin-bottom:1.5rem;padding-left:1.1rem;padding-right:.5rem;border-left:2px solid var(--border);transition:border-color .3s;cursor:default}
+.cv-entry{margin-bottom:1.5rem;padding-left:1.1rem;padding-right:.5rem;border-left:2px solid var(--border);transition:border-color .3s;cursor:pointer}
+.cv-entry:focus{outline:none}
+.cv-entry:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
 .cv-entry:hover{border-color:var(--gold)}.cv-entry:last-child{margin-bottom:0}
 .cv-entry h3{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.3}
 .cv-entry .role{font-size:.86rem;color:var(--text);font-weight:500;margin-top:2px}
-.cv-entry .details{font-size:.84rem;color:var(--text-secondary);line-height:1.65;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s var(--ease),opacity .3s,margin .3s;margin-top:0}
-.cv-entry:hover .details,.cv-entry:focus-within .details{max-height:200px;opacity:1;margin-top:6px}
+.cv-entry .details{font-size:.84rem;color:var(--text-secondary);line-height:1.65;display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;transition:grid-template-rows .45s var(--ease),opacity .3s;margin-top:0}
+.cv-entry .details span{display:block;overflow:hidden;min-height:0}
+.cv-entry:hover .details,.cv-entry:focus-visible .details,.cv-entry.expanded .details{grid-template-rows:1fr;opacity:1;margin-top:6px}
 .cv-entry .date{font-family:var(--font-mono);font-size:.7rem;color:var(--text-light);margin-top:4px}
 .cv-entry .loc{font-size:.72rem;color:var(--text-light)}
 .cv-pub{display:block;margin-bottom:1.15rem;padding-left:1.1rem;border-left:2px solid var(--border);transition:border-color .3s;text-decoration:none;color:inherit}
@@ -151,17 +168,17 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
   <div class="content">
 
   <div class="cv-group" id="education"><div class="cv-group-title" data-lang="en">Education</div><div class="cv-group-title" data-lang="uz">Ta'lim</div>
-    <div class="cv-entry fade-in"><h3>NYU Grossman Long Island School of Medicine</h3><div class="role">Doctor of Medicine (MD) · Graduated May 2026</div><div class="details">Step 1: Pass · Step 2 CK: 260 · Honors in all seven core clerkships</div><div class="date">July 2023 — May 2026 <span class="loc">· Mineola, NY</span></div></div>
-    <div class="cv-entry fade-in"><h3>Sophie Davis School of Biomedical Education, CUNY</h3><div class="role">B.S. in Physician Assistant Studies · Magna Cum Laude</div><div class="details">Dean's List 2015–2017</div><div class="date">July 2015 — January 2018 <span class="loc">· New York, NY</span></div></div>
-    <div class="cv-entry fade-in"><h3>Kingsborough Community College</h3><div class="role">A.S. in Biology · Summa Cum Laude</div><div class="details">Dean's List 2012–2014</div><div class="date">September 2012 — May 2015 <span class="loc">· Brooklyn, NY</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>NYU Grossman Long Island School of Medicine</h3><div class="role">Doctor of Medicine (MD) · Graduated May 2026</div><div class="details"><span>Step 1: Pass · Step 2 CK: 260 · Honors in all seven core clerkships</span></div><div class="date">July 2023 — May 2026 <span class="loc">· Mineola, NY</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Sophie Davis School of Biomedical Education, CUNY</h3><div class="role">B.S. in Physician Assistant Studies · Magna Cum Laude</div><div class="details"><span>Dean's List 2015–2017</span></div><div class="date">July 2015 — January 2018 <span class="loc">· New York, NY</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Kingsborough Community College</h3><div class="role">A.S. in Biology · Summa Cum Laude</div><div class="details"><span>Dean's List 2012–2014</span></div><div class="date">September 2012 — May 2015 <span class="loc">· Brooklyn, NY</span></div></div>
   </div>
 
   <div class="cv-group" id="clinical"><div class="cv-group-title" data-lang="en">Clinical Experience</div><div class="cv-group-title" data-lang="uz">Klinik tajriba</div>
-    <div class="cv-entry fade-in"><h3>NYS Department of Health — Independent Assessor Program</h3><div class="role">Clinical PA · Telehealth</div><div class="details">1,000+ telehealth assessments of functional capacity and medical stability for Medicaid eligibility across geriatric, psychiatric, and medically complex populations.</div><div class="date">May 2020 — Present</div></div>
-    <div class="cv-entry fade-in"><h3>Mindbloom</h3><div class="role">Clinical PA · Telehealth Psychiatry · Ketamine-Assisted Treatment</div><div class="details">Telehealth psychiatric care in the context of ketamine-assisted treatment for treatment-resistant depression, anxiety, and PTSD. Patient screening, dosing protocols, integration sessions, longitudinal follow-up.</div><div class="date">March 2022 — February 2024</div></div>
-    <div class="cv-entry fade-in"><h3>Dallas Child Psychiatry</h3><div class="role">Clinical PA · Child &amp; Adolescent Psychiatry</div><div class="details">Outpatient caseload of children and adolescents. ADHD/ASD evaluation, neurodiversity-affirming care, school-based behavioral planning.</div><div class="date">March 2022 — March 2023 <span class="loc">· Dallas, TX</span></div></div>
-    <div class="cv-entry fade-in"><h3>Brighton Medical Care</h3><div class="role">Clinical PA · Primary Care</div><div class="details">Longitudinal panel of 300+ patients. Chronic disease management, language-concordant counseling for Russian- and Uzbek-speaking immigrant families.</div><div class="date">February 2019 — February 2022 <span class="loc">· Brooklyn, NY</span></div></div>
-    <div class="cv-entry fade-in"><h3>Northwell Health</h3><div class="role">Clinical PA · Neurology</div><div class="details">Epilepsy, movement disorders, multiple sclerosis. Full responsibility for outpatient neurosurgery clinic. EMG/NCS coordination, Botox injection clinics.</div><div class="date">March 2018 — March 2022 <span class="loc">· Long Island, NY</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>NYS Department of Health — Independent Assessor Program</h3><div class="role">Clinical PA · Telehealth</div><div class="details"><span>1,000+ telehealth assessments of functional capacity and medical stability for Medicaid eligibility across geriatric, psychiatric, and medically complex populations.</span></div><div class="date">May 2020 — Present</div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Mindbloom</h3><div class="role">Clinical PA · Telehealth Psychiatry · Ketamine-Assisted Treatment</div><div class="details"><span>Telehealth psychiatric care in the context of ketamine-assisted treatment for treatment-resistant depression, anxiety, and PTSD. Patient screening, dosing protocols, integration sessions, longitudinal follow-up.</span></div><div class="date">March 2022 — February 2024</div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Dallas Child Psychiatry</h3><div class="role">Clinical PA · Child &amp; Adolescent Psychiatry</div><div class="details"><span>Outpatient caseload of children and adolescents. ADHD/ASD evaluation, neurodiversity-affirming care, school-based behavioral planning.</span></div><div class="date">March 2022 — March 2023 <span class="loc">· Dallas, TX</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Brighton Medical Care</h3><div class="role">Clinical PA · Primary Care</div><div class="details"><span>Longitudinal panel of 300+ patients. Chronic disease management, language-concordant counseling for Russian- and Uzbek-speaking immigrant families.</span></div><div class="date">February 2019 — February 2022 <span class="loc">· Brooklyn, NY</span></div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Northwell Health</h3><div class="role">Clinical PA · Neurology</div><div class="details"><span>Epilepsy, movement disorders, multiple sclerosis. Full responsibility for outpatient neurosurgery clinic. EMG/NCS coordination, Botox injection clinics.</span></div><div class="date">March 2018 — March 2022 <span class="loc">· Long Island, NY</span></div></div>
   </div>
 
   <div class="cv-group" id="publications"><div class="cv-group-title" data-lang="en">Publications</div><div class="cv-group-title" data-lang="uz">Nashrlar</div>
@@ -188,8 +205,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"]{display:block}
   </div>
 
   <div class="cv-group" id="teaching"><div class="cv-group-title" data-lang="en">Teaching &amp; Mentorship</div><div class="cv-group-title" data-lang="uz">O'qitish va murabbiylik</div>
-    <div class="cv-entry fade-in"><h3>Peer Tutor &amp; Student Mentor</h3><div class="role">NYU Grossman Long Island School of Medicine</div><div class="details">Weekly small-group and 1-on-1 sessions for M1/M2 students on clinical reasoning, differentials, and clerkship prep.</div><div class="date">July 2024 — July 2025</div></div>
-    <div class="cv-entry fade-in"><h3>PA/NP Student Clinical Preceptor</h3><div class="role">Sophie Davis School of Biomedical Education</div><div class="details">Supervised 50+ PA and NP students in physical diagnosis, clinical reasoning, and management planning.</div><div class="date">February 2019 — March 2022</div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>Peer Tutor &amp; Student Mentor</h3><div class="role">NYU Grossman Long Island School of Medicine</div><div class="details"><span>Weekly small-group and 1-on-1 sessions for M1/M2 students on clinical reasoning, differentials, and clerkship prep.</span></div><div class="date">July 2024 — July 2025</div></div>
+    <div class="cv-entry fade-in" tabindex="0"><h3>PA/NP Student Clinical Preceptor</h3><div class="role">Sophie Davis School of Biomedical Education</div><div class="details"><span>Supervised 50+ PA and NP students in physical diagnosis, clinical reasoning, and management planning.</span></div><div class="date">February 2019 — March 2022</div></div>
   </div>
 
   <div class="cv-group" id="certifications"><div class="cv-group-title" data-lang="en">Certifications &amp; Licensure</div><div class="cv-group-title" data-lang="uz">Sertifikatlar va litsenziyalar</div><div class="pills fade-in"><span class="pill">PA-C — New York</span><span class="pill">PA-C — Texas</span><span class="pill">PA-C — Washington</span><span class="pill">ACLS</span><span class="pill">BLS</span></div></div>
@@ -225,6 +242,13 @@ groups.forEach(g => railObs.observe(g));
 railItems.forEach(btn => {
   btn.addEventListener('click', () => {
     document.getElementById(btn.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+document.querySelectorAll('.cv-entry').forEach(entry => {
+  entry.addEventListener('click', () => entry.classList.toggle('expanded'));
+  entry.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); entry.classList.toggle('expanded'); }
   });
 });
 </script>

@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Publications — Otabek Pulatov, MD</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Peer reviewed research in cardiology, psychiatry, and the history of medicine, including work published in Nature Communications and BMC Cardiovascular Disorders.">
+<link rel="canonical" href="https://otabekpulatov.com/research.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Publications — Otabek Pulatov, MD">
+<meta property="og:description" content="Peer reviewed research in cardiology, psychiatry, and the history of medicine, including work published in Nature Communications and BMC Cardiovascular Disorders.">
+<meta property="og:url" content="https://otabekpulatov.com/research.html">
+<meta property="og:image" content="https://otabekpulatov.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Publications — Otabek Pulatov, MD">
+<meta name="twitter:description" content="Peer reviewed research in cardiology, psychiatry, and the history of medicine, including work published in Nature Communications and BMC Cardiovascular Disorders.">
+<meta name="twitter:image" content="https://otabekpulatov.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -50,11 +64,12 @@ body{font-family:var(--font-body);color:var(--text);background:var(--warm-white)
 .pub h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:.55rem}
 .pub-why{font-size:.89rem;line-height:1.7;color:var(--text-secondary)}
 
-.pub-abstract{max-height:0;opacity:0;overflow:hidden;transition:max-height .55s var(--ease),opacity .4s,margin .4s;font-size:.87rem;line-height:1.85;color:var(--text-secondary)}
-.pub-abstract-inner{border-top:1px solid var(--border);padding-top:.9rem;margin-top:.9rem}
+.pub-abstract{display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;transition:grid-template-rows .55s var(--ease),opacity .4s;font-size:.87rem;line-height:1.85;color:var(--text-secondary)}
+.pub-abstract-inner{overflow:hidden;min-height:0;margin-top:0}
 .pub-abstract-inner .cite{font-family:var(--font-mono);font-size:.74rem;line-height:1.7;color:var(--text);background:var(--stone-light);padding:.6rem .8rem;border-radius:6px;margin-top:.75rem}
 .pub-abstract-inner .cite strong{font-weight:700}
-.pub:hover .pub-abstract,.pub.expanded .pub-abstract{max-height:600px;opacity:1;margin-top:0}
+.pub:hover .pub-abstract,.pub.expanded .pub-abstract{grid-template-rows:1fr;opacity:1}
+.pub:hover .pub-abstract-inner,.pub.expanded .pub-abstract-inner{border-top:1px solid var(--border);padding-top:.9rem;margin-top:.9rem}
 
 .pub-toggle{display:inline-flex;align-items:center;gap:5px;margin-top:.85rem;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:.68rem;font-weight:500;color:var(--text-light);text-transform:uppercase;letter-spacing:.06em;transition:color .25s}
 .pub-toggle:hover{color:var(--gold)}
@@ -69,9 +84,10 @@ body{font-family:var(--font-body);color:var(--text);background:var(--warm-white)
 .pub-btn .ext{width:11px;height:11px;flex-shrink:0}
 .pub-btn.pdf-variant{padding:.55rem .95rem}
 
-.pdf-box{max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0;border-radius:8px;margin-top:0}
-.pdf-box.open{max-height:900px;opacity:1;margin-top:1rem}
-.pdf-box object{width:100%;height:750px;border:1px solid var(--border);border-radius:8px;background:#f0ede4}
+.pdf-box{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .6s var(--ease),opacity .4s;opacity:0;border-radius:8px;margin-top:0}
+.pdf-box.open{grid-template-rows:1fr;opacity:1;margin-top:1rem}
+.pdf-box object{width:100%;height:0;min-height:0;overflow:hidden;border:0 solid var(--border);border-radius:8px;background:#f0ede4}
+.pdf-box.open object{height:750px;border-width:1px}
 
 .ongoing-list{margin-top:.5rem}
 .ongoing-item{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem}
@@ -103,7 +119,7 @@ body.uz [data-lang="en"]{display:none}
 body.uz [data-lang="uz"]{display:inline}
 body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h2[data-lang="uz"],body.uz h3[data-lang="uz"],body.uz h4[data-lang="uz"]{display:block}
 
-@media(max-width:640px){.pdf-box object{height:420px}.ongoing-item{flex-direction:column;gap:.25rem}.ongoing-item .yr{width:auto}.pub{padding:1.3rem 1.35rem}.pub-mono{width:32px;height:32px}}
+@media(max-width:640px){.pdf-box.open object{height:420px}.ongoing-item{flex-direction:column;gap:.25rem}.ongoing-item .yr{width:auto}.pub{padding:1.3rem 1.35rem}.pub-mono{width:32px;height:32px}}
 </style>
 </head>
 <body>
@@ -114,7 +130,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
     <div class="eyebrow">Research</div>
     <h1 data-lang="en">Publications</h1>
     <h1 data-lang="uz">Nashrlar</h1>
-    <p data-lang="en">Cardiovascular research, case reports, and a couple of medical history pieces — most from the last two years.</p>
+    <p data-lang="en">Cardiovascular research, case reports, and a couple of medical history pieces, most from the last two years.</p>
     <p data-lang="uz">Yurak-qon tomir tadqiqotlari, holat hisobotlari va tibbiyot tarixiga oid maqolalar — asosan oxirgi ikki yildan.</p>
     <div class="profile-links">
       <a href="https://scholar.google.com/citations?user=5Hvm6IoAAAAJ&hl=en" class="profile-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5zm0 7l-7-4v-5l7 4 7-4v5l-7 4z"/></svg>Google Scholar</a>
@@ -157,7 +173,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <div class="pub-status" data-lang="en">Published — BMC Cardiovascular Disorders · First author, PI</div>
         <div class="pub-status" data-lang="uz">Nashr etilgan — BMC Cardiovascular Disorders · Birinchi muallif, PI</div>
         <h3>In-Hospital SGLT2 Inhibitor Initiation, Prescribing Gaps, and 30-Day All-Cause Readmission in Heart Failure With Reduced Ejection Fraction</h3>
-        <p class="pub-why" data-lang="en">A study I led on 450 heart failure patients: starting SGLT2 inhibitors in the hospital was linked to lower 30-day readmission — 12.1% versus 31.8%.</p>
+        <p class="pub-why" data-lang="en">A study I led on 450 heart failure patients: starting SGLT2 inhibitors in the hospital was linked to lower 30-day readmission, 12.1% versus 31.8%.</p>
         <p class="pub-why" data-lang="uz">450 bemor bo'yicha men boshchilik qilgan tadqiqot: kasalxonada SGLT2 ingibitorlarini boshlash past qayta yotqizish bilan bog'liq edi — 12.1% ga qarshi 31.8%.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
           <p data-lang="en">Retrospective cohort of 450 adults hospitalized for acute decompensated heart failure across 4 NYU Langone hospitals, January 2023–January 2026. In patients with HFrEF (LVEF ≤40%, N=221), 30-day readmission was 12.1% for those started on an SGLT2 inhibitor in-hospital versus 31.8% for those who weren't (adjusted OR 0.30, 95% CI 0.13–0.68). GDMT co-prescription was the main confounder measured; a pragmatic randomized trial would help resolve what's left.</p>
@@ -179,7 +195,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <div class="pub-status" data-lang="en">Published — Annals of Internal Medicine: Clinical Cases · First author</div>
         <div class="pub-status" data-lang="uz">Nashr etilgan — Annals of Internal Medicine: Clinical Cases · Birinchi muallif</div>
         <h3>Cardiac Tamponade, Mesenteric Ischemia, and Macrophage Activation Syndrome as the Initial Manifestation of Systemic Lupus Erythematosus</h3>
-        <p class="pub-why" data-lang="en">A man whose lupus first showed up as cardiac tamponade, gut ischemia, and macrophage activation syndrome together — not previously reported at disease onset.</p>
+        <p class="pub-why" data-lang="en">A man whose lupus first showed up as cardiac tamponade, gut ischemia, and macrophage activation syndrome together, a combination not previously reported at disease onset.</p>
         <p class="pub-why" data-lang="uz">Tomponada, ichak ishemiyasi va makrofag faollashuvi birgalikda paydo bo'lgan tirandoz bemori — kasallik boshlanishida ilgari qayd etilmagan.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
           <p data-lang="en">A 36-year-old man presented with dyspnea requiring emergent pericardiocentesis for cardiac tamponade (700 mL). On hospital day 19 he developed acute mesenteric ischemia; exploratory laparotomy found vasculitic vessel wall thickening rather than a retrievable clot. He then developed macrophage activation syndrome (ferritin over 16,000 ng/mL, transaminitis over 3,000 U/L). Lupus was diagnosed (ACR/EULAR score 21) — to our knowledge the first reported case of tamponade, mesenteric vasculitis, and MAS together at SLE onset. He reached remission on cyclophosphamide and rituximab.</p>
@@ -204,7 +220,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <p class="pub-why" data-lang="en">On Vladimir Demikhov, who performed the first experimental heart transplant in 1946 and is largely left out of Western medical history.</p>
         <p class="pub-why" data-lang="uz">1946-yilda birinchi eksperimental yurak transplantatsiyasini amalga oshirgan, ammo g'arb tibbiyot tarixida deyarli tilga olinmaydigan Vladimir Demikhov haqida.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">Demikhov performed the world's first experimental heart transplant in 1946, the first heart-lung transplant, and the first experimental coronary artery bypass. His 1960 monograph became a foundational text of thoracic transplantation and directly influenced Christiaan Barnard, Norman Shumway, and Richard Lower — yet his name rarely appears in Western accounts of that history.</p>
+          <p data-lang="en">Demikhov performed the world's first experimental heart transplant in 1946, the first heart-lung transplant, and the first experimental coronary artery bypass. His 1960 monograph became a foundational text of thoracic transplantation and directly influenced Christiaan Barnard, Norman Shumway, and Richard Lower, yet his name rarely appears in Western accounts of that history.</p>
           <p data-lang="uz">Demikhov 1946-yilda birinchi eksperimental yurak transplantatsiyasini, birinchi yurak-o'pka transplantatsiyasini va birinchi eksperimental koronar arteriya shuntlashni amalga oshirdi. Uning 1960-yilgi monografiyasi ko'krak transplantologiyasining asosiy matniga aylandi va Barnard, Shumway hamda Lowerga bevosita ta'sir ko'rsatdi.</p>
           <div class="cite"><strong>Pulatov O</strong>, et al. <em>Cardiology in Review</em>, 2025. DOI: 10.1097/crd.0000000000001166</div>
         </div></div>
@@ -228,7 +244,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <p class="pub-why" data-lang="en">On Grunya Sukhareva, the Soviet child psychiatrist who described autism spectrum presentations in the 1920s, well before Kanner and Asperger.</p>
         <p class="pub-why" data-lang="uz">1920-yillarda autizm spektri ko'rinishlarini tasvirlab bergan sovet bolalar psixiatri Grunya Suxareva haqida, Kanner va Aspergerdan ancha oldin.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">On Grunya Sukhareva, whose 1920s clinical descriptions of autism spectrum presentations predate the accounts more widely credited to Leo Kanner and Hans Asperger by nearly two decades — and whose name has largely been left out of how autism's history is taught.</p>
+          <p data-lang="en">On Grunya Sukhareva, whose 1920s clinical descriptions of autism spectrum presentations predate the accounts more widely credited to Leo Kanner and Hans Asperger by nearly two decades, though her name has largely been left out of how autism's history is taught.</p>
           <p data-lang="uz">Grunya Suxareva haqida — uning 1920-yillardagi autizm spektri klinik tavsiflari Kanner va Aspergerga tegishli deb bilingan ma'lumotlardan yigirma yilcha oldin bo'lgan, ammo uning nomi autizm tarixi o'qitilishida deyarli tilga olinmaydi.</p>
           <div class="cite"><strong>Pulatov O</strong>, Barros R. <em>European Child &amp; Adolescent Psychiatry</em>, 2026.</div>
         </div></div>
@@ -247,10 +263,10 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <div class="pub-status" data-lang="en">Published — Case Reports in Neurology · First author</div>
         <div class="pub-status" data-lang="uz">Nashr etilgan — Case Reports in Neurology · Birinchi muallif</div>
         <h3>Tapia's Syndrome Following Non-Invasive Continuous Positive Airway Pressure Therapy</h3>
-        <p class="pub-why" data-lang="en">A patient developed two rare cranial nerve palsies shortly after starting CPAP therapy — an association not previously reported.</p>
+        <p class="pub-why" data-lang="en">A patient developed two rare cranial nerve palsies shortly after starting CPAP therapy, an association not previously reported.</p>
         <p class="pub-why" data-lang="uz">CPAP terapiyasini boshlagandan ko'p o'tmay ikkita kamdan-kam nerv falajini rivojlantirgan bemor — bu bog'liqlik ilgari qayd etilmagan.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">A 66-year-old woman developed acute dysphonia, dysphagia, and right-sided tongue deviation shortly after starting CPAP with a full-face mask. Exam showed right vagus and hypoglossal nerve palsies; laryngoscopy confirmed vocal cord paralysis. MRI and MRA ruled out central causes. Near-complete resolution over 6 weeks with corticosteroids and speech therapy — the first report of Tapia's syndrome as a complication of noninvasive positive-pressure ventilation.</p>
+          <p data-lang="en">A 66-year-old woman developed acute dysphonia, dysphagia, and right-sided tongue deviation shortly after starting CPAP with a full-face mask. Exam showed right vagus and hypoglossal nerve palsies; laryngoscopy confirmed vocal cord paralysis. MRI and MRA ruled out central causes. Near-complete resolution over 6 weeks with corticosteroids and speech therapy. This is the first report of Tapia's syndrome as a complication of noninvasive positive-pressure ventilation.</p>
           <p data-lang="uz">66 yoshli ayolda to'liq yuz niqobi bilan CPAP boshlagandan ko'p o'tmay o'tkir disfoniya, disfagiya va o'ng tomonlama til og'ishi rivojlandi. Tekshiruv o'ng vagus va gipoglossal nerv falajini ko'rsatdi. MRI va MRA markaziy sabablarni istisno qildi. Kortikosteroidlar va nutq terapiyasi bilan 6 haftada deyarli to'liq tuzalish kuzatildi.</p>
           <div class="cite"><strong>Pulatov O</strong>, Alvarez Vega DR, Syed F, Bokhari M. <em>Case Rep Neurol.</em> 2026;18(1):105–112. DOI: 10.1159/000550579</div>
         </div></div>
@@ -274,7 +290,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <p class="pub-why" data-lang="en">A new genetic variant found in a 6-year-old with autism, adding to a short list of documented ASH1L variants.</p>
         <p class="pub-why" data-lang="uz">Autizm bo'lgan 6 yoshli bolada topilgan yangi genetik variant — hujjatlashtirilgan ASH1L variantlari ro'yxatiga qo'shimcha.</p>
         <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">A 6-year-old boy with global developmental delay, speech difficulty, and behavioral challenges. Whole-exome sequencing found a novel de novo missense variant in ASH1L (c.7849G&gt;A, p.Ala2617Thr). Mild ASD with preserved visuospatial skills but significant language and adaptive-behavior delays — adding to a short list of documented ASH1L variants, and a reminder of how little sequencing data exists for underrepresented populations.</p>
+          <p data-lang="en">A 6-year-old boy with global developmental delay, speech difficulty, and behavioral challenges. Whole-exome sequencing found a novel de novo missense variant in ASH1L (c.7849G&gt;A, p.Ala2617Thr). Mild ASD with preserved visuospatial skills but significant language and adaptive-behavior delays, adding to a short list of documented ASH1L variants and a reminder of how little sequencing data exists for underrepresented populations.</p>
           <p data-lang="uz">Global rivojlanish kechikishi, nutq qiyinchiligi va xulq-atvor muammolari bo'lgan 6 yoshli o'g'il bola. To'liq ekzom sekvensiyalash ASH1L genida yangi de novo missense variantni aniqladi. Vizual-fazoviy ko'nikmalar saqlangan, ammo sezilarli nutq va moslashuvchan xulq-atvor kechikishlari bilan yengil ASD.</p>
           <div class="cite"><strong>Pulatov O</strong>, Nguyen W, Alvarez Vega D, Barros R. <em>J Med Case Rep.</em> 2025;19:616. DOI: 10.1186/s13256-025-05675-4</div>
         </div></div>
@@ -333,7 +349,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <div class="pub-status" data-lang="en">Drafting</div>
         <div class="pub-status" data-lang="uz">Jarayonda</div>
         <h3>Antipsychotic-Induced Hyperprolactinemia: A Comprehensive Literature Review</h3>
-        <p class="pub-why" data-lang="en">A review of how antipsychotic medications raise prolactin levels, which drugs carry the highest risk, and what that means for monitoring — especially in younger patients.</p>
+        <p class="pub-why" data-lang="en">A review of how antipsychotic medications raise prolactin levels, which drugs carry the highest risk, and what that means for monitoring, especially in younger patients.</p>
         <p class="pub-why" data-lang="uz">Antipsikotik dorilar prolaktin darajasini qanday oshirishi haqidagi sharh — ayniqsa yosh bemorlarda.</p>
       </div>
     </div>
