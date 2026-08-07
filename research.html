@@ -79,15 +79,24 @@ body{font-family:var(--font-body);color:var(--text);background:var(--warm-white)
 .pub-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
 .pub-btn{display:inline-flex;align-items:center;gap:8px;padding:.55rem .95rem .55rem .55rem;border:1px solid var(--border);border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);text-decoration:none;background:var(--warm-white);transition:all .25s;cursor:pointer}
 .pub-btn:hover{border-color:var(--gold);background:var(--stone-light);color:var(--gold)}
-.pub-btn .mono-sm{width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.5rem;font-weight:700;flex-shrink:0}
+.pub-btn .mono-sm{width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.44rem;font-weight:700;flex-shrink:0}
 .pub-btn:hover .mono-sm{background:var(--gold)}
 .pub-btn .ext{width:11px;height:11px;flex-shrink:0}
-.pub-btn.pdf-variant{padding:.55rem .95rem}
 
-.pdf-box{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .6s var(--ease),opacity .4s;opacity:0;border-radius:8px;margin-top:0}
-.pdf-box.open{grid-template-rows:1fr;opacity:1;margin-top:1rem}
-.pdf-box object{width:100%;height:0;min-height:0;overflow:hidden;border:0 solid var(--border);border-radius:8px;background:#f0ede4}
-.pdf-box.open object{height:750px;border-width:1px}
+/* === PDF MODAL === */
+.pdf-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:2.5rem clamp(1rem,4vw,2.5rem)}
+.pdf-modal.open{display:flex}
+.pdf-modal-backdrop{position:absolute;inset:0;background:rgba(15,29,47,.78);backdrop-filter:blur(3px)}
+.pdf-modal-panel{position:relative;z-index:1;width:100%;max-width:920px;height:100%;max-height:860px;background:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.35)}
+.pdf-modal-bar{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;border-bottom:1px solid var(--border);background:var(--warm-white);flex-shrink:0}
+.pdf-modal-newtab{font-family:var(--font-mono);font-size:.72rem;color:var(--text-secondary);text-decoration:none}
+.pdf-modal-newtab:hover{color:var(--gold)}
+.pdf-modal-close{background:none;border:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--text-light);padding:.15rem .5rem;transition:color .2s}
+.pdf-modal-close:hover{color:var(--navy)}
+.pdf-modal-panel object{flex:1;width:100%;border:none}
+.pdf-modal-fallback{padding:2rem;font-size:.85rem;color:var(--text-secondary);text-align:center}
+.pdf-modal-fallback a{color:var(--gold);font-weight:600}
+@media(max-width:640px){.pdf-modal{padding:0}.pdf-modal-panel{max-width:none;max-height:none;border-radius:0}}
 
 .ongoing-list{margin-top:.5rem}
 .ongoing-item{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem}
@@ -119,7 +128,7 @@ body.uz [data-lang="en"]{display:none}
 body.uz [data-lang="uz"]{display:inline}
 body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"],body.uz h2[data-lang="uz"],body.uz h3[data-lang="uz"],body.uz h4[data-lang="uz"]{display:block}
 
-@media(max-width:640px){.pdf-box.open object{height:420px}.ongoing-item{flex-direction:column;gap:.25rem}.ongoing-item .yr{width:auto}.pub{padding:1.3rem 1.35rem}.pub-mono{width:32px;height:32px}}
+@media(max-width:640px){.ongoing-item{flex-direction:column;gap:.25rem}.ongoing-item .yr{width:auto}.pub{padding:1.3rem 1.35rem}.pub-mono{width:32px;height:32px}}
 </style>
 </head>
 <body>
@@ -159,9 +168,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://www.nature.com/articles/s41467-026-72276-0" target="_blank"><span class="mono-sm">N</span><span data-lang="en">Nature.com</span><span data-lang="uz">Nature.com</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf1')"><span data-lang="en">AHA abstract PDF</span><span data-lang="uz">AHA tezis PDF</span></button>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-mirna-30c.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
-        <div class="pdf-box" id="pdf1"><object data="pdfs/pulatov-mirna-30c.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-mirna-30c.pdf">Download</a></p></object></div>
       </div>
     </div>
   </div>
@@ -183,6 +191,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://link.springer.com/article/10.1186/s12872-026-06184-y" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-sglt2i-hf.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
       </div>
     </div>
@@ -205,6 +214,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://www.acpjournals.org/doi/10.7326/aimcc.2025.1316" target="_blank"><span class="mono-sm">A</span><span data-lang="en">ACP Journals</span><span data-lang="uz">ACP Journals</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-sle-tamponade.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
       </div>
     </div>
@@ -227,9 +237,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://www.ovid.com/jnls/cardiologyinreview/abstract/10.1097/crd.0000000000001166~the-father-of-heart-transplantation-history-forgot-vladimir" target="_blank"><span class="mono-sm">O</span><span data-lang="en">Ovid</span><span data-lang="uz">Ovid</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf2')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-demikhov.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
-        <div class="pdf-box" id="pdf2"><object data="pdfs/pulatov-demikhov.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-demikhov.pdf">Download</a></p></object></div>
       </div>
     </div>
   </div>
@@ -273,9 +282,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://karger.com/crn/article/18/1/105/943219/Tapia-s-Syndrome-following-Noninvasive-Continuous" target="_blank"><span class="mono-sm">K</span><span data-lang="en">Karger</span><span data-lang="uz">Karger</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf3')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-tapia.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
-        <div class="pdf-box" id="pdf3"><object data="pdfs/pulatov-tapia.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-tapia.pdf">Download</a></p></object></div>
       </div>
     </div>
   </div>
@@ -297,9 +305,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://link.springer.com/article/10.1186/s13256-025-05675-4" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-          <button class="pub-btn pdf-variant" onclick="togglePdf('pdf4')"><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-ash1l.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
-        <div class="pdf-box" id="pdf4"><object data="pdfs/pulatov-ash1l.pdf" type="application/pdf"><p>PDF unavailable. <a href="pdfs/pulatov-ash1l.pdf">Download</a></p></object></div>
       </div>
     </div>
   </div>
@@ -321,6 +328,7 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
         <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="pub-actions">
           <a class="pub-btn" href="https://www.sciencepublishinggroup.com/article/10.11648/j.ijacm.20261401.22" target="_blank"><span class="mono-sm">SP</span><span data-lang="en">SciencePG</span><span data-lang="uz">SciencePG</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-espb-vats.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
         </div>
       </div>
     </div>
@@ -383,12 +391,32 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
 
 <footer>&copy; 2026 Otabek Pulatov, MD</footer>
 
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-modal-backdrop" onclick="closePdfModal()"></div>
+  <div class="pdf-modal-panel">
+    <div class="pdf-modal-bar">
+      <a class="pdf-modal-newtab" id="pdfModalNewTab" href="#" target="_blank" rel="noopener"><span data-lang="en">Open in new tab</span><span data-lang="uz">Yangi oynada ochish</span></a>
+      <button class="pdf-modal-close" onclick="closePdfModal()" aria-label="Close">&times;</button>
+    </div>
+    <object id="pdfModalObject" type="application/pdf"><p class="pdf-modal-fallback"><span data-lang="en">Preview unavailable in this browser.</span><span data-lang="uz">Bu brauzerda oldindan ko'rish mavjud emas.</span> <a id="pdfModalFallbackLink" href="#" target="_blank"><span data-lang="en">Download the PDF</span><span data-lang="uz">PDF yuklab olish</span></a></p></object>
+  </div>
+</div>
+
 <script>
-function togglePdf(id){
-  const el=document.getElementById(id);
-  el.classList.toggle('open');
-  event.stopPropagation();
+function openPdfModal(src){
+  const modal = document.getElementById('pdfModal');
+  document.getElementById('pdfModalObject').data = src;
+  document.getElementById('pdfModalNewTab').href = src;
+  document.getElementById('pdfModalFallbackLink').href = src;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+function closePdfModal(){
+  document.getElementById('pdfModal').classList.remove('open');
+  document.getElementById('pdfModalObject').data = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdfModal(); });
 </script>
 </body>
 </html>
