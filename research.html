@@ -93,9 +93,7 @@ body{font-family:var(--font-body);color:var(--text);background:var(--warm-white)
 .pdf-modal-newtab:hover{color:var(--gold)}
 .pdf-modal-close{background:none;border:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--text-light);padding:.15rem .5rem;transition:color .2s}
 .pdf-modal-close:hover{color:var(--navy)}
-.pdf-modal-panel object{flex:1;width:100%;border:none}
-.pdf-modal-fallback{padding:2rem;font-size:.85rem;color:var(--text-secondary);text-align:center}
-.pdf-modal-fallback a{color:var(--gold);font-weight:600}
+.pdf-modal-panel iframe{flex:1;width:100%;border:none}
 @media(max-width:640px){.pdf-modal{padding:0}.pdf-modal-panel{max-width:none;max-height:none;border-radius:0}}
 
 .ongoing-list{margin-top:.5rem}
@@ -220,51 +218,6 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
     </div>
   </div>
 
-  <div class="pub" id="p4">
-    <div class="pub-top">
-      <div class="pub-mono">CR</div>
-      <div class="pub-main">
-        <div class="pub-status" data-lang="en">Published — Cardiology in Review, 2025</div>
-        <div class="pub-status" data-lang="uz">Nashr etilgan — Cardiology in Review, 2025</div>
-        <h3>The Father of Heart Transplantation History Forgot: Vladimir P. Demikhov, MD (1916–1998)</h3>
-        <p class="pub-why" data-lang="en">On Vladimir Demikhov, who performed the first experimental heart transplant in 1946 and is largely left out of Western medical history.</p>
-        <p class="pub-why" data-lang="uz">1946-yilda birinchi eksperimental yurak transplantatsiyasini amalga oshirgan, ammo g'arb tibbiyot tarixida deyarli tilga olinmaydigan Vladimir Demikhov haqida.</p>
-        <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">Demikhov performed the world's first experimental heart transplant in 1946, the first heart-lung transplant, and the first experimental coronary artery bypass. His 1960 monograph became a foundational text of thoracic transplantation and directly influenced Christiaan Barnard, Norman Shumway, and Richard Lower, yet his name rarely appears in Western accounts of that history.</p>
-          <p data-lang="uz">Demikhov 1946-yilda birinchi eksperimental yurak transplantatsiyasini, birinchi yurak-o'pka transplantatsiyasini va birinchi eksperimental koronar arteriya shuntlashni amalga oshirdi. Uning 1960-yilgi monografiyasi ko'krak transplantologiyasining asosiy matniga aylandi va Barnard, Shumway hamda Lowerga bevosita ta'sir ko'rsatdi.</p>
-          <div class="cite"><strong>Pulatov O</strong>, et al. <em>Cardiology in Review</em>, 2025. DOI: 10.1097/crd.0000000000001166</div>
-        </div></div>
-        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
-        <div class="pub-actions">
-          <a class="pub-btn" href="https://www.ovid.com/jnls/cardiologyinreview/abstract/10.1097/crd.0000000000001166~the-father-of-heart-transplantation-history-forgot-vladimir" target="_blank"><span class="mono-sm">O</span><span data-lang="en">Ovid</span><span data-lang="uz">Ovid</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-          <button class="pub-btn" onclick="openPdfModal('pdfs/pulatov-demikhov.pdf')"><span class="mono-sm">PDF</span><span data-lang="en">Read PDF</span><span data-lang="uz">PDF o'qish</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pub" id="p5">
-    <div class="pub-top">
-      <div class="pub-mono">ECAP</div>
-      <div class="pub-main">
-        <div class="pub-status" data-lang="en">Published — European Child &amp; Adolescent Psychiatry</div>
-        <div class="pub-status" data-lang="uz">Nashr etilgan — European Child &amp; Adolescent Psychiatry</div>
-        <h3>A Name Absent From the Curriculum: Grunya Sukhareva, Triple Erasure, and the Unfinished History of Autism</h3>
-        <p class="pub-why" data-lang="en">On Grunya Sukhareva, the Soviet child psychiatrist who described autism spectrum presentations in the 1920s, well before Kanner and Asperger.</p>
-        <p class="pub-why" data-lang="uz">1920-yillarda autizm spektri ko'rinishlarini tasvirlab bergan sovet bolalar psixiatri Grunya Suxareva haqida, Kanner va Aspergerdan ancha oldin.</p>
-        <div class="pub-abstract"><div class="pub-abstract-inner">
-          <p data-lang="en">On Grunya Sukhareva, whose 1920s clinical descriptions of autism spectrum presentations predate the accounts more widely credited to Leo Kanner and Hans Asperger by nearly two decades, though her name has largely been left out of how autism's history is taught.</p>
-          <p data-lang="uz">Grunya Suxareva haqida — uning 1920-yillardagi autizm spektri klinik tavsiflari Kanner va Aspergerga tegishli deb bilingan ma'lumotlardan yigirma yilcha oldin bo'lgan, ammo uning nomi autizm tarixi o'qitilishida deyarli tilga olinmaydi.</p>
-          <div class="cite"><strong>Pulatov O</strong>, Barros R. <em>European Child &amp; Adolescent Psychiatry</em>, 2026.</div>
-        </div></div>
-        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
-        <div class="pub-actions">
-          <a class="pub-btn" href="https://link.springer.com/article/10.1007/s00787-026-03046-y" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="pub" id="p6">
     <div class="pub-top">
       <div class="pub-mono">CRN</div>
@@ -334,6 +287,50 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
     </div>
   </div>
 
+  <div class="pub" id="p4">
+    <div class="pub-top">
+      <div class="pub-mono">CR</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — Cardiology in Review, 2025</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — Cardiology in Review, 2025</div>
+        <h3>The Father of Heart Transplantation History Forgot: Vladimir P. Demikhov, MD (1916–1998)</h3>
+        <p class="pub-why" data-lang="en">On Vladimir Demikhov, who performed the first experimental heart transplant in 1946 and is largely left out of Western medical history.</p>
+        <p class="pub-why" data-lang="uz">1946-yilda birinchi eksperimental yurak transplantatsiyasini amalga oshirgan, ammo g'arb tibbiyot tarixida deyarli tilga olinmaydigan Vladimir Demikhov haqida.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">Demikhov performed the world's first experimental heart transplant in 1946, the first heart-lung transplant, and the first experimental coronary artery bypass. His 1960 monograph became a foundational text of thoracic transplantation and directly influenced Christiaan Barnard, Norman Shumway, and Richard Lower, yet his name rarely appears in Western accounts of that history.</p>
+          <p data-lang="uz">Demikhov 1946-yilda birinchi eksperimental yurak transplantatsiyasini, birinchi yurak-o'pka transplantatsiyasini va birinchi eksperimental koronar arteriya shuntlashni amalga oshirdi. Uning 1960-yilgi monografiyasi ko'krak transplantologiyasining asosiy matniga aylandi va Barnard, Shumway hamda Lowerga bevosita ta'sir ko'rsatdi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, et al. <em>Cardiology in Review</em>, 2025. DOI: 10.1097/crd.0000000000001166</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://journals.lww.com/10.1097/CRD.0000000000001166" target="_blank"><span class="mono-sm">WK</span><span data-lang="en">Wolters Kluwer</span><span data-lang="uz">Wolters Kluwer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub" id="p5">
+    <div class="pub-top">
+      <div class="pub-mono">ECAP</div>
+      <div class="pub-main">
+        <div class="pub-status" data-lang="en">Published — European Child &amp; Adolescent Psychiatry</div>
+        <div class="pub-status" data-lang="uz">Nashr etilgan — European Child &amp; Adolescent Psychiatry</div>
+        <h3>A Name Absent From the Curriculum: Grunya Sukhareva, Triple Erasure, and the Unfinished History of Autism</h3>
+        <p class="pub-why" data-lang="en">On Grunya Sukhareva, the Soviet child psychiatrist who described autism spectrum presentations in the 1920s, well before Kanner and Asperger.</p>
+        <p class="pub-why" data-lang="uz">1920-yillarda autizm spektri ko'rinishlarini tasvirlab bergan sovet bolalar psixiatri Grunya Suxareva haqida, Kanner va Aspergerdan ancha oldin.</p>
+        <div class="pub-abstract"><div class="pub-abstract-inner">
+          <p data-lang="en">On Grunya Sukhareva, whose 1920s clinical descriptions of autism spectrum presentations predate the accounts more widely credited to Leo Kanner and Hans Asperger by nearly two decades, though her name has largely been left out of how autism's history is taught.</p>
+          <p data-lang="uz">Grunya Suxareva haqida — uning 1920-yillardagi autizm spektri klinik tavsiflari Kanner va Aspergerga tegishli deb bilingan ma'lumotlardan yigirma yilcha oldin bo'lgan, ammo uning nomi autizm tarixi o'qitilishida deyarli tilga olinmaydi.</p>
+          <div class="cite"><strong>Pulatov O</strong>, Barros R. <em>European Child &amp; Adolescent Psychiatry</em>, 2026.</div>
+        </div></div>
+        <button class="pub-toggle" onclick="this.closest('.pub').classList.toggle('expanded')"><span data-lang="en">Abstract</span><span data-lang="uz">Annotatsiya</span> <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="pub-actions">
+          <a class="pub-btn" href="https://link.springer.com/article/10.1007/s00787-026-03046-y" target="_blank"><span class="mono-sm">S</span><span data-lang="en">Springer</span><span data-lang="uz">Springer</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="unpublished-zone">
   <div class="group-head"><h2 data-lang="en">In progress / not yet published</h2><h2 data-lang="uz">Jarayonda / hali nashr etilmagan</h2></div>
 
@@ -398,22 +395,21 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
       <a class="pdf-modal-newtab" id="pdfModalNewTab" href="#" target="_blank" rel="noopener"><span data-lang="en">Open in new tab</span><span data-lang="uz">Yangi oynada ochish</span></a>
       <button class="pdf-modal-close" onclick="closePdfModal()" aria-label="Close">&times;</button>
     </div>
-    <object id="pdfModalObject" type="application/pdf"><p class="pdf-modal-fallback"><span data-lang="en">Preview unavailable in this browser.</span><span data-lang="uz">Bu brauzerda oldindan ko'rish mavjud emas.</span> <a id="pdfModalFallbackLink" href="#" target="_blank"><span data-lang="en">Download the PDF</span><span data-lang="uz">PDF yuklab olish</span></a></p></object>
+    <iframe id="pdfModalFrame" title="PDF preview"></iframe>
   </div>
 </div>
 
 <script>
 function openPdfModal(src){
   const modal = document.getElementById('pdfModal');
-  document.getElementById('pdfModalObject').data = src;
+  document.getElementById('pdfModalFrame').src = src;
   document.getElementById('pdfModalNewTab').href = src;
-  document.getElementById('pdfModalFallbackLink').href = src;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closePdfModal(){
   document.getElementById('pdfModal').classList.remove('open');
-  document.getElementById('pdfModalObject').data = '';
+  document.getElementById('pdfModalFrame').src = '';
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdfModal(); });
