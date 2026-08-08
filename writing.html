@@ -33,13 +33,17 @@
 }
 body{font-family:var(--font-body);color:var(--text);background:var(--warm-white);line-height:1.7;-webkit-font-smoothing:antialiased}
 
-.page-head{padding:calc(72px + 4rem) clamp(1.5rem,6vw,4rem) 3rem;max-width:700px;margin:0 auto;text-align:center}
+.page-head{position:relative;overflow:hidden;padding:calc(72px + 4rem) clamp(1.5rem,6vw,4rem) 3rem;text-align:center;background:var(--navy)}
+.page-head::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 15%,rgba(200,148,74,.12),transparent 55%),radial-gradient(ellipse at 85% 90%,rgba(200,148,74,.07),transparent 50%);pointer-events:none}
+.page-head-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.page-head .section-title{color:#fff}
+.page-head .section-sub{color:rgba(255,255,255,.55)}
 .section-label{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
 .section-label::before{content:'';width:18px;height:1.5px;background:var(--gold)}
 .section-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em}
 .section-sub{font-size:.95rem;color:var(--text-secondary);margin-top:.9rem;line-height:1.7}
 
-.writing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;max-width:1000px;margin:0 auto 6rem;padding:0 clamp(1.5rem,6vw,4rem)}
+.writing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;max-width:1000px;margin:3.5rem auto 6rem;padding:0 clamp(1.5rem,6vw,4rem)}
 .w-card{display:block;padding:1.5rem 1.6rem;background:#fff;border:1px solid var(--border);border-radius:12px;text-decoration:none;color:inherit;transition:all .3s var(--ease)}
 .w-card.live:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.07);border-color:var(--gold)}
 .w-card.soon{cursor:default;opacity:.6}
@@ -65,11 +69,13 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
 <script src="nav.js"></script>
 
 <div class="page-head">
+  <div class="page-head-inner">
   <div class="section-label">Writing</div>
   <h1 class="section-title" data-lang="en">Articles &amp; Notes</h1>
   <h1 class="section-title" data-lang="uz">Maqolalar va eslatmalar</h1>
   <p class="section-sub" data-lang="en">Long-form articles, patient-facing guides, and reflections on training — in English and Uzbek. For curated research + community collections by condition, see the <a href="hub.html" style="color:var(--gold);font-weight:600;text-decoration:none">Uzbek Health Hub &rarr;</a></p>
   <p class="section-sub" data-lang="uz">Uzoq maqolalar, bemorlar uchun qo'llanmalar va ta'lim haqidagi mulohazalar — ingliz va o'zbek tillarida.</p>
+  </div>
 </div>
 
 <div class="writing-grid">
@@ -128,8 +134,8 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
     <div class="w-cat" data-lang="uz">PA dan MD ga</div>
     <h3 data-lang="en">What Five Years as a PA Taught Me That Medical School Couldn't</h3>
     <h3 data-lang="uz">Besh yillik PA tajribasi menga tibbiyot maktabi o'rgata olmagan narsalarni o'rgatdi</h3>
-    <p data-lang="en">Before I set foot in a lecture hall again, I had already managed hundreds of patients.</p>
-    <p data-lang="uz">Ma'ruza zaliga qayta qadam qo'yishimdan oldin, yuzlab bemorlarni boshqargan edim.</p>
+    <p data-lang="en">Where the two roles overlap, and what actually changes when you cross from one to the other.</p>
+    <p data-lang="uz">Ikki kasb qayerda kesishadi va biridan ikkinchisiga o'tganda nima o'zgaradi.</p>
     <div class="w-foot"><span class="w-lang">EN + UZ</span><span class="w-status soon-tag" data-lang="en">Coming Soon</span><span class="w-status soon-tag" data-lang="uz">Tez kunda</span></div>
   </div>
 

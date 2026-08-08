@@ -127,14 +127,14 @@
           <span data-lang="en">Journey</span><span data-lang="uz">Yo'lim</span>
         </a>
       </li>
-      <li data-group="writing">
-        <a href="writing.html">
-          <span data-lang="en">Writing</span><span data-lang="uz">Maqolalar</span>
-        </a>
-      </li>
       <li data-group="research">
         <a href="research.html">
           <span data-lang="en">Research</span><span data-lang="uz">Tadqiqot</span>
+        </a>
+      </li>
+      <li data-group="writing">
+        <a href="writing.html">
+          <span data-lang="en">Writing</span><span data-lang="uz">Maqolalar</span>
         </a>
       </li>
       <li data-group="hub">
