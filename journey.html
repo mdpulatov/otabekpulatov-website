@@ -51,6 +51,11 @@ body::before{
 .j-hero{position:relative;padding:calc(72px + 5rem) clamp(1.5rem,6vw,5rem) 4.5rem;overflow:hidden}
 .j-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(200,148,74,.09),transparent 55%),radial-gradient(ellipse at 85% 80%,rgba(200,148,74,.05),transparent 50%);pointer-events:none}
 .j-hero-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;text-align:center}
+.j-hero-inner .eyebrow,.j-hero-inner h1,.j-hero-inner .j-hero-sub{opacity:0;animation:heroIn .7s var(--ease) forwards}
+.j-hero-inner .eyebrow{animation-delay:.1s}
+.j-hero-inner h1{animation-delay:.22s}
+.j-hero-inner .j-hero-sub{animation-delay:.36s}
+@keyframes heroIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
 .eyebrow::before,.eyebrow::after{content:'';width:22px;height:1px;background:var(--gold)}
 .j-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.15rem}
@@ -66,12 +71,15 @@ body::before{
 .rail-total{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);margin:.35rem 0 1.1rem}
 .rail-year{font-family:var(--font-mono);font-size:.78rem;color:var(--ink);margin-bottom:.2rem}
 .rail-loc{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);margin-bottom:1.4rem}
-.rail-dots{display:flex;flex-direction:column;gap:.6rem}
-.rail-dot-btn{display:flex;align-items:center;gap:.55rem;background:none;border:none;cursor:pointer;padding:0;font-family:var(--font-mono);font-size:.66rem;color:var(--ink-faint);transition:color .3s}
-.rail-dot-btn .d{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);transition:all .35s var(--ease);flex-shrink:0}
-.rail-dot-btn.active{color:var(--gold)}
-.rail-dot-btn.active .d{background:var(--gold);width:8px;height:8px;box-shadow:0 0 0 3px rgba(200,148,74,.18)}
-.rail-dot-btn:hover{color:var(--ink)}
+.rail-map{position:relative;width:50px;height:230px;margin-top:.25rem}
+.rail-map-svg{position:absolute;inset:0;width:50px;height:230px;overflow:visible}
+.rail-path-bg{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2;stroke-linecap:round}
+.rail-path-fg{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;transition:stroke-dashoffset .7s var(--ease)}
+.rail-node{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--navy-2);border:2px solid rgba(255,255,255,.15);color:var(--ink-faint);font-family:var(--font-mono);font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transform:translate(-50%,-50%);transition:all .3s var(--ease);padding:0}
+.rail-node:hover{border-color:var(--gold);color:#fff}
+.rail-node.active{background:var(--gold);border-color:var(--gold);color:var(--navy);width:25px;height:25px;box-shadow:0 0 0 4px rgba(200,148,74,.18)}
+.rail-node-label{position:absolute;left:36px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--font-mono);font-size:.62rem;color:var(--ink-faint);opacity:0;transition:opacity .25s}
+.rail-node:hover .rail-node-label,.rail-node.active .rail-node-label{opacity:1;color:var(--ink)}
 @media(max-width:980px){
   .story{grid-template-columns:1fr}
   .rail{display:none}
@@ -157,12 +165,16 @@ body.uz p[data-lang="uz"],body.uz div[data-lang="uz"],body.uz h1[data-lang="uz"]
     <div class="rail-total">/ 05</div>
     <div class="rail-year" id="railYear">2012 — 2015</div>
     <div class="rail-loc" id="railLoc">Brooklyn, NY</div>
-    <nav class="rail-dots" aria-label="Jump to chapter">
-      <button class="rail-dot-btn" data-target="ch1" aria-label="Chapter 1"><span class="d"></span>2012</button>
-      <button class="rail-dot-btn" data-target="ch2" aria-label="Chapter 2"><span class="d"></span>2015</button>
-      <button class="rail-dot-btn" data-target="ch3" aria-label="Chapter 3"><span class="d"></span>2018</button>
-      <button class="rail-dot-btn" data-target="ch4" aria-label="Chapter 4"><span class="d"></span>2023</button>
-      <button class="rail-dot-btn" data-target="ch5" aria-label="Chapter 5"><span class="d"></span>2026</button>
+    <nav class="rail-map" aria-label="Jump to chapter">
+      <svg class="rail-map-svg" viewBox="0 0 50 230" width="50" height="230">
+        <path class="rail-path-bg" d="M16,12 Q34,37 34,62 Q16,87 16,112 Q34,137 34,162 Q16,187 16,212"/>
+        <path class="rail-path-fg" id="railPathFg" d="M16,12 Q34,37 34,62 Q16,87 16,112 Q34,137 34,162 Q16,187 16,212"/>
+      </svg>
+      <button class="rail-node" data-target="ch1" aria-label="Chapter 1" style="left:16px;top:12px">1<span class="rail-node-label">2012</span></button>
+      <button class="rail-node" data-target="ch2" aria-label="Chapter 2" style="left:34px;top:62px">2<span class="rail-node-label">2015</span></button>
+      <button class="rail-node" data-target="ch3" aria-label="Chapter 3" style="left:16px;top:112px">3<span class="rail-node-label">2018</span></button>
+      <button class="rail-node" data-target="ch4" aria-label="Chapter 4" style="left:34px;top:162px">4<span class="rail-node-label">2023</span></button>
+      <button class="rail-node" data-target="ch5" aria-label="Chapter 5" style="left:16px;top:212px">5<span class="rail-node-label">2026</span></button>
     </nav>
   </aside>
 
@@ -312,7 +324,10 @@ const railYear = document.getElementById('railYear');
 const railLoc = document.getElementById('railLoc');
 const mbNum = document.getElementById('mbNum');
 const mbYear = document.getElementById('mbYear');
-const dotBtns = document.querySelectorAll('.rail-dot-btn');
+const dotBtns = document.querySelectorAll('.rail-node');
+const railPathFg = document.getElementById('railPathFg');
+const railPathLen = railPathFg ? railPathFg.getTotalLength() : 0;
+if (railPathFg) { railPathFg.style.strokeDasharray = railPathLen; railPathFg.style.strokeDashoffset = railPathLen; }
 
 function setActive(ch) {
   const num = ch.dataset.num, year = ch.dataset.year, loc = ch.dataset.loc;
@@ -323,6 +338,11 @@ function setActive(ch) {
     requestAnimationFrame(() => railNum.classList.add('show'));
   });
   dotBtns.forEach(b => b.classList.toggle('active', b.dataset.target === ch.id));
+  if (railPathFg) {
+    const idx = Array.from(dotBtns).findIndex(b => b.dataset.target === ch.id);
+    const frac = idx / (dotBtns.length - 1);
+    railPathFg.style.strokeDashoffset = railPathLen * (1 - frac);
+  }
 }
 setActive(chapters[0]);
 railNum.classList.add('show');
