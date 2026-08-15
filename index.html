@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="43peFgL2cQvKJZ9VTd--Pgrsj6cZL9PV7VYNrlbgosw" />
-<title>Otabek Pulatov, MD</title>
+<title>Otabek Pulatov | Home</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Welcome to my corner, where I share my path through medicine in America — plus my research and a bilingual health hub for Uzbek speaking families.">
 <link rel="canonical" href="https://otabekpulatov.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Otabek Pulatov, MD">
+<meta property="og:title" content="Otabek Pulatov | Home">
 <meta property="og:description" content="Welcome to my corner, where I share my path through medicine in America — plus my research and a bilingual health hub for Uzbek speaking families.">
 <meta property="og:url" content="https://otabekpulatov.com/">
 <meta property="og:image" content="https://otabekpulatov.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Otabek Pulatov, MD">
+<meta name="twitter:title" content="Otabek Pulatov | Home">
 <meta name="twitter:description" content="Welcome to my corner, where I share my path through medicine in America — plus my research and a bilingual health hub for Uzbek speaking families.">
 <meta name="twitter:image" content="https://otabekpulatov.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -292,8 +292,8 @@ body.uz div[data-lang="uz"]{display:block}
   <div class="hero-scrim"></div>
   <div class="hero-clock" id="rClock"><span id="clockDal">Dallas —:—</span><br><span id="clockNy">New York —:—</span><br><span id="clockTash">Tashkent —:—</span></div>
   <div class="hero-text">
-    <h1 id="rH1" data-lang="en">Physician, researcher, <em>aspiring educator</em></h1>
-    <h1 id="rH1Uz" data-lang="uz">Shifokor, tadqiqotchi, <em>bo'lajak o'qituvchi</em></h1>
+    <h1 id="rH1">Physician, researcher, <em>aspiring educator</em></h1>
+    <template id="rH1UzTpl">Shifokor, tadqiqotchi, <em>bo'lajak o'qituvchi</em></template>
     <p class="hero-sub" id="rSub" data-lang="en">Welcome. This is where I share my story and what I've learned along the way, with the hope of helping more Uzbek immigrants find their way into medicine.</p>
     <p class="hero-sub" id="rSubUz" data-lang="uz">Xush kelibsiz — bu yerda men o'z hikoyam va o'rgangan narsalarimni ulashaman, ko'proq o'zbek muhojirlariga tibbiyotga yo'l topishda yordam berish umidida.</p>
     <div class="hero-ctas" id="rCtas">
@@ -494,7 +494,8 @@ body.uz div[data-lang="uz"]{display:block}
 <footer>&copy; 2026 Otabek Pulatov, MD</footer>
 
 <script>
-function setLang(lang){document.body.className=lang==='uz'?'uz':'';document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.lang-sw').forEach(sw=>sw.classList.toggle('uz-active',lang==='uz'));event.target.classList.add('active')}
+const rH1EnHtml=document.getElementById('rH1').innerHTML;
+function setLang(lang){document.body.className=lang==='uz'?'uz':'';document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.lang-sw').forEach(sw=>sw.classList.toggle('uz-active',lang==='uz'));event.target.classList.add('active');const rh1=document.getElementById('rH1');rh1.innerHTML=lang==='uz'?document.getElementById('rH1UzTpl').innerHTML:rH1EnHtml;}
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
@@ -665,11 +666,11 @@ updateClocks();setInterval(updateClocks,1000*30);
 gsap.registerPlugin(ScrollTrigger);
 gsap.timeline({delay:.3})
   .to('#rClock',{opacity:1,duration:.7},0)
-  .to('#rH1, #rH1Uz',{opacity:1,y:0,duration:.9,ease:'power2.out'},.1)
+  .to('#rH1',{opacity:1,y:0,duration:.9,ease:'power2.out'},.1)
   .to('#rSub, #rSubUz',{opacity:1,y:0,duration:.8,ease:'power2.out'},.34)
   .to('#rCtas',{opacity:1,y:0,duration:.8,ease:'power2.out'},.5)
   .to('#rScroll',{opacity:1,duration:.7},.8);
-gsap.set('#rH1, #rH1Uz, #rSub, #rSubUz, #rCtas',{y:16});
+gsap.set('#rH1, #rSub, #rSubUz, #rCtas',{y:16});
 
 gsap.to('#jtBigTitle, #jtBigTitleUz',{
   opacity:1,ease:'none',
