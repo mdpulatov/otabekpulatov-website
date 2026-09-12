@@ -1,4 +1,6 @@
 User-agent: *
-Allow: /
+Disallow: /
+Allow: /cv.html
+Allow: /research.html
 
 Sitemap: https://otabekpulatov.com/sitemap.xml
