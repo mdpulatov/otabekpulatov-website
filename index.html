@@ -39,32 +39,22 @@ canvas#grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mi
 
 .wrap{position:relative;z-index:2;max-width:460px}
 
-.eyebrow{
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;
-  letter-spacing:.22em;text-transform:uppercase;color:#c8944a;
-  margin-bottom:1.4rem;opacity:0;animation:riseIn .8s cubic-bezier(.22,.68,0,.71) forwards;
-  animation-delay:.1s;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-}
-.eyebrow::before,.eyebrow::after{content:'';width:22px;height:1px;background:linear-gradient(90deg,transparent,#c8944a)}
-.eyebrow::after{background:linear-gradient(90deg,#c8944a,transparent)}
-
 h1{
   font-family:'Playfair Display',Georgia,serif;font-weight:600;
   font-size:clamp(2.1rem,6vw,3rem);letter-spacing:-.02em;line-height:1.12;
   color:#fff;margin-bottom:1rem;
-  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.26s;
+  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.1s;
 }
 h1 em{font-style:italic;font-weight:500;color:#e8c88a}
 
 p.sub{
   font-size:.98rem;color:rgba(255,255,255,.58);line-height:1.75;margin:0 auto 2.5rem;max-width:380px;
-  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.42s;
+  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.28s;
 }
 
 .links{
   display:flex;justify-content:center;gap:.85rem;flex-wrap:wrap;
-  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.58s;
+  opacity:0;animation:riseIn .9s cubic-bezier(.22,.68,0,.71) forwards;animation-delay:.46s;
 }
 .links a{
   position:relative;display:inline-flex;align-items:center;gap:9px;
@@ -90,7 +80,6 @@ p.sub{
 <body>
 <canvas id="grain"></canvas>
 <div class="wrap">
-  <div class="eyebrow">Physician &middot; Researcher</div>
   <h1>Otabek Pulatov, <em>MD</em></h1>
   <p class="sub">The rest of the site is being reworked at the moment — here's what's available right now.</p>
   <div class="links">
